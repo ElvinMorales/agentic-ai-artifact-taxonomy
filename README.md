@@ -12,7 +12,9 @@ This repo organizes those artifacts into a framework-neutral taxonomy so builder
 
 This is an early public reference for naming and organizing the artifacts that make agentic AI systems reusable, inspectable, portable, and safer to operate.
 
-An agentic AI artifact is any addressable file, schema, document, configuration, prompt, module, record, or policy that defines, constrains, operates, evaluates, or improves an agentic system.
+An agentic AI artifact is anything an agentic system depends on that should be addressable, versionable, inspectable, and governable.
+
+That can include files, schemas, documents, configurations, prompts, modules, policies, runtime records, evaluation datasets, or release notes.
 
 ## Who it is for
 
@@ -27,6 +29,12 @@ An agentic AI artifact is any addressable file, schema, document, configuration,
 Agent repositories often mix design documents, prompts, tools, runtime logs, evals, and deployment settings without a shared vocabulary. That makes agent systems harder to review, transfer, reuse, and govern.
 
 This taxonomy gives those artifacts practical names and boundaries.
+
+## What this is not
+
+This is not an official standard, vendor specification, or claim that every framework uses the same names.
+
+It is a practical, framework-neutral vocabulary for comparing and organizing the artifacts that show up across agentic AI systems.
 
 ## The 14 buckets
 
@@ -52,6 +60,7 @@ This taxonomy gives those artifacts practical names and boundaries.
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
+- Use [docs/public-release-checklist.md](docs/public-release-checklist.md) and [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) when preparing the first public release.
 
 ## What is intentionally not included
 
