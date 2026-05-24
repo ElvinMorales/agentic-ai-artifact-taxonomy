@@ -1,0 +1,11 @@
+{
+  "config": {
+    "MD013": false,
+    "MD041": false
+  },
+  "globs": [
+    "**/*.md",
+    "!node_modules/**",
+    "!codex-brief-agentic-ai-artifact-taxonomy-bootstrap-v0.2.md"
+  ]
+}

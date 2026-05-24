@@ -1,0 +1,27 @@
+{
+  "name": "agentic-ai-artifact-taxonomy",
+  "version": "0.1.0",
+  "description": "Framework-neutral taxonomy for agentic AI artifacts.",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "lint:md": "markdownlint-cli2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElvinMorales/agentic-ai-artifact-taxonomy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ElvinMorales/agentic-ai-artifact-taxonomy/issues"
+  },
+  "homepage": "https://github.com/ElvinMorales/agentic-ai-artifact-taxonomy#readme",
+  "devDependencies": {
+    "markdownlint-cli2": "^0.22.1"
+  }
+}
