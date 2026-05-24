@@ -1,0 +1,70 @@
+# Purpose:
+#   Policy for what may be remembered across sessions and under what
+#   conditions.
+# Taxonomy bucket: Memory
+#
+# Required fields:
+#   allowed_memory_classes, disallowed_memory_classes, write_triggers,
+#   retention, review_process, deletion_process, privacy_notes
+# Optional fields:
+#   consent_requirements, storage_locations, audit_process, examples
+#
+# Usage notes:
+#   Memory is durable knowledge intended for later reuse. It is not execution
+#   state for a run, workflow, thread, or session.
+# Public-safety notes:
+#   Public repos should include policies and synthetic schemas, not real
+#   private memory stores or exported user memories.
+
+allowed_memory_classes:
+  - class: user_preference
+    description: Stable preference explicitly provided by the user.
+    conditions:
+      - User consent is clear.
+      - The preference is useful beyond the current session.
+      - The value is not sensitive or regulated.
+    example: Prefers concise summaries for routine status updates.
+  - class: project_convention
+    description: Durable public project convention documented in the repo.
+    conditions:
+      - Source is public or sanitized.
+      - Convention is stable enough to reuse.
+    example: Use framework-neutral taxonomy labels in public docs.
+
+disallowed_memory_classes:
+  - secrets, credentials, tokens, or keys
+  - private personal data without explicit consent
+  - employer-specific or client-specific confidential details
+  - unsanitized runtime logs, traces, or state snapshots
+  - regulated data or protected records
+
+write_triggers:
+  - User explicitly asks the agent to remember a public-safe preference.
+  - Maintainer approves a durable project convention for reuse.
+  - Review process confirms the content is not runtime-only state.
+
+retention:
+  default_period: 180 days
+  renewal: Review before extending retention.
+  expiration_action: Delete or re-confirm with the owner.
+
+review_process:
+  owner: Example Maintainers
+  cadence: quarterly
+  checks:
+    - Confirm each memory class is still useful.
+    - Remove stale, sensitive, or unsupported entries.
+    - Verify memory is not being used as hidden state.
+
+deletion_process:
+  requester: User, owner, or maintainer
+  response_time: reasonable-maintenance-window
+  steps:
+    - Locate relevant memory records.
+    - Delete or anonymize approved records.
+    - Record deletion without exposing the deleted content.
+
+privacy_notes:
+  - Store the minimum useful durable information.
+  - Prefer explicit consent for user-specific memory.
+  - Do not publish real memory stores in public repositories.

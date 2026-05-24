@@ -1,0 +1,47 @@
+# Purpose:
+#   Generic agent manifest for defining identity, ownership, dependencies,
+#   and public review metadata.
+# Taxonomy bucket: Identity
+#
+# Required fields:
+#   id, name, description, owner, version, status
+# Optional fields:
+#   model_ref, capability_refs, tool_refs, resource_refs, policy_refs,
+#   output_refs, notes
+#
+# Usage notes:
+#   Keep this manifest focused on what the agent is and what it depends on.
+#   Put detailed behavior in persona.md and principles.md.
+# Public-safety notes:
+#   Use generic owners and fake IDs in public examples. Do not include private
+#   project names, internal service names, secrets, or runtime state.
+
+id: example-review-agent
+name: Example Review Agent
+description: Reviews draft artifacts against public-safe quality criteria.
+owner:
+  name: Example Maintainers
+  contact: maintainers@example.invalid
+version: 0.1.0
+status: draft
+model_ref:
+  provider: generic-model-provider
+  family: general-purpose-language-model
+  version: example-model-v1
+capability_refs:
+  - id: artifact-review
+    path: ./SKILL.md
+tool_refs:
+  - id: schema-validator
+    path: ./tools.yaml#schema-validator
+resource_refs:
+  - id: public-taxonomy
+    path: ../docs/taxonomy.md
+policy_refs:
+  - id: public-safety
+    path: ../docs/public-safety.md
+output_refs:
+  - id: review-result
+    path: ./output.schema.json
+notes:
+  - This is a synthetic example for documentation and starter use.

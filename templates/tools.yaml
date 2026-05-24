@@ -1,0 +1,60 @@
+# Purpose:
+#   Typed tool specifications for callable actions available to an agent.
+# Taxonomy bucket: Tools
+#
+# Required fields:
+#   name, description, input_schema, output_schema, side_effects,
+#   approval_required, failure_modes, public_safety_notes
+# Optional fields:
+#   version, owner, rate_limits, auth, examples, notes
+#
+# Usage notes:
+#   Tools perform actions. Skills explain how to perform a task. Keep tool
+#   permissions, inputs, outputs, and side effects reviewable.
+# Public-safety notes:
+#   Do not include real credentials, private endpoints, production identifiers,
+#   or unsafe example payloads.
+
+tools:
+  - name: schema-validator
+    version: 0.1.0
+    description: Validates a JSON document against a selected JSON Schema.
+    input_schema:
+      type: object
+      required:
+        - schema_path
+        - document_path
+      properties:
+        schema_path:
+          type: string
+          description: Path or URI for the approved schema.
+          example: ./output.schema.json
+        document_path:
+          type: string
+          description: Path for the synthetic document to validate.
+          example: ./examples/review-result.example.json
+    output_schema:
+      type: object
+      required:
+        - valid
+        - errors
+      properties:
+        valid:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: string
+    side_effects:
+      reads_files: true
+      writes_files: false
+      calls_network: false
+      changes_external_systems: false
+    approval_required: false
+    failure_modes:
+      - Schema file is missing or invalid.
+      - Document path points to private or unsanitized data.
+      - Validation library versions disagree on schema draft support.
+    public_safety_notes:
+      - Validate synthetic or sanitized documents only.
+      - Do not pass secrets, real user records, or private runtime logs.

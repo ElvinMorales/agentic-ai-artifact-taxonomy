@@ -56,6 +56,7 @@ It is a practical, framework-neutral vocabulary for comparing and organizing the
 ## How to use this repo
 
 - Start with [docs/taxonomy.md](docs/taxonomy.md) for the main reference.
+- Use [templates/README.md](templates/README.md) for reusable starter templates mapped to the taxonomy buckets.
 - Use [docs/artifact-lifecycle.md](docs/artifact-lifecycle.md) to distinguish design-time, runtime, and iteration artifacts.
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
@@ -64,7 +65,7 @@ It is a practical, framework-neutral vocabulary for comparing and organizing the
 
 ## What is intentionally not included
 
-This first version does not include full starter templates, real production traces, private memory stores, framework-specific implementations, or GitHub Actions automation. Those can come later when the taxonomy has enough review and practical use.
+This first version does not include real production traces, private memory stores, framework-specific implementations, or GitHub Actions automation. Starter templates are available in [templates/README.md](templates/README.md).
 
 ## Public-safety note
 
