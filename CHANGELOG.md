@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Automation
+
+- Added a Markdown lint GitHub Actions workflow for pull requests and pushes to `main`.
+
 ### Framework Mapping
 
 - Expanded the framework mapping guide using the template pack as anchors.
