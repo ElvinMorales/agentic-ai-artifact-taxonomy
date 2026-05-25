@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Framework Mapping
+
+- Expanded the framework mapping guide using the template pack as anchors.
+- Added cautious OpenAI, Anthropic, MCP, and LangGraph/LangSmith mapping notes.
+
 ### Template Pack
 
 - Initial framework-neutral template pack for core agentic AI artifact classes.

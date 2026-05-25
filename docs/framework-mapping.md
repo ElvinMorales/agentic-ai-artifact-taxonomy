@@ -1,40 +1,70 @@
 # Framework Mapping
 
-This taxonomy starts from generic artifact classes. Framework-specific surfaces are mappings, not replacements for the taxonomy.
+This taxonomy starts from generic artifact classes. Framework-specific surfaces
+are mappings, not replacements for the taxonomy.
 
-Pattern:
+The canonical taxonomy remains the 14 buckets in
+[taxonomy.md](taxonomy.md). The mappings below use the starter templates as
+anchors so a maintainer can see how a generic artifact might appear in several
+agent frameworks or protocols.
+
+Mapping pattern:
 
 ```text
-Generic artifact class -> possible filenames -> framework mappings -> implementation notes
+Generic artifact class -> template/file -> OpenAI mapping -> Anthropic mapping -> MCP mapping -> LangGraph/LangSmith mapping -> implementation notes
 ```
 
-## Starter mappings
+These mappings are intentionally cautious. A framework surface may cover only
+part of a generic artifact class, and different teams may implement the same
+class with plain Markdown, YAML, JSON Schema, application code, or hosted
+configuration.
 
-| Generic artifact class | Possible filenames | Framework mappings | Implementation notes |
-| --- | --- | --- | --- |
-| Identity | `agent.yaml`, `identity/profile.md` | OpenAI agent instructions, Claude project guidance, local agent manifests | Use for role, purpose, scope, ownership, and boundaries. |
-| Operating style | `principles.md`, `operating-style.md` | System/developer instructions, Claude Code guidance, repo agent instructions | Keep behavior guidance separate from callable tool definitions. |
-| Capability module | `SKILL.md`, `skills/<name>/SKILL.md` | OpenAI Skills, Anthropic Skills, local skill bundles | Use for reusable task procedures, examples, references, scripts, and assets. |
-| Tool | `tools.yaml`, `tools/<name>.schema.json`, `mcp.json` | OpenAI tool definitions, MCP tools, LangGraph tool nodes, local connectors | Define callable capabilities, inputs, outputs, permissions, and failure behavior. |
-| Knowledge and resources | `resources.yaml`, `knowledge/README.md`, `references/` | Retrieval resources, MCP resources, vector store manifests, local reference packs | Track provenance, update cadence, licensing, and allowed use. |
-| Prompt or interface | `prompts/system.md`, `prompts/<task>.md`, `interfaces/chat-flow.md` | Prompt templates, Responses API input patterns, Claude prompts, local UI flows | Keep model-facing templates reviewable and versioned. |
-| Memory | `memory-policy.yaml`, `memory/schema.json` | Framework memory stores, user preference stores, application databases | Publish schemas and policies, not private memory contents. |
-| State | `state-strategy.md`, `state/schema.json`, `checkpoints/<id>.json` | LangGraph checkpoints, local session state, run snapshots | Publish strategies and schemas, not unsanitized runtime snapshots. |
-| Planning and orchestration | `orchestration/graph.yaml`, `workflows/<name>.yaml`, `handoffs.md` | LangGraph graphs, multi-agent handoffs, queue workers, local planners | Some systems split planning from orchestration and handoffs; this taxonomy keeps them together for now. |
-| Guardrails and governance | `guardrails.yaml`, `governance/policy.md`, `approvals.md` | Safety policies, approval tools, permission layers, review gates | Make authority boundaries and approval requirements explicit. |
-| Outputs and schemas | `output.schema.json`, `schemas/<name>.json` | Structured outputs, tool result schemas, report templates | Use schemas when outputs feed downstream systems. |
-| Evaluation and observability | `evals/rubric.md`, `evals/cases.jsonl`, `observability/trace-schema.json` | OpenAI evals, LangSmith traces, local test fixtures, dashboards | Keep private traces out of public repos unless sanitized. |
-| Runtime and deployment | `runtime.yaml`, `.env.example`, `deployment/README.md` | Hosted agent configs, local runtime manifests, container/deployment configs | Separate environment assumptions from behavior instructions. |
-| Learning and iteration | `CHANGELOG.md`, `feedback/sanitized-notes.md`, `releases/<version>.md` | Release notes, issue trackers, eval updates, public field notes | Capture lessons without exposing private runtime data. |
+## Template-Anchored Mappings
 
-## Framework notes
+| Generic artifact class | Template/file | OpenAI mapping | Anthropic mapping | MCP mapping | LangGraph/LangSmith mapping | Implementation notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| Identity | [`templates/agent.yaml`](../templates/agent.yaml) | Can be represented by agent configuration, agent name, instructions metadata, model selection, tool references, and hosted or SDK-level configuration. | Can be represented by a Claude Code configuration, project context, system prompt role, or an application-level agent manifest. | No direct universal agent manifest primitive. Identity commonly appears as client or server configuration, prompt context, or a resource that describes the agent. | Can map roughly to graph or assistant configuration, runnable metadata, deployment configuration, or project metadata. | Keep identity focused on what the agent is, owns, and depends on. Put behavior in persona or principles, and callable actions in tool specs. |
+| Identity | [`templates/persona.md`](../templates/persona.md) | Maps roughly to system or developer instructions that define role, scope, intended users, and boundaries. | Maps roughly to the `system` parameter, Claude Code project guidance, or other role/context instructions. | Can be exposed as a prompt, resource, or client-supplied context, but MCP does not require a persona artifact. | Can appear as node prompts, assistant instructions, graph-level configuration, or app-level context. | Persona is still an identity artifact. Avoid turning it into a skill workflow, tool schema, or runtime state record. |
+| Operating style | [`templates/principles.md`](../templates/principles.md) | Commonly appears as system or developer instructions, guardrail-adjacent policy text, or review guidance used with an agent. | Commonly appears as project instructions, Claude Code guidance, or system prompt guidance. | Can be represented by prompts or resources that clients include as context; it is not a tool. | Can appear as graph-level instructions, node prompt guidance, evaluator criteria, or project documentation. | Use this for decision rules, uncertainty handling, tone, escalation posture, and source posture. Keep it separate from specific task procedures. |
+| Capability modules | [`templates/SKILL.md`](../templates/SKILL.md) | Maps roughly to OpenAI Skills or local reusable task modules when available; otherwise it can be represented as versioned procedural guidance used by an agent. | Maps closely to Anthropic Skills or Claude Code skill folders when that surface is available. | No direct skill primitive. A skill may reference MCP tools, prompts, and resources, but it is not itself an MCP tool. | Can be represented by reusable subgraphs, node procedures, runnable packages, or documented task modules. LangSmith can evaluate behavior that uses a skill. | A skill explains how to perform a task. A tool performs a callable action. Do not collapse these concepts. |
+| Tools | [`templates/tools.yaml`](../templates/tools.yaml) | Maps to function tools, hosted tools, MCP-backed tools, or SDK tool definitions with input and output contracts. | Maps to client tools, Anthropic-defined tools, Claude Code tools, or MCP-connected tools, depending on the runtime. | Maps directly to MCP tools, including tool names, descriptions, input schemas, and invocation behavior. | Maps to tool nodes, bound tools, external integrations, or callable functions inside a graph. LangSmith can trace tool calls. | Tool specs should make permissions, side effects, approvals, inputs, outputs, and failure modes reviewable. Do not include secrets or production endpoints. |
+| Knowledge and resources | [`templates/resources.yaml`](../templates/resources.yaml) | Can map to file search, vector stores, retrieval resources, uploaded files, or application-managed context. | Can map to project knowledge, files, retrieval sources, or MCP-provided resources. | Maps directly to MCP resources and resource templates when a server exposes readable data or content. | Can map to retrievers, document loaders, vector stores, graph inputs, or dataset references. | Resources are approved information sources. They are not memory; memory is durable retained knowledge governed by a separate policy. |
+| Memory | [`templates/memory-policy.yaml`](../templates/memory-policy.yaml) | Maps roughly to stored user preferences, application memory services, vector stores used for durable recall, or product-level memory controls. | Maps roughly to application-managed memory, project knowledge conventions, or Claude surfaces that retain approved context. | MCP can expose memory stores as tools or resources, but the policy remains outside the protocol primitive. | LangGraph uses memory concepts in some docs, but preserve the repo distinction: durable retained knowledge is memory, while checkpoints are state. LangSmith can evaluate memory-sensitive behavior with synthetic cases. | Publish the policy, schema, and synthetic examples. Do not publish real memory stores, private user preferences, or hidden runtime context. |
+| State | [`templates/state-strategy.md`](../templates/state-strategy.md) | Can map to run state, thread context, response IDs, tool-call progress, or application-managed session records. | Can map to conversation context, tool-use progress, Claude Code session context, or app-managed continuation records. | MCP servers and clients may hold session context, but MCP resources are not automatically runtime state. | Maps strongly to LangGraph checkpoints, thread state, graph state, resumable workflows, and debugging snapshots. LangSmith traces can help inspect runs. | State is runtime-specific continuation or debugging data. Keep it separate from durable memory and do not commit unsanitized state snapshots. |
+| Outputs and schemas | [`templates/output.schema.json`](../templates/output.schema.json) | Maps to structured outputs, JSON Schema response formats, tool result schemas, or application-level validation contracts. | Maps roughly to tool input schemas, expected JSON output contracts, or application-side validation around Claude responses. | Maps to tool input schemas, tool result expectations, prompt arguments, or resource schemas when documented by a server. | Maps to state schemas, typed graph outputs, evaluator output schemas, dataset schemas, or application validation. | Use schemas when outputs feed downstream systems or evaluations. Keep schemas independent from private examples and runtime traces. |
+| Evaluation and observability | [`templates/eval-rubric.md`](../templates/eval-rubric.md) | Maps to evals, tracing, review rubrics, regression datasets, or monitoring used around agent behavior. | Maps roughly to evaluation prompts, review rubrics, test cases, and application telemetry around Claude workflows. | MCP does not define an evaluation system, but tool/resource interactions can be logged or tested by the client or server. | Maps strongly to LangSmith datasets, evaluators, experiments, traces, and regression workflows. | Use synthetic or sanitized test cases. Do not publish private traces, raw user prompts, tool outputs, or production observability records. |
 
-OpenAI Agents, Responses, and Skills can map prompts, tools, structured outputs, and reusable capability modules to concrete API or product surfaces.
+## Canonical Buckets Without Template Anchors
 
-Anthropic Claude, Skills, and Claude Code can map project instructions, skill bundles, tool use, and repo-agent guidance to concrete working surfaces.
+The template pack does not yet include starter files for every taxonomy bucket.
+Those buckets remain canonical and can still be mapped when a project needs
+them.
 
-MCP is useful for making tools and resources explicit across clients and servers.
+| Generic artifact class | Template/file | OpenAI mapping | Anthropic mapping | MCP mapping | LangGraph/LangSmith mapping | Implementation notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| Prompts and interfaces | No starter template yet | Prompt templates, message patterns, hosted prompt configuration, or UI input contracts. | Prompt templates, system prompts, project instructions, commands, or UI flows. | MCP prompts can represent reusable prompt templates exposed by a server. | Node prompts, graph inputs, chain prompts, or app interface contracts. | Keep prompt/interface artifacts versioned and separate from skill modules and tool definitions. |
+| Planning and orchestration | No starter template yet | Agent handoffs, orchestration code, workflow configuration, or SDK routing. | Multi-step Claude Code workflows, app-level orchestration, or MCP-connected workflow tools. | MCP tools can participate in orchestration, but the protocol is not itself a planning model. | LangGraph graphs, nodes, edges, conditional routing, interrupts, and resumable workflows. | Some frameworks split planning, handoffs, and orchestration more finely. This repo keeps them combined for the first public taxonomy. |
+| Guardrails and governance | No starter template yet | Guardrails, approval gates, tool permissions, moderation checks, and policy layers. | Tool permission settings, system guidance, app-level safety checks, and review gates. | Tool permissions and server policy can support governance, but policy design is application-specific. | Interrupts, human-in-the-loop approvals, evaluators, deployment controls, and trace review. | Make authority boundaries, approval requirements, and prohibited data explicit. |
+| Runtime and deployment | No starter template yet | Hosted agent settings, model/runtime configuration, environment variables, deployment manifests, or SDK app configuration. | Claude Code settings, API runtime configuration, tool permission settings, or deployment environment docs. | MCP server configuration, transports, client settings, and deployment manifests. | LangGraph deployment configuration, checkpointer setup, runtime stores, and LangSmith project configuration. | Keep environment assumptions separate from behavior instructions. Commit examples only when they are generic and secret-free. |
+| Learning and iteration | No starter template yet | Release notes, eval updates, prompt revisions, monitoring follow-ups, or agent improvement notes. | Skill revisions, project instruction updates, evaluation notes, and sanitized field observations. | MCP server changelogs, tool/resource version notes, and compatibility notes. | LangSmith experiment comparisons, dataset revisions, evaluator changes, and regression notes. | Capture lessons without exposing private runtime data, customer content, or unsanitized traces. |
 
-LangGraph and LangSmith are useful reference points for graph orchestration, checkpoint state, traces, and evaluation workflows.
+## Mapping Guidance
 
-General local agent repos may implement the same artifact classes with plain Markdown, YAML, JSON Schema, scripts, and test fixtures.
+Use framework mappings to explain where a generic artifact may live in a
+specific implementation. Do not rename or replace the taxonomy buckets to match
+one vendor's product model.
+
+Preserve these boundaries:
+
+- Memory and state are separate. Memory is durable retained knowledge for later
+  reuse. State is runtime-specific continuation, replay, inspection, or
+  debugging data.
+- Skills and tools are separate. Skills package reusable task guidance. Tools
+  are callable actions with inputs, outputs, permissions, side effects, and
+  failure modes.
+- Design-time, runtime, and iteration artifacts are separate lifecycle stages,
+  even when a framework stores them together.
+
+When a mapping is partial, describe it as partial. Prefer phrases such as
+"maps roughly to," "can be represented by," "commonly appears as," or "can
+participate in" instead of claiming exact cross-vendor equivalence.
