@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/artifact-review-result.schema.json",
+  "title": "Artifact Review Result",
+  "description": "Generic structured output schema for a public-safe artifact review result.",
+  "$comment": "Purpose: define a predictable output contract. Taxonomy bucket: Outputs and schemas. Required fields: artifact_id, summary, findings, public_safety_check. Optional fields: recommendations, metadata. Usage notes: keep schema independent from prompts and tools. Public-safety notes: do not include private source content, unsanitized logs, or real sensitive identifiers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_id",
+    "summary",
+    "findings",
+    "public_safety_check"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "description": "Synthetic or public-safe identifier for the reviewed artifact.",
+      "examples": [
+        "templates/persona.md"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "description": "Short review summary."
+    },
+    "findings": {
+      "type": "array",
+      "description": "Specific review findings, ordered by severity.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "severity",
+          "message"
+        ],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "suggested_fix": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "public_safety_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "notes"
+      ],
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "examples": [
+            "0.1.0"
+          ]
+        },
+        "reviewed_on": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2026-05-24"
+          ]
+        }
+      }
+    }
+  }
+}

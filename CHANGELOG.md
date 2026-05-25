@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Template Pack
+
+- Initial framework-neutral template pack for core agentic AI artifact classes.
+- Template index mapping starter templates to taxonomy buckets and lifecycle stages.
+
 ## [0.1.0] - 2026-05-24
 
 ### Added

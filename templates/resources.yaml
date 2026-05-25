@@ -1,0 +1,44 @@
+# Purpose:
+#   Approved knowledge and resource catalog for agent use.
+# Taxonomy bucket: Knowledge and resources
+#
+# Required fields:
+#   id, title, type, path_or_uri, owner, freshness, license, public_safe, notes
+# Optional fields:
+#   version, tags, retrieval_policy, review_cadence
+#
+# Usage notes:
+#   Resources are information sources. They are not memory. Memory is durable
+#   learned or retained knowledge governed by a separate memory policy.
+# Public-safety notes:
+#   Use public, licensed, synthetic, or sanitized sources. Do not include
+#   private corpora, private indexes, or regulated datasets in public examples.
+
+resources:
+  - id: public-taxonomy
+    title: Agentic AI Artifact Taxonomy
+    type: markdown-document
+    path_or_uri: ../docs/taxonomy.md
+    owner: Example Maintainers
+    freshness:
+      status: current
+      reviewed_on: 2026-05-24
+      review_cadence: before-release
+    license: MIT
+    public_safe: true
+    notes:
+      - Canonical local taxonomy reference for this starter pack.
+
+  - id: public-safety-guide
+    title: Public-Safety Guidance
+    type: markdown-document
+    path_or_uri: ../docs/public-safety.md
+    owner: Example Maintainers
+    freshness:
+      status: current
+      reviewed_on: 2026-05-24
+      review_cadence: before-release
+    license: MIT
+    public_safe: true
+    notes:
+      - Review before publishing examples, traces, or templates.
