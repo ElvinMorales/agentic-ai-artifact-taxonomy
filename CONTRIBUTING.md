@@ -32,4 +32,4 @@ Use synthetic examples whenever possible.
 
 ## Pull requests
 
-Keep pull requests focused. Include a short summary, the taxonomy buckets affected, and the validation performed.
+Keep pull requests focused. Include a short summary, the taxonomy buckets affected, and the validation performed. Pull requests should pass Markdown lint before review.
