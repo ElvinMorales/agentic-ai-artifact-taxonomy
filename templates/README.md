@@ -16,10 +16,10 @@ Each template maps to one of the 14 taxonomy buckets in
 | [SKILL.md](SKILL.md) | Capability modules | Design-time, iteration |
 | [tools.yaml](tools.yaml) | Tools | Design-time, runtime |
 | [resources.yaml](resources.yaml) | Knowledge and resources | Design-time, runtime |
-| [memory-policy.yaml](memory-policy.yaml) | Memory | Runtime, iteration |
-| [state-strategy.md](state-strategy.md) | State | Runtime |
+| [memory-policy.yaml](memory-policy.yaml) | Memory | Design-time, iteration |
+| [state-strategy.md](state-strategy.md) | State | Design-time |
 | [output.schema.json](output.schema.json) | Outputs and schemas | Design-time, runtime |
-| [eval-rubric.md](eval-rubric.md) | Evaluation and observability | Runtime, iteration |
+| [eval-rubric.md](eval-rubric.md) | Evaluation and observability | Design-time, iteration |
 
 ## How to Use
 

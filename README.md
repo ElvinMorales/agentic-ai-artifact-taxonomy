@@ -61,7 +61,8 @@ It is a practical, framework-neutral vocabulary for comparing and organizing the
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
-- Use [docs/public-release-checklist.md](docs/public-release-checklist.md) and [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) when preparing the first public release.
+- Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the public foundation release notes.
+- Use [docs/public-release-checklist.md](docs/public-release-checklist.md) as a maintenance checklist before future public updates.
 
 ## What is intentionally not included
 
@@ -73,6 +74,6 @@ Do not publish secrets, credentials, employer-specific workflows, regulated data
 
 ## Status
 
-Current status: early draft for `v0.1.0`.
+Current status: public `v0.1.0` foundation released. The template pack is under active development in the `Unreleased` section.
 
-The goal is a small, public-ready foundation that can grow into templates, examples, framework mappings, and field notes over time.
+The goal is a small public foundation that can grow through templates, examples, framework mappings, and field notes over time.
