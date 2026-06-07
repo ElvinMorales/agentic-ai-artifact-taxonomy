@@ -15,19 +15,19 @@
 #   private corpora, private indexes, or regulated datasets in public examples.
 
 resources:
-  - id: public-taxonomy
-    title: Agentic AI Artifact Taxonomy
-    type: markdown-document
-    path_or_uri: ../docs/taxonomy.md
+  - id: public-category-list
+    title: Synthetic Record Category List
+    type: public-web-document
+    path_or_uri: https://example.invalid/rules/record-categories
     owner: Example Maintainers
     freshness:
       status: current
-      reviewed_on: 2026-05-24
+      reviewed_on: 2026-06-07
       review_cadence: before-release
     license: MIT
     public_safe: true
     notes:
-      - Canonical local taxonomy reference for this starter pack.
+      - Published rule reference for classifying synthetic records.
 
   - id: public-safety-guide
     title: Public-Safety Guidance

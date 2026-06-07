@@ -29,7 +29,7 @@ allowed_memory_classes:
     conditions:
       - Source is public or sanitized.
       - Convention is stable enough to reuse.
-    example: Use framework-neutral taxonomy labels in public docs.
+    example: Use ISO 8601 dates in synthetic records.
 
 disallowed_memory_classes:
   - secrets, credentials, tokens, or keys

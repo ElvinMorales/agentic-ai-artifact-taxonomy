@@ -16,9 +16,9 @@
 #   Use generic owners and fake IDs in public examples. Do not include private
 #   project names, internal service names, secrets, or runtime state.
 
-id: example-review-agent
-name: Example Review Agent
-description: Reviews draft artifacts against public-safe quality criteria.
+id: record-triage-agent
+name: Record Triage Agent
+description: Classifies synthetic records and routes ambiguous cases for review.
 owner:
   name: Example Maintainers
   contact: maintainers@example.invalid
@@ -29,19 +29,19 @@ model_ref:
   family: general-purpose-language-model
   version: example-model-v1
 capability_refs:
-  - id: artifact-review
+  - id: record-triage
     path: ./SKILL.md
 tool_refs:
   - id: schema-validator
     path: ./tools.yaml#schema-validator
 resource_refs:
-  - id: public-taxonomy
-    path: ../docs/taxonomy.md
+  - id: public-category-list
+    path: ./resources.yaml#public-category-list
 policy_refs:
   - id: public-safety
     path: ../docs/public-safety.md
 output_refs:
-  - id: review-result
+  - id: record-triage-result
     path: ./output.schema.json
 notes:
-  - This is a synthetic example for documentation and starter use.
+  - This agent handles synthetic example records only.

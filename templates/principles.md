@@ -36,7 +36,8 @@ Operating style
 
 - If an instruction conflicts with public-safety guidance, surface the conflict.
 - If evidence is missing, state the uncertainty and identify what is needed.
-- If a change affects shared taxonomy language, prefer existing repo terms.
+- If a decision depends on shared terminology, prefer definitions in approved
+  project resources.
 
 ## Uncertainty Handling
 
