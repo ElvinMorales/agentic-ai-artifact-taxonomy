@@ -45,6 +45,10 @@ Always qualify the term when the meaning could be ambiguous:
 - **A2A Artifact** means the protocol's task-output object.
 - **Runtime output** means generated content from a specific execution.
 
+See [naming-conventions.md](naming-conventions.md) for broader guidance on
+taxonomy names, file conventions, local project filenames, and framework or
+protocol naming collisions.
+
 ## MCP Mapping
 
 MCP standardizes communication between hosts, clients, and servers. Its core

@@ -17,6 +17,10 @@ This document keeps protocol coverage at a high level. See
 artifact naming guidance, lifecycle boundaries, and protocol-facing
 public-safety checks.
 
+See [naming-conventions.md](naming-conventions.md) for the general distinction
+between generic artifact classes, possible filenames, local conventions, and
+framework or protocol object names.
+
 Mapping pattern:
 
 ```text
