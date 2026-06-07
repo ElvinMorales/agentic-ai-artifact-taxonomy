@@ -1,20 +1,35 @@
 # Agentic AI Artifact Taxonomy
 
-AI agents are often described as "a prompt plus tools."
+AI agents are often described as "a prompt plus tools." That framing is useful,
+but incomplete.
 
-That framing is useful, but incomplete.
+Real agentic systems depend on manifests, capability modules, tool schemas,
+prompt templates, interface contracts, policies, memory strategies, state
+snapshots, workflow definitions, evals, deployment configuration, and release
+records.
 
-Real agentic systems depend on many artifacts: manifests, skills, tool schemas, prompt templates, policies, memory strategies, state snapshots, eval datasets, deployment configs, changelogs, and observability records.
-
-This repo organizes those artifacts into a framework-neutral taxonomy so builders can design, document, evaluate, and govern agentic systems more clearly.
+This repo provides a framework-neutral taxonomy for naming and organizing those
+artifacts so builders can design, document, evaluate, and govern agentic
+systems more clearly.
 
 ## What this repo is
 
-This is an early public reference for naming and organizing the artifacts that make agentic AI systems reusable, inspectable, portable, and safer to operate.
+An agentic AI artifact is anything an agentic system depends on that is
+addressable, versionable, inspectable, and governable.
 
-An agentic AI artifact is anything an agentic system depends on that should be addressable, versionable, inspectable, and governable.
+Artifacts can be files, schemas, documents, configurations, prompts, modules,
+policies, runtime records, evaluation datasets, or release notes. The taxonomy
+separates design-time definitions, runtime data, and iteration artifacts, and
+it keeps durable memory distinct from resumable execution state.
 
-That can include files, schemas, documents, configurations, prompts, modules, policies, runtime records, evaluation datasets, or release notes.
+The repo currently includes:
+
+- The canonical 14-bucket taxonomy and supporting concept guides.
+- A framework-neutral starter template pack covering 10 artifact types.
+- A sanitized example repository tree.
+- Framework and protocol mapping guidance.
+- Public-safety and release-review guidance.
+- Local and GitHub Actions Markdown validation.
 
 ## Who it is for
 
@@ -32,11 +47,16 @@ This taxonomy gives those artifacts practical names and boundaries.
 
 ## What this is not
 
-This is not an official standard, vendor specification, or claim that every framework uses the same names.
+This is not an official standard, vendor specification, or claim that every
+framework uses the same names.
 
-It is a practical, framework-neutral vocabulary for comparing and organizing the artifacts that show up across agentic AI systems.
+It is a practical vocabulary for comparing and organizing artifacts across
+agentic AI systems. Framework and protocol files are mappings at the edge, not
+replacements for the taxonomy.
 
-## The 14 buckets
+## The Stable 14-Bucket Model
+
+The current public taxonomy keeps 14 top-level buckets:
 
 1. Identity
 2. Operating style
@@ -53,6 +73,16 @@ It is a practical, framework-neutral vocabulary for comparing and organizing the
 13. Runtime and deployment
 14. Learning and iteration
 
+Some buckets intentionally contain several related sub-surfaces:
+
+- **Prompts and interfaces** includes prompt specifications, task prompt
+  templates, interface schemas, elicitation flows, and input contracts.
+- **Planning and orchestration** includes planning policies, plans, routers,
+  workflow graphs, delegation, handoffs, resumability, and continuation logic.
+
+The repo may map these surfaces more finely for a specific framework or
+protocol without changing the stable top-level taxonomy.
+
 ## How to use this repo
 
 - Start with [docs/taxonomy.md](docs/taxonomy.md) for the main reference.
@@ -61,19 +91,29 @@ It is a practical, framework-neutral vocabulary for comparing and organizing the
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
-- Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the public foundation release notes.
+- Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the historical public foundation release notes.
 - Use [docs/public-release-checklist.md](docs/public-release-checklist.md) as a maintenance checklist before future public updates.
 
 ## What is intentionally not included
 
-This first version does not include real production traces, private memory stores, framework-specific implementations, or GitHub Actions automation. Starter templates are available in [templates/README.md](templates/README.md).
+This repo does not publish live memory stores, raw production traces, private
+logs, secrets, unsanitized workspace snapshots, or unsanitized runtime state.
+Framework-specific implementations and protocol examples may be documented as
+sanitized mappings, but they do not define the taxonomy.
 
 ## Public-safety note
 
-Do not publish secrets, credentials, employer-specific workflows, regulated data, private logs, unsanitized traces, real memory stores, or runtime state snapshots. Public examples should be generic, sanitized, and educational.
+Do not publish secrets, credentials, employer-specific workflows, regulated
+data, private logs, unsanitized traces, real memory stores, or runtime state
+snapshots. Public examples should be generic, sanitized, and educational.
 
 ## Status
 
-Current status: public `v0.1.0` foundation released. The template pack is under active development in the `Unreleased` section.
+The latest tagged release is the public `v0.1.0` foundation. Since that
+release, the repo has added a starter template pack, expanded mappings, and
+Markdown validation; these changes are recorded under `Unreleased` in
+[CHANGELOG.md](CHANGELOG.md).
 
-The goal is a small public foundation that can grow through templates, examples, framework mappings, and field notes over time.
+The v0.2.0 work aligns the taxonomy, templates, mappings, examples, and
+validation while preserving the stable 14-bucket public model. Planned
+expansion is tracked separately and should not be read as already implemented.
