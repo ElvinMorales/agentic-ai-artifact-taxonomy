@@ -26,6 +26,11 @@ All notable changes to this project will be documented in this file.
 
 - Initial framework-neutral template pack for core agentic AI artifact classes.
 - Template index mapping starter templates to taxonomy buckets and lifecycle stages.
+- Added human-readable templates for agent contracts, prompts, interfaces,
+  guardrails, memory guides, plans, handoffs, runtime notes, and iteration
+  records.
+- Expanded the template index to cover all 14 taxonomy buckets and distinguish
+  human-readable templates from structured companions.
 
 ## [0.1.0] - 2026-05-24
 
