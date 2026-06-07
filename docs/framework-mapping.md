@@ -8,6 +8,14 @@ The canonical taxonomy remains the 14 buckets in
 anchors so a maintainer can see how a generic artifact might appear in several
 agent frameworks or protocols.
 
+Protocol-specific files such as MCP server definitions or A2A agent cards are
+adapters or mapping surfaces. They do not replace the generic artifact classes
+or make a protocol's naming model canonical for this repo.
+
+This document keeps protocol coverage at a high level. Detailed MCP and A2A
+manifest guidance and examples are deferred to dedicated protocol-mapping work
+rather than being folded into the taxonomy itself.
+
 Mapping pattern:
 
 ```text
@@ -42,8 +50,8 @@ them.
 
 | Generic artifact class | Template/file | OpenAI mapping | Anthropic mapping | MCP mapping | LangGraph/LangSmith mapping | Implementation notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| Prompts and interfaces | No starter template yet | Prompt templates, message patterns, hosted prompt configuration, or UI input contracts. | Prompt templates, system prompts, project instructions, commands, or UI flows. | MCP prompts can represent reusable prompt templates exposed by a server. | Node prompts, graph inputs, chain prompts, or app interface contracts. | Keep prompt/interface artifacts versioned and separate from skill modules and tool definitions. |
-| Planning and orchestration | No starter template yet | Agent handoffs, orchestration code, workflow configuration, or SDK routing. | Multi-step Claude Code workflows, app-level orchestration, or MCP-connected workflow tools. | MCP tools can participate in orchestration, but the protocol is not itself a planning model. | LangGraph graphs, nodes, edges, conditional routing, interrupts, and resumable workflows. | Some frameworks split planning, handoffs, and orchestration more finely. This repo keeps them combined for the first public taxonomy. |
+| Prompts and interfaces | No starter template yet | Prompt specs, task templates, message patterns, hosted prompt configuration, interface schemas, elicitation flows, or input contracts. | Prompt templates, system prompts, project instructions, commands, interface schemas, or UI flows. | MCP prompts and elicitation can represent parts of reusable prompt and input-collection surfaces. | Node prompts, graph inputs, chain prompts, or app interface contracts. | Keep prompt specs, task templates, interface schemas, elicitation flows, and input contracts versioned and separate from skill modules and tool definitions. |
+| Planning and orchestration | No starter template yet | Planning policies, plans, agent handoffs, orchestration code, workflow configuration, routing, and continuation state. | Multi-step Claude Code workflows, delegation, app-level orchestration, or MCP-connected workflow tools. | MCP tools and sampling can participate in orchestration, but the protocol is not itself a planning model. | LangGraph graphs, nodes, edges, conditional routing, interrupts, checkpoints, and resumable workflows. | Some frameworks split planning, routing, delegation, handoffs, and continuation more finely. This repo keeps them in one stable top-level bucket. |
 | Guardrails and governance | No starter template yet | Guardrails, approval gates, tool permissions, moderation checks, and policy layers. | Tool permission settings, system guidance, app-level safety checks, and review gates. | Tool permissions and server policy can support governance, but policy design is application-specific. | Interrupts, human-in-the-loop approvals, evaluators, deployment controls, and trace review. | Make authority boundaries, approval requirements, and prohibited data explicit. |
 | Runtime and deployment | No starter template yet | Hosted agent settings, model/runtime configuration, environment variables, deployment manifests, or SDK app configuration. | Claude Code settings, API runtime configuration, tool permission settings, or deployment environment docs. | MCP server configuration, transports, client settings, and deployment manifests. | LangGraph deployment configuration, checkpointer setup, runtime stores, and LangSmith project configuration. | Keep environment assumptions separate from behavior instructions. Commit examples only when they are generic and secret-free. |
 | Learning and iteration | No starter template yet | Release notes, eval updates, prompt revisions, monitoring follow-ups, or agent improvement notes. | Skill revisions, project instruction updates, evaluation notes, and sanitized field observations. | MCP server changelogs, tool/resource version notes, and compatibility notes. | LangSmith experiment comparisons, dataset revisions, evaluator changes, and regression notes. | Capture lessons without exposing private runtime data, customer content, or unsanitized traces. |

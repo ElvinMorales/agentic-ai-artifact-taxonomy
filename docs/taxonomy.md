@@ -4,6 +4,28 @@ An agentic AI artifact is any addressable file, schema, document, configuration,
 
 Artifacts should be easy to inspect, version, review, and govern. Some are design-time inputs, some are runtime records, and some support iteration after use.
 
+## Taxonomy Decisions
+
+This repo currently keeps 14 top-level buckets as the stable public taxonomy.
+The model is intentionally framework-neutral and does not mirror one vendor's
+product model or filenames.
+
+Some top-level buckets contain multiple related sub-surfaces:
+
+- **Prompts and interfaces** contains prompt specifications, task prompt
+  templates, interface schemas, elicitation flows, and input contracts.
+- **Planning and orchestration** contains planning policies, plans, routers,
+  workflow graphs, delegation, handoffs, resumability, and continuation logic.
+
+Frameworks and protocols may expose these surfaces through more specific files
+or API objects. MCP server definitions, A2A agent cards, and similar
+protocol-specific artifacts are mappings or adapters at the implementation
+edge. They do not replace the framework-neutral taxonomy.
+
+Public repositories should check in design-time definitions and sanitized
+examples. They should not check in secrets, live memory stores, raw traces,
+private logs, unsanitized workspace snapshots, or unsanitized runtime state.
+
 ## Overview
 
 | Bucket | What it covers | Typical lifecycle |
@@ -13,10 +35,10 @@ Artifacts should be easy to inspect, version, review, and govern. Some are desig
 | Capability modules | Reusable task procedures, examples, references, scripts, and assets | Design-time, iteration |
 | Tools | Callable functions, APIs, connectors, commands, and permissions | Design-time, runtime |
 | Knowledge and resources | Documents, datasets, indexes, references, and retrieval sources | Design-time, runtime |
-| Prompts and interfaces | System prompts, templates, user flows, and interaction contracts | Design-time |
+| Prompts and interfaces | Prompt specs, task templates, interface schemas, elicitation flows, and input contracts | Design-time |
 | Memory | Durable knowledge intended for future reuse | Runtime, iteration |
 | State | Execution snapshots for a thread, workflow, run, or session | Runtime |
-| Planning and orchestration | Plans, task graphs, handoffs, queues, routing, and coordination logic | Design-time, runtime |
+| Planning and orchestration | Planning policies, plans, routers, workflow graphs, delegation, handoffs, resumability, and continuation logic | Design-time, runtime |
 | Guardrails and governance | Safety policies, approvals, constraints, audits, and review rules | Design-time, runtime, iteration |
 | Outputs and schemas | Expected output formats, schemas, reports, and generated artifacts | Design-time, runtime |
 | Evaluation and observability | Evals, metrics, traces, logs, dashboards, and regression checks | Runtime, iteration |
@@ -177,7 +199,9 @@ Related buckets:
 
 ## Prompts and Interfaces
 
-Prompts and interfaces define how instructions, context, inputs, and outputs are presented to the model or to users.
+Prompts and interfaces define how instructions, context, inputs, and expected
+outputs are presented to the model or to users. The bucket includes both
+model-facing prompt surfaces and user- or system-facing input contracts.
 
 Purpose:
 
@@ -188,16 +212,18 @@ Purpose:
 Example artifact types:
 
 - System prompt
-- Prompt template
-- User interaction flow
-- Interface contract
+- Task prompt template
+- Interface schema
+- Elicitation flow
+- Input contract
 
 Possible filenames:
 
 - `prompts/system.md`
-- `prompts/<task>.md`
+- `prompts/tasks/<task>.md`
+- `interfaces/input.schema.json`
+- `interfaces/elicitation-flow.md`
 - `interfaces/chat-flow.md`
-- `prompt.schema.json`
 
 Related buckets:
 
@@ -269,7 +295,10 @@ Related buckets:
 
 ## Planning and Orchestration
 
-Planning and orchestration covers how work is decomposed, sequenced, routed, delegated, resumed, and handed off. Some systems split planning and handoffs into separate categories; this taxonomy keeps them together for a simpler public foundation.
+Planning and orchestration covers how work is decomposed, sequenced, routed,
+delegated, resumed, continued, and handed off. Some systems expose planning,
+routing, handoffs, and durable continuation as separate surfaces; this
+taxonomy keeps them in one stable top-level bucket.
 
 Purpose:
 
@@ -280,16 +309,19 @@ Purpose:
 Example artifact types:
 
 - Plan template
-- Task graph
-- Handoff protocol
-- Queue configuration
+- Planning policy
+- Router or workflow graph
+- Delegation and handoff contract
+- Resumability or continuation policy
 
 Possible filenames:
 
 - `plans/template.md`
+- `planning/policy.yaml`
+- `orchestration/router.yaml`
 - `orchestration/graph.yaml`
-- `handoffs.md`
-- `workflows/<name>.yaml`
+- `orchestration/handoffs.md`
+- `orchestration/continuation.md`
 
 Related buckets:
 

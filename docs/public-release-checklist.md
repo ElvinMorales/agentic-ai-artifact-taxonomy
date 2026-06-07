@@ -1,16 +1,22 @@
 # Public Release Checklist
 
-Use this checklist before tagging or announcing the first public release.
+Use this checklist before tagging or announcing a public release or update.
 
 ## Scope
 
 - The taxonomy keeps the public 14-bucket structure.
-- Planning and orchestration remains one bucket.
+- Prompts and interfaces explicitly covers prompt specs, task templates,
+  interface schemas, elicitation flows, and input contracts.
+- Planning and orchestration remains one bucket while explicitly covering
+  plans, routing, workflow graphs, delegation, handoffs, resumability, and
+  continuation logic.
 - Memory and state are described as separate artifact classes.
 - Design-time, runtime, and iteration artifacts are clearly separated.
 - Language remains framework-neutral unless a mapping document is explicit.
 - The taxonomy is presented as a practical framework, not a universal industry standard.
 - Framework-specific references are examples or mappings, not claims of official equivalence.
+- Protocol-specific files such as MCP server definitions or A2A agent cards
+  remain mappings or adapters rather than taxonomy replacements.
 
 ## Public Safety
 
@@ -27,8 +33,10 @@ Use this checklist before tagging or announcing the first public release.
 
 - `README.md` points readers to the main taxonomy and supporting docs.
 - `docs/taxonomy.md` contains the canonical bucket list.
+- `templates/README.md` accurately lists the templates that currently exist.
 - `docs/public-safety.md` is easy to find before publishing examples.
 - `CHANGELOG.md` and release notes describe the public release scope.
+- Current automation and validation are described accurately.
 - Placeholder material is clearly marked and does not overpromise.
 
 ## Validation
@@ -40,9 +48,11 @@ Use this checklist before tagging or announcing the first public release.
 - Run a targeted grep for sensitive terms.
 - Confirm `package.json` is not configured for accidental package publishing unless intentional.
 
-## Remaining Release Tasks
+## Release Coordination
 
 - Confirm repository metadata, license, and package metadata are correct.
 - Confirm examples are sanitized and framework-neutral.
-- Confirm the release tag and GitHub release text match `docs/release-notes-v0.1.0.md`.
+- Preserve historical release notes as historical records.
+- Confirm the target release tag and GitHub release text match the release notes
+  created for that version.
 - Confirm any announcement copy links to the public repo, not private context.

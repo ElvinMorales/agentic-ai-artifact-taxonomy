@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Source Alignment
+
+- Clarified that the stable public taxonomy retains 14 top-level buckets.
+- Made the prompt/interface and planning/orchestration sub-surfaces explicit.
+- Aligned the README, maintainer guidance, template index, mappings, and release
+  checklist with the repo's current contents.
+- Clarified that protocol-specific files are mappings or adapters rather than
+  canonical taxonomy definitions.
+
 ### Automation
 
 - Added a Markdown lint GitHub Actions workflow for pull requests and pushes to `main`.
