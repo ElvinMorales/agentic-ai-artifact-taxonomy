@@ -1,7 +1,9 @@
-name: Validate docs and examples
+name: Markdown lint
 
 on:
   pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -10,18 +12,18 @@ permissions:
   contents: read
 
 jobs:
-  validate:
-    name: Validate repository
+  markdown-lint:
+    name: Markdown lint
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
