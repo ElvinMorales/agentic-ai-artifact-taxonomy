@@ -22,6 +22,14 @@ All notable changes to this project will be documented in this file.
 - Expanded the framework mapping guide using the template pack as anchors.
 - Added cautious OpenAI, Anthropic, MCP, and LangGraph/LangSmith mapping notes.
 
+### Protocol Mapping
+
+- Added a dedicated MCP and A2A mapping guide that preserves the stable
+  framework-neutral taxonomy.
+- Clarified the difference between the repo's broad artifact concept and A2A's
+  narrower runtime task-output object.
+- Added protocol-facing public-safety and design-time versus runtime guidance.
+
 ### Template Pack
 
 - Initial framework-neutral template pack for core agentic AI artifact classes.

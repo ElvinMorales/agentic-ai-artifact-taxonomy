@@ -12,9 +12,10 @@ Protocol-specific files such as MCP server definitions or A2A agent cards are
 adapters or mapping surfaces. They do not replace the generic artifact classes
 or make a protocol's naming model canonical for this repo.
 
-This document keeps protocol coverage at a high level. Detailed MCP and A2A
-manifest guidance and examples are deferred to dedicated protocol-mapping work
-rather than being folded into the taxonomy itself.
+This document keeps protocol coverage at a high level. See
+[protocol-mapping.md](protocol-mapping.md) for detailed MCP and A2A mappings,
+artifact naming guidance, lifecycle boundaries, and protocol-facing
+public-safety checks.
 
 Mapping pattern:
 
