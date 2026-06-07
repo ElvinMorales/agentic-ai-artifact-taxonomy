@@ -1,3 +1,4 @@
+# Optional reference schema: ../schemas/handoff.schema.json
 schema_version: 0.1.0-example
 handoff_id: handoff_example_001
 scenario: record-triage

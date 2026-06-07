@@ -40,3 +40,7 @@ Public repos should not include unsanitized runtime state snapshots.
 See the synthetic [durable memory example](../examples/memory-example.md) and
 [runtime state example](../examples/state-example.json) for separate,
 public-safe shapes. They are educational fixtures, not live stores or exports.
+
+The optional [state reference schema](../schemas/state.schema.json) describes
+the runtime example's public-safe shape. It is not a production checkpoint
+format and does not redefine state as memory, output, or trace data.

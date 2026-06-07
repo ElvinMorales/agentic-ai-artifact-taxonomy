@@ -36,5 +36,17 @@ Related starter templates:
 - [Output schema](../templates/output.schema.json)
 - [Evaluation rubric](../templates/eval-rubric.md)
 
+## Optional Reference Schemas
+
+The [state schema](../schemas/state.schema.json) and
+[handoff schema](../schemas/handoff.schema.json) describe the synthetic
+examples in this directory. They are small reference shapes for education and
+local adaptation, not production runtime standards, orchestration protocols,
+or claims of cross-framework compatibility.
+
+The state schema keeps runtime execution snapshots separate from durable
+memory, final outputs, and traces. The handoff schema describes a minimized
+transfer contract without defining a workflow engine or durable memory format.
+
 Review [public-safety guidance](../docs/public-safety.md) before publishing any
 adapted examples.

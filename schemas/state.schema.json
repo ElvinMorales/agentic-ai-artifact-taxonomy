@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/state.schema.json",
+  "title": "Public-Safe Runtime State Snapshot",
+  "description": "Optional educational schema for a sanitized execution snapshot that can support inspection or resumption. It is not a production runtime-state standard.",
+  "$comment": "State is runtime-scoped and separate from durable memory, final outputs, and traces. Public examples must omit raw prompts, messages, tool payloads, secrets, private paths, memory contents, and full logs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "task",
+    "execution",
+    "updated_at",
+    "sanitization"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0-example",
+      "description": "Version of this synthetic example shape, not a runtime protocol version."
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^run_example_[0-9]+$"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^session_example_[0-9]+$"
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "type",
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "pattern": "^task_example_[0-9]+$"
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "in_progress",
+            "waiting_for_handoff",
+            "blocked",
+            "completed",
+            "failed",
+            "cancelled"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "description": "Sanitized task summary rather than raw input or message content."
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_step",
+        "completed_steps",
+        "pending_actions"
+      ],
+      "properties": {
+        "current_step": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completed_steps": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "pending_actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "action_id",
+              "type",
+              "status"
+            ],
+            "properties": {
+              "action_id": {
+                "type": "string",
+                "pattern": "^action_example_[0-9]+$"
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "handoff_id": {
+                "type": "string",
+                "pattern": "^handoff_example_[0-9]+$"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "approved",
+                  "rejected",
+                  "completed",
+                  "blocked",
+                  "cancelled"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "handoff_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "destination_role",
+        "authority",
+        "context_reference"
+      ],
+      "properties": {
+        "destination_role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short description of authority delegated for the pending handoff."
+        },
+        "context_reference": {
+          "type": "string",
+          "pattern": "^synthetic://",
+          "description": "Reference to a minimized synthetic context packet, not embedded private content."
+        }
+      }
+    },
+    "artifact_references": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^synthetic://"
+      }
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "is_synthetic",
+        "excluded_fields",
+        "note"
+      ],
+      "properties": {
+        "is_synthetic": {
+          "type": "boolean",
+          "const": true
+        },
+        "excluded_fields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "raw_prompt_history",
+              "user_messages",
+              "tool_outputs",
+              "secrets",
+              "private_paths",
+              "memory_contents",
+              "final_outputs",
+              "full_traces",
+              "raw_logs"
+            ]
+          }
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    }
+  }
+}
