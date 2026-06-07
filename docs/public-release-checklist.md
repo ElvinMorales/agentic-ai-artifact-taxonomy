@@ -28,6 +28,10 @@ Use this checklist before tagging or announcing a public release or update.
 - Examples use generic names and synthetic data.
 - Example indexes state that fixtures demonstrate shape rather than production
   completeness.
+- Optional state and handoff schemas are described as reference shapes, not
+  production standards, workflow engines, or protocol specifications.
+- State and handoff examples remain synthetic and aligned with their documented
+  reference schemas.
 - No private bootstrap packets, Codex handoffs, Claude work packets, or internal planning notes are committed.
 - No real repository, system, project, study, customer, or workplace names appear unless intentionally public-safe.
 

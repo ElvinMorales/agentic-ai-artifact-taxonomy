@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/handoff.schema.json",
+  "title": "Public-Safe Handoff Contract",
+  "description": "Optional educational schema for a minimized transfer of responsibility, authority, and context. It is not an orchestration engine or protocol standard.",
+  "$comment": "A handoff belongs to planning and orchestration. It should transfer only necessary context and should not become durable memory, a workflow graph, a raw transcript, or a private escalation record.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "handoff_id",
+    "scenario",
+    "purpose",
+    "source",
+    "destination",
+    "trigger",
+    "context_packet",
+    "authority_transfer",
+    "return_conditions",
+    "failure_handling",
+    "public_safety_note"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0-example",
+      "description": "Version of this synthetic example shape, not a protocol version."
+    },
+    "handoff_id": {
+      "type": "string",
+      "pattern": "^handoff_example_[0-9]+$"
+    },
+    "scenario": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "source": {
+      "$ref": "#/$defs/participant"
+    },
+    "destination": {
+      "$ref": "#/$defs/participant"
+    },
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition",
+        "initiated_by"
+      ],
+      "properties": {
+        "condition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "initiated_by": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "context_packet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "excluded_content"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "description": "Synthetic task reference when the handoff is task-scoped."
+        },
+        "record_id": {
+          "type": "string",
+          "description": "Synthetic subject reference used by the example fixture."
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "description": "Minimized public-safe context rather than raw messages or payloads."
+        },
+        "candidate_categories": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "rule_reference": {
+          "type": "string",
+          "format": "uri",
+          "description": "Public or synthetic reference needed by the receiver."
+        },
+        "constraints": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "provenance": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "requested_output": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "excluded_content": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "raw user messages",
+              "raw prompts",
+              "secrets",
+              "private memory",
+              "private paths",
+              "tool payloads",
+              "full traces",
+              "raw logs",
+              "unrelated run history"
+            ]
+          }
+        }
+      }
+    },
+    "authority_transfer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "destination_may",
+        "destination_must_not",
+        "retained_by_source"
+      ],
+      "properties": {
+        "destination_may": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "destination_must_not": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "retained_by_source": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        }
+      }
+    },
+    "return_conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "completed_when",
+        "rejected_when",
+        "return_fields"
+      ],
+      "properties": {
+        "completed_when": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rejected_when": {
+          "type": "string",
+          "minLength": 1
+        },
+        "return_fields": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        }
+      }
+    },
+    "failure_handling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timeout",
+        "retries",
+        "on_timeout",
+        "on_invalid_response"
+      ],
+      "properties": {
+        "timeout": {
+          "type": "string",
+          "pattern": "^P",
+          "description": "ISO 8601 duration for the synthetic example."
+        },
+        "retries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "on_timeout": {
+          "type": "string",
+          "minLength": 1
+        },
+        "on_invalid_response": {
+          "type": "string",
+          "minLength": 1
+        },
+        "escalation": {
+          "type": "string",
+          "description": "Generic role or safe fallback, never a private escalation path."
+        }
+      }
+    },
+    "audit_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "event_fields",
+        "content_policy"
+      ],
+      "properties": {
+        "contract_version": {
+          "type": "string",
+          "const": "0.1.0-example"
+        },
+        "event_fields": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "content_policy": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    },
+    "public_safety_note": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "description": "Explicit statement that the contract and content are synthetic and public-safe."
+    }
+  },
+  "$defs": {
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "responsibility"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "responsibility": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}
