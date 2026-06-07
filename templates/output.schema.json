@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/schemas/artifact-review-result.schema.json",
-  "title": "Artifact Review Result",
-  "description": "Generic structured output schema for a public-safe artifact review result.",
+  "$id": "https://example.invalid/schemas/record-triage-result.schema.json",
+  "title": "Record Triage Result",
+  "description": "Generic structured output schema for a public-safe synthetic record triage result.",
   "$comment": "Purpose: define a predictable output contract. Taxonomy bucket: Outputs and schemas. Required fields: artifact_id, summary, findings, public_safety_check. Optional fields: recommendations, metadata. Usage notes: keep schema independent from prompts and tools. Public-safety notes: do not include private source content, unsanitized logs, or real sensitive identifiers.",
   "type": "object",
   "additionalProperties": false,
@@ -15,18 +15,18 @@
   "properties": {
     "artifact_id": {
       "type": "string",
-      "description": "Synthetic or public-safe identifier for the reviewed artifact.",
+      "description": "Synthetic or public-safe identifier for the triaged record.",
       "examples": [
-        "templates/persona.md"
+        "record_example_001"
       ]
     },
     "summary": {
       "type": "string",
-      "description": "Short review summary."
+      "description": "Short triage summary."
     },
     "findings": {
       "type": "array",
-      "description": "Specific review findings, ordered by severity.",
+      "description": "Specific triage findings, ordered by severity.",
       "items": {
         "type": "object",
         "additionalProperties": false,

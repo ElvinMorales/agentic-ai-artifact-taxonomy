@@ -32,7 +32,7 @@ tools:
         document_path:
           type: string
           description: Path for the synthetic document to validate.
-          example: ./examples/review-result.example.json
+          example: ../examples/output-example.json
     output_schema:
       type: object
       required:

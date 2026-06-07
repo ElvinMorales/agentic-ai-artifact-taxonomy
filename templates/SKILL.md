@@ -1,14 +1,14 @@
 ---
-name: artifact-review
-description: Review an agentic AI artifact for taxonomy alignment, clarity, and public safety.
+name: record-triage
+description: Classify a synthetic record using a published category list and route ambiguous cases for review.
 ---
 
-# Artifact Review Skill
+# Record Triage Skill
 
 ## Purpose
 
-Package reusable task guidance for reviewing an artifact. This template maps to
-the capability modules bucket.
+Package reusable task guidance for classifying records and routing ambiguous
+cases. This template maps to the capability modules bucket.
 
 ## Taxonomy Bucket
 
@@ -31,29 +31,31 @@ Capability modules
 
 ## When to Use
 
-Use this skill when asked to review a draft artifact, starter template, schema,
-or documentation file for taxonomy alignment and public-safe publication.
+Use this skill when asked to classify a synthetic or sanitized record using an
+approved category list and published decision rules.
 
 ## Workflow
 
-1. Identify the artifact type and mapped taxonomy bucket.
-2. Check whether the artifact mixes separate concepts, such as memory and
-   state, skills and tools, or runtime records and design-time policy.
-3. Review required fields, examples, and usage notes for clarity.
-4. Check for secrets, private data, unsanitized traces, real memory stores,
-   private state snapshots, and proprietary names.
-5. Return concise findings with file references and suggested fixes.
+1. Confirm the record is synthetic or sanitized and identify the approved
+   category list.
+2. Inspect only the fields needed for classification.
+3. Compare the available evidence with the published decision rules.
+4. Select a category only when the evidence supports it.
+5. If the record is ambiguous, prepare a minimized handoff with the record ID,
+   short summary, candidate categories, and relevant public rule.
+6. Return the category or review status with a concise rationale.
 
 ## Output Expectations
 
-Return findings first, ordered by severity. Include a short summary only after
-the findings.
+Return a structured triage result that clearly distinguishes classified,
+review-required, and rejected records. Include the applied rule and avoid
+changing the source record.
 
 ## References
 
-- `docs/taxonomy.md`
-- `docs/memory-vs-state.md`
-- `docs/public-safety.md`
+- `../examples/handoffs.yaml`
+- `../examples/output-example.json`
+- `../docs/public-safety.md`
 
 ## Scripts
 
@@ -73,5 +75,5 @@ a tool is a callable action or external capability.
 
 ## Public-Safety Notes
 
-Do not include private review examples, internal policies, customer content, or
-unsanitized runtime outputs in a public skill module.
+Do not include real user records, internal category rules, private handoff
+content, or unsanitized runtime outputs in a public skill module.
