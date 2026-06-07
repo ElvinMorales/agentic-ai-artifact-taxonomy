@@ -91,6 +91,7 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/artifact-lifecycle.md](docs/artifact-lifecycle.md) to distinguish design-time, runtime, and iteration artifacts.
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
+- Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
 - Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the historical public foundation release notes.
 - Use [docs/public-release-checklist.md](docs/public-release-checklist.md) as a maintenance checklist before future public updates.
@@ -117,5 +118,5 @@ Markdown validation; these changes are recorded under `Unreleased` in
 
 The v0.2.0 work aligns the taxonomy, templates, mappings, examples, and
 validation while preserving the stable 14-bucket public model. Protocol
-mappings, public examples, validation expansion, and release notes remain
-separate work.
+mapping guidance is now included; public examples, validation expansion, and
+release notes remain separate work.
