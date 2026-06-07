@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- No unreleased changes.
+
+## [0.2.0] - 2026-06-07
+
 ### Source Alignment
 
 - Clarified that the stable public taxonomy retains 14 top-level buckets.

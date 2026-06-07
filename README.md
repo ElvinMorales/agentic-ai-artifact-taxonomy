@@ -95,6 +95,7 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
 - Use [examples/README.md](examples/README.md) to browse small synthetic examples for protocol discovery, handoffs, memory, state, outputs, evals, and traces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
+- Use [docs/release-notes-v0.2.0.md](docs/release-notes-v0.2.0.md) for the current prepared release narrative.
 - Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the historical public foundation release notes.
 - Use [docs/public-release-checklist.md](docs/public-release-checklist.md) as a maintenance checklist before future public updates.
 
@@ -136,12 +137,12 @@ temporary network or website failures do not block local work or CI.
 
 ## Status
 
-The latest tagged release is the public `v0.1.0` foundation. Since that
-release, the repo has added a starter template pack, expanded mappings, and
-Markdown validation; these changes are recorded under `Unreleased` in
-[CHANGELOG.md](CHANGELOG.md).
+The latest tagged release remains the public `v0.1.0` foundation. The
+`v0.2.0` documentation release is prepared in
+[the current release notes](docs/release-notes-v0.2.0.md) and
+[CHANGELOG.md](CHANGELOG.md), but no `v0.2.0` Git tag or GitHub release is
+claimed here.
 
-The v0.2.0 work aligns the taxonomy, templates, mappings, examples, and
-validation while preserving the stable 14-bucket public model. Protocol
-mapping guidance, a small public-safe example pack, and expanded validation are
-now included; release notes remain separate work.
+The prepared `v0.2.0` release aligns the taxonomy, templates, mappings,
+examples, and validation while preserving the stable 14-bucket public model.
+The historical `v0.1.0` foundation notes remain available separately.

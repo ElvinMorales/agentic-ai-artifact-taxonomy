@@ -37,7 +37,12 @@ Use this checklist before tagging or announcing a public release or update.
 - `docs/taxonomy.md` contains the canonical bucket list.
 - `templates/README.md` accurately lists the templates that currently exist.
 - `docs/public-safety.md` is easy to find before publishing examples.
-- `CHANGELOG.md` and release notes describe the public release scope.
+- `CHANGELOG.md` has a dated section for the target version.
+- Versioned release notes describe the public release scope and are linked
+  from `README.md`.
+- Historical release notes remain unchanged except for necessary typo fixes.
+- Status text does not claim a Git tag or GitHub release exists before it is
+  created.
 - Current automation and validation are described accurately.
 - Placeholder material is clearly marked and does not overpromise.
 
@@ -45,7 +50,9 @@ Use this checklist before tagging or announcing a public release or update.
 
 - Run `git status`.
 - Run `git diff --check`.
-- Run `npm install` when dependencies or the lockfile need to be refreshed.
+- Run `npm ci` for release validation against the committed lockfile.
+- Run `npm install` only when dependencies or the lockfile need to be
+  refreshed.
 - Run `npm run validate` for the complete local validation suite.
 - Run targeted checks as needed: `npm run lint:md`,
   `npm run validate:json`, `npm run validate:jsonl`,
