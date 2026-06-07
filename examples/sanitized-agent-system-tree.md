@@ -20,6 +20,8 @@ agent-system/
 |   |-- evals/
 |   `-- runtime/
 |-- examples/
+|-- evals/
+|-- observability/
 `-- tests/
 ```
 
@@ -37,6 +39,8 @@ These folders usually contain design-time artifacts that can be safe to publish 
 - `agent/outputs/`
 - `agent/evals/`
 - `agent/runtime/`
+- `evals/`
+- `observability/`
 
 ## Publish with care
 

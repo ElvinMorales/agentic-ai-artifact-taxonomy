@@ -27,7 +27,7 @@ The repo currently includes:
 - The canonical 14-bucket taxonomy and supporting concept guides.
 - A framework-neutral starter template pack covering 19 artifact types across
   all 14 taxonomy buckets.
-- A sanitized example repository tree.
+- A public-safe example pack and sanitized example repository tree.
 - Framework and protocol mapping guidance.
 - Public-safety and release-review guidance.
 - Local and GitHub Actions Markdown validation.
@@ -92,6 +92,7 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
 - Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
+- Use [examples/README.md](examples/README.md) to browse small synthetic examples for protocol discovery, handoffs, memory, state, outputs, evals, and traces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
 - Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the historical public foundation release notes.
 - Use [docs/public-release-checklist.md](docs/public-release-checklist.md) as a maintenance checklist before future public updates.
@@ -118,5 +119,5 @@ Markdown validation; these changes are recorded under `Unreleased` in
 
 The v0.2.0 work aligns the taxonomy, templates, mappings, examples, and
 validation while preserving the stable 14-bucket public model. Protocol
-mapping guidance is now included; public examples, validation expansion, and
-release notes remain separate work.
+mapping guidance and a small public-safe example pack are now included;
+validation expansion and release notes remain separate work.

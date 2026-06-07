@@ -1,0 +1,26 @@
+{
+  "artifact_id": "record_example_001",
+  "summary": "The synthetic record matches two allowed categories equally.",
+  "findings": [
+    {
+      "severity": "low",
+      "message": "The category cannot be selected without the published tie-break rule.",
+      "suggested_fix": "Request review using the minimized handoff contract."
+    }
+  ],
+  "recommendations": [
+    "Use handoff_example_001 to request a category decision.",
+    "Keep the source record unchanged until review completes."
+  ],
+  "public_safety_check": {
+    "passed": true,
+    "notes": [
+      "Contains synthetic identifiers only.",
+      "Contains no raw messages, private outputs, or secrets."
+    ]
+  },
+  "metadata": {
+    "schema_version": "0.1.0-example",
+    "reviewed_on": "2026-06-07"
+  }
+}

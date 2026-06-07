@@ -119,6 +119,10 @@ are runtime records. Their schemas and retention policies may be design-time
 artifacts, but real instances should be handled as private runtime data unless
 they are explicitly sanitized for publication.
 
+See the synthetic [A2A-style Agent Card example](../examples/agent-card.json)
+for an educational discovery-manifest shape. It is intentionally incomplete
+and is not a certified protocol implementation.
+
 ## Cross-Protocol Guidance
 
 ### Publish Protocol Manifests Deliberately
