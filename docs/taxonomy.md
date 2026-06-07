@@ -22,6 +22,10 @@ or API objects. MCP server definitions, A2A agent cards, and similar
 protocol-specific artifacts are mappings or adapters at the implementation
 edge. They do not replace the framework-neutral taxonomy.
 
+See [naming-conventions.md](naming-conventions.md) for guidance on distinguishing
+generic artifact classes, possible filenames, local project conventions, and
+framework or protocol object names.
+
 Public repositories should check in design-time definitions and sanitized
 examples. They should not check in secrets, live memory stores, raw traces,
 private logs, unsanitized workspace snapshots, or unsanitized runtime state.

@@ -88,6 +88,9 @@ protocol without changing the stable top-level taxonomy.
 ## How to use this repo
 
 - Start with [docs/taxonomy.md](docs/taxonomy.md) for the main reference.
+- Use [docs/naming-conventions.md](docs/naming-conventions.md) to distinguish
+  taxonomy concepts from possible filenames and framework or protocol object
+  names.
 - Use [templates/README.md](templates/README.md) for reusable starter templates mapped to the taxonomy buckets.
 - Use [docs/artifact-lifecycle.md](docs/artifact-lifecycle.md) to distinguish design-time, runtime, and iteration artifacts.
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
