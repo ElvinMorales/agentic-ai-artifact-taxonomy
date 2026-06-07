@@ -30,7 +30,8 @@ The repo currently includes:
 - A public-safe example pack and sanitized example repository tree.
 - Framework and protocol mapping guidance.
 - Public-safety and release-review guidance.
-- Local and GitHub Actions Markdown validation.
+- Local and GitHub Actions validation for Markdown, structured examples, and
+  local documentation links.
 
 ## Who it is for
 
@@ -110,6 +111,29 @@ Do not publish secrets, credentials, employer-specific workflows, regulated
 data, private logs, unsanitized traces, real memory stores, or runtime state
 snapshots. Public examples should be generic, sanitized, and educational.
 
+## Local validation
+
+Install dependencies with `npm install`, then run the full local validation
+suite:
+
+```bash
+npm run validate
+```
+
+The aggregate command runs these checks, which can also be run separately:
+
+```bash
+npm run lint:md
+npm run validate:json
+npm run validate:jsonl
+npm run validate:yaml
+npm run check:links
+```
+
+The link check validates relative links to tracked repository files and simple
+Markdown heading anchors. It intentionally skips external URL reachability so
+temporary network or website failures do not block local work or CI.
+
 ## Status
 
 The latest tagged release is the public `v0.1.0` foundation. Since that
@@ -119,5 +143,5 @@ Markdown validation; these changes are recorded under `Unreleased` in
 
 The v0.2.0 work aligns the taxonomy, templates, mappings, examples, and
 validation while preserving the stable 14-bucket public model. Protocol
-mapping guidance and a small public-safe example pack are now included;
-validation expansion and release notes remain separate work.
+mapping guidance, a small public-safe example pack, and expanded validation are
+now included; release notes remain separate work.

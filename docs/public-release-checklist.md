@@ -45,9 +45,14 @@ Use this checklist before tagging or announcing a public release or update.
 
 - Run `git status`.
 - Run `git diff --check`.
-- Run `npm run lint:md`.
+- Run `npm install` when dependencies or the lockfile need to be refreshed.
+- Run `npm run validate` for the complete local validation suite.
+- Run targeted checks as needed: `npm run lint:md`,
+  `npm run validate:json`, `npm run validate:jsonl`,
+  `npm run validate:yaml`, and `npm run check:links`.
+- Confirm the local link check passes. External URL reachability is
+  intentionally excluded to avoid network-dependent release failures.
 - Review changed files for public-safe language before opening a pull request.
-- Parse structured example files and confirm JSONL records are valid.
 - Run a targeted grep for sensitive terms.
 - Confirm `package.json` is not configured for accidental package publishing unless intentional.
 
