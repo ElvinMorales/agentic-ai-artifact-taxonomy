@@ -25,7 +25,8 @@ it keeps durable memory distinct from resumable execution state.
 The repo currently includes:
 
 - The canonical 14-bucket taxonomy and supporting concept guides.
-- A framework-neutral starter template pack covering 10 artifact types.
+- A framework-neutral starter template pack covering 19 artifact types across
+  all 14 taxonomy buckets.
 - A sanitized example repository tree.
 - Framework and protocol mapping guidance.
 - Public-safety and release-review guidance.
@@ -115,5 +116,6 @@ Markdown validation; these changes are recorded under `Unreleased` in
 [CHANGELOG.md](CHANGELOG.md).
 
 The v0.2.0 work aligns the taxonomy, templates, mappings, examples, and
-validation while preserving the stable 14-bucket public model. Planned
-expansion is tracked separately and should not be read as already implemented.
+validation while preserving the stable 14-bucket public model. Protocol
+mappings, public examples, validation expansion, and release notes remain
+separate work.
