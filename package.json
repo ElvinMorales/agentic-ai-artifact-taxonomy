@@ -7,7 +7,12 @@
     "example": "examples"
   },
   "scripts": {
-    "lint:md": "markdownlint-cli2"
+    "lint:md": "markdownlint-cli2",
+    "validate:json": "node scripts/validate-json.mjs",
+    "validate:jsonl": "node scripts/validate-jsonl.mjs",
+    "validate:yaml": "node scripts/validate-yaml.mjs",
+    "check:links": "node scripts/check-local-links.mjs",
+    "validate": "npm run lint:md && npm run validate:json && npm run validate:jsonl && npm run validate:yaml && npm run check:links"
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,7 @@
   },
   "homepage": "https://github.com/ElvinMorales/agentic-ai-artifact-taxonomy#readme",
   "devDependencies": {
-    "markdownlint-cli2": "^0.22.1"
+    "markdownlint-cli2": "^0.22.1",
+    "yaml": "^2.9.0"
   }
 }

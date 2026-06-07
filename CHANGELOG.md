@@ -15,7 +15,9 @@ All notable changes to this project will be documented in this file.
 
 ### Automation
 
-- Added a Markdown lint GitHub Actions workflow for pull requests and pushes to `main`.
+- Expanded local and GitHub Actions validation to cover Markdown, tracked JSON,
+  JSONL records, YAML, and local Markdown links.
+- Kept external URL reachability out of CI to avoid network-dependent failures.
 
 ### Framework Mapping
 
