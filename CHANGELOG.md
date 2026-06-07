@@ -30,6 +30,13 @@ All notable changes to this project will be documented in this file.
   narrower runtime task-output object.
 - Added protocol-facing public-safety and design-time versus runtime guidance.
 
+### Public-Safe Examples
+
+- Added tiny synthetic examples for an A2A-style agent card, handoffs, durable
+  memory, runtime state, and structured outputs.
+- Added a four-case JSONL eval dataset and a sanitized trace event schema.
+- Linked the example pack from the README and relevant guidance.
+
 ### Template Pack
 
 - Initial framework-neutral template pack for core agentic AI artifact classes.

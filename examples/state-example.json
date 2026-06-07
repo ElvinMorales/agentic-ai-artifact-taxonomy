@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0-example",
+  "run_id": "run_example_001",
+  "session_id": "session_example_001",
+  "task": {
+    "task_id": "task_example_001",
+    "type": "record-triage",
+    "status": "waiting_for_handoff",
+    "summary": "Classify one synthetic record using the published example categories."
+  },
+  "execution": {
+    "current_step": "review_ambiguous_category",
+    "completed_steps": [
+      "validate_synthetic_input",
+      "compare_allowed_categories"
+    ],
+    "pending_actions": [
+      {
+        "action_id": "action_example_001",
+        "type": "await_handoff",
+        "handoff_id": "handoff_example_001",
+        "status": "pending"
+      }
+    ]
+  },
+  "handoff_status": {
+    "destination_role": "document-reviewer",
+    "authority": "select_category_or_request_clarification",
+    "context_reference": "synthetic://handoffs/handoff_example_001"
+  },
+  "artifact_references": [
+    "synthetic://records/record_example_001"
+  ],
+  "updated_at": "2026-06-07T16:00:00Z",
+  "sanitization": {
+    "is_synthetic": true,
+    "excluded_fields": [
+      "raw_prompt_history",
+      "user_messages",
+      "tool_outputs",
+      "secrets",
+      "private_paths"
+    ],
+    "note": "Sanitized example shape only; this is not a live runtime export."
+  }
+}

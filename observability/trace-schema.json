@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/sanitized-trace-event.schema.json",
+  "title": "Sanitized Trace Event",
+  "description": "Educational schema for trace-like run, span, tool, handoff, and eval events. It is not a production trace or telemetry export.",
+  "$comment": "Publish schemas and synthetic fixtures, not raw production traces. Event summaries and attributes must be redacted before publication.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "trace_id",
+    "event_id",
+    "event_type",
+    "timestamp",
+    "status",
+    "sanitization"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0-example"
+    },
+    "trace_id": {
+      "type": "string",
+      "pattern": "^trace_example_[0-9]+$"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^event_example_[0-9]+$"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "run",
+        "span",
+        "tool",
+        "handoff",
+        "eval"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^run_example_[0-9]+$"
+    },
+    "span_id": {
+      "type": "string",
+      "pattern": "^span_example_[0-9]+$"
+    },
+    "parent_span_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^span_example_[0-9]+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "started",
+        "completed",
+        "blocked",
+        "failed"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 240,
+      "description": "Sanitized event summary with no raw prompts, user messages, tool payloads, or private outputs."
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "taxonomy_bucket": {
+          "type": "string"
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "handoff_id": {
+          "type": "string"
+        },
+        "eval_case_id": {
+          "type": "string"
+        },
+        "artifact_reference": {
+          "type": "string",
+          "pattern": "^synthetic://"
+        }
+      }
+    },
+    "sanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "is_synthetic",
+        "redaction_status",
+        "excluded_content"
+      ],
+      "properties": {
+        "is_synthetic": {
+          "type": "boolean",
+          "const": true
+        },
+        "redaction_status": {
+          "type": "string",
+          "enum": [
+            "not_applicable",
+            "reviewed"
+          ]
+        },
+        "excluded_content": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "credentials",
+              "private_endpoints",
+              "raw_prompts",
+              "user_messages",
+              "tool_payloads",
+              "private_outputs",
+              "memory_contents",
+              "runtime_state"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

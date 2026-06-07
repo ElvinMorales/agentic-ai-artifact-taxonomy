@@ -26,6 +26,8 @@ Use this checklist before tagging or announcing a public release or update.
 - No unsanitized logs, traces, memory stores, or runtime state snapshots.
 - No language implies employer, client, vendor, or platform endorsement.
 - Examples use generic names and synthetic data.
+- Example indexes state that fixtures demonstrate shape rather than production
+  completeness.
 - No private bootstrap packets, Codex handoffs, Claude work packets, or internal planning notes are committed.
 - No real repository, system, project, study, customer, or workplace names appear unless intentionally public-safe.
 
@@ -45,6 +47,7 @@ Use this checklist before tagging or announcing a public release or update.
 - Run `git diff --check`.
 - Run `npm run lint:md`.
 - Review changed files for public-safe language before opening a pull request.
+- Parse structured example files and confirm JSONL records are valid.
 - Run a targeted grep for sensitive terms.
 - Confirm `package.json` is not configured for accidental package publishing unless intentional.
 

@@ -1,0 +1,65 @@
+schema_version: 0.1.0-example
+handoff_id: handoff_example_001
+scenario: record-triage
+purpose: Route an ambiguous synthetic record to a reviewer for classification.
+
+source:
+  role: record-triage-agent
+  responsibility: Propose a category from the published example list.
+
+destination:
+  role: document-reviewer
+  responsibility: Resolve ambiguity using the supplied public rule.
+
+trigger:
+  condition: Two allowed categories have equal confidence.
+  initiated_by: record-triage-agent
+
+context_packet:
+  record_id: record_example_001
+  summary: Synthetic record with one heading and one neutral status field.
+  candidate_categories:
+    - reference
+    - status
+  rule_reference: https://example.invalid/rules/record-categories
+  excluded_content:
+    - raw user messages
+    - secrets
+    - private memory
+    - unrelated run history
+
+authority_transfer:
+  destination_may:
+    - Select one candidate category.
+    - Return the record for clarification.
+  destination_must_not:
+    - Modify the source record.
+    - Expand the task beyond classification.
+  retained_by_source:
+    - Apply the returned category to synthetic state.
+
+return_conditions:
+  completed_when: A category and short public-safe rationale are returned.
+  rejected_when: The context packet is insufficient or outside scope.
+  return_fields:
+    - handoff_id
+    - decision
+    - rationale
+    - status
+
+failure_handling:
+  timeout: PT5M
+  retries: 0
+  on_timeout: Mark the handoff blocked and request generic manual review.
+  on_invalid_response: Reject the response without changing source state.
+
+audit_metadata:
+  contract_version: 0.1.0-example
+  event_fields:
+    - handoff_id
+    - status
+    - started_at
+    - completed_at
+  content_policy: Store outcome metadata only; do not store the context payload in public examples.
+
+public_safety_note: Synthetic contract shape only. It contains no live handoff content or internal escalation path.

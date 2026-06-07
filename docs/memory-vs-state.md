@@ -36,3 +36,7 @@ Public repos should not include unsanitized runtime state snapshots.
 - Use schemas or examples that are synthetic and clearly labeled.
 - Avoid storing private runtime data as durable memory by accident.
 - Avoid relying on memory when a run-specific state checkpoint is the right artifact.
+
+See the synthetic [durable memory example](../examples/memory-example.md) and
+[runtime state example](../examples/state-example.json) for separate,
+public-safe shapes. They are educational fixtures, not live stores or exports.

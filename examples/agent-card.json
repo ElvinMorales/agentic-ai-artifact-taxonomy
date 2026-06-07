@@ -1,0 +1,65 @@
+{
+  "name": "Record Triage Agent",
+  "description": "Classifies synthetic records and routes ambiguous cases for review.",
+  "url": "https://example.invalid/agents/record-triage",
+  "provider": {
+    "organization": "Example Maintainers",
+    "url": "https://example.invalid/"
+  },
+  "version": "0.1.0-example",
+  "documentationUrl": "https://example.invalid/docs/record-triage",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "record-triage",
+      "name": "Synthetic record triage",
+      "description": "Assigns a public example record to an allowed category or requests review when evidence is insufficient.",
+      "tags": [
+        "classification",
+        "triage",
+        "synthetic-example"
+      ],
+      "examples": [
+        "Classify record_example_001 using the published category list."
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/agents/record-triage",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "example"
+    }
+  ],
+  "securitySchemes": {
+    "exampleApiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-Example-Key",
+      "description": "Declaration pattern only. No credential or working endpoint is provided."
+    }
+  },
+  "security": [
+    {
+      "exampleApiKey": []
+    }
+  ],
+  "x_taxonomy_note": "Repo-specific explanatory extension: this protocol-facing manifest maps to several taxonomy buckets and is not the complete internal agent definition.",
+  "x_public_safety_note": "Synthetic A2A-style example only. It is not a complete, certified, or deployable protocol implementation."
+}
