@@ -7,8 +7,7 @@ foundation into a more usable public reference. It preserves the stable 14
 top-level taxonomy buckets while adding practical templates, protocol mapping,
 synthetic examples, and broader validation.
 
-These notes describe the prepared documentation release. They do not indicate
-that a Git tag or GitHub release has been created.
+These notes describe the tagged `v0.2.0` documentation release.
 
 ## What Changed
 
