@@ -1,6 +1,7 @@
 {
   "name": "agentic-ai-artifact-taxonomy",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "private": true,
   "description": "Framework-neutral taxonomy for agentic AI artifacts.",
   "directories": {
     "doc": "docs",
@@ -11,8 +12,9 @@
     "validate:json": "node scripts/validate-json.mjs",
     "validate:jsonl": "node scripts/validate-jsonl.mjs",
     "validate:yaml": "node scripts/validate-yaml.mjs",
+    "validate:schemas": "node scripts/validate-examples-against-schemas.mjs",
     "check:links": "node scripts/check-local-links.mjs",
-    "validate": "npm run lint:md && npm run validate:json && npm run validate:jsonl && npm run validate:yaml && npm run check:links"
+    "validate": "npm run lint:md && npm run validate:json && npm run validate:jsonl && npm run validate:yaml && npm run validate:schemas && npm run check:links"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,8 @@
   },
   "homepage": "https://github.com/ElvinMorales/agentic-ai-artifact-taxonomy#readme",
   "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "markdownlint-cli2": "^0.22.1",
     "yaml": "^2.9.0"
   }

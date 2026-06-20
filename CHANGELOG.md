@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- No unreleased changes.
+### Changed
+
+- Aligned package metadata with the documented v0.2.0 release state and marked
+  the package private to avoid accidental publishing.
+- Updated maintainer validation guidance to use the full local validation suite.
+
+### Validation
+
+- Added schema-instance validation for selected public-safe state and handoff
+  examples against their reference schemas.
 
 ## [0.2.0] - 2026-06-07
 
