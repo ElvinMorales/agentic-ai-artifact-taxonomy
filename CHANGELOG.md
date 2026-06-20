@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 - Aligned package metadata with the documented v0.2.0 release state and marked
   the package private to avoid accidental publishing.
+- Added an npm override to keep the Markdown lint toolchain on patched
+  `markdown-it` 14.2.0 while `markdownlint-cli2` still pins 14.1.1.
 - Updated maintainer validation guidance to use the full local validation suite.
 
 ### Validation
