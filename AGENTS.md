@@ -55,10 +55,14 @@ Run:
 ```bash
 git status
 git diff --check
-npm run lint:md
+npm ci
+npm run validate
 ```
 
-If dependencies are not installed, run `npm install` before Markdown linting.
+Targeted scripts such as `npm run lint:md`, `npm run validate:json`,
+`npm run validate:jsonl`, `npm run validate:yaml`,
+`npm run validate:schemas`, and `npm run check:links` are optional narrower
+checks during development.
 
 ## Branch and PR preference
 

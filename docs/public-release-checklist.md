@@ -60,12 +60,13 @@ Use this checklist before tagging or announcing a public release or update.
 - Run `npm run validate` for the complete local validation suite.
 - Run targeted checks as needed: `npm run lint:md`,
   `npm run validate:json`, `npm run validate:jsonl`,
-  `npm run validate:yaml`, and `npm run check:links`.
+  `npm run validate:yaml`, `npm run validate:schemas`, and
+  `npm run check:links`.
 - Confirm the local link check passes. External URL reachability is
   intentionally excluded to avoid network-dependent release failures.
 - Review changed files for public-safe language before opening a pull request.
 - Run a targeted grep for sensitive terms.
-- Confirm `package.json` is not configured for accidental package publishing unless intentional.
+- Confirm `package.json` is marked private unless package publishing is intentional.
 
 ## Release Coordination
 

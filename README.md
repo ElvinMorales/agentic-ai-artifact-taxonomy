@@ -117,8 +117,8 @@ snapshots. Public examples should be generic, sanitized, and educational.
 
 ## Local validation
 
-Install dependencies with `npm install`, then run the full local validation
-suite:
+Install dependencies with `npm ci` for a clean lockfile-based install, then run
+the full local validation suite:
 
 ```bash
 npm run validate
@@ -131,6 +131,7 @@ npm run lint:md
 npm run validate:json
 npm run validate:jsonl
 npm run validate:yaml
+npm run validate:schemas
 npm run check:links
 ```
 
