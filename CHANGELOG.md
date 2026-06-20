@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Connected Examples
+
+- Added a connected public-safe record-triage example pack that demonstrates
+  multiple taxonomy artifact classes working together while keeping memory,
+  state, design-time artifacts, runtime examples, and eval fixtures distinct.
+
 ### Changed
 
 - Aligned package metadata with the documented v0.2.0 release state and marked

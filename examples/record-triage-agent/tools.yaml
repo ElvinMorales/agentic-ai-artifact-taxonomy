@@ -1,0 +1,85 @@
+tools:
+  - id: synthetic-record-field-checker
+    name: Synthetic Record Field Checker
+    version: 0.1.0-example
+    description: Checks whether a fabricated record includes required example fields.
+    input_schema:
+      type: object
+      required:
+        - record_id
+        - record_text
+      properties:
+        record_id:
+          type: string
+          example: synthetic-record-001
+        record_text:
+          type: string
+          example: Fictional notice about a missing display label.
+    output_schema:
+      type: object
+      required:
+        - complete
+        - missing_fields
+      properties:
+        complete:
+          type: boolean
+        missing_fields:
+          type: array
+          items:
+            type: string
+    side_effects:
+      reads_files: false
+      writes_files: false
+      calls_network: false
+      changes_external_systems: false
+    approval_required: false
+    failure_modes:
+      - Input includes unsupported or unsafe content.
+      - Required fabricated fields are absent.
+    public_safety_notes:
+      - Use fabricated records only.
+      - Do not pass private logs, real records, secrets, or regulated data.
+
+  - id: synthetic-category-matcher
+    name: Synthetic Category Matcher
+    version: 0.1.0-example
+    description: Suggests candidate categories from the local synthetic guide.
+    input_schema:
+      type: object
+      required:
+        - record_text
+      properties:
+        record_text:
+          type: string
+        allowed_categories:
+          type: array
+          items:
+            type: string
+    output_schema:
+      type: object
+      required:
+        - candidate_categories
+        - confidence_label
+      properties:
+        candidate_categories:
+          type: array
+          items:
+            type: string
+        confidence_label:
+          type: string
+          enum:
+            - high
+            - medium
+            - low
+    side_effects:
+      reads_files: false
+      writes_files: false
+      calls_network: false
+      changes_external_systems: false
+    approval_required: false
+    failure_modes:
+      - Record text matches multiple synthetic categories.
+      - Record text does not match any allowed category.
+    public_safety_notes:
+      - The tool is fictional and local to this example.
+      - The tool must not enrich records with external or private data.

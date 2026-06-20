@@ -13,6 +13,7 @@ state, internal endpoints, or employer-specific material in a public repo.
 | Example | Taxonomy bucket or buckets | What it demonstrates |
 | --- | --- | --- |
 | [agent-card.json](agent-card.json) | Identity; Capability modules; Prompts and interfaces; Runtime and deployment; Guardrails and governance | A synthetic A2A-style discovery manifest and protocol adapter shape |
+| [record-triage-agent/](record-triage-agent/README.md) | Identity; Prompts and interfaces; Capability modules; Tools; Knowledge and resources; Memory; State; Planning and orchestration; Guardrails and governance; Outputs and schemas; Evaluation and observability | A connected public-safe example pack showing multiple artifact classes working together |
 | [handoffs.yaml](handoffs.yaml) | Planning and orchestration; State; Guardrails and governance | A minimized handoff contract with authority and failure boundaries |
 | [memory-example.md](memory-example.md) | Memory; Guardrails and governance | Allowed and disallowed durable memory classes with synthetic entries |
 | [state-example.json](state-example.json) | State; Planning and orchestration | A sanitized run snapshot with pending work and handoff status |
@@ -30,6 +31,7 @@ telemetry.
 
 Related starter templates:
 
+- [Connected record-triage example](record-triage-agent/README.md)
 - [Handoff contract](../templates/HANDOFFS.md)
 - [Durable memory guide](../templates/MEMORY.md)
 - [State strategy](../templates/state-strategy.md)

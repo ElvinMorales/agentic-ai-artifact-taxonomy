@@ -1,0 +1,51 @@
+resources:
+  - id: synthetic-record-category-guide
+    title: Synthetic Record Category Guide
+    type: local-example-reference
+    path_or_uri: ./resources.yaml#synthetic-record-category-guide
+    owner:
+      role: Example maintainers
+    freshness:
+      status: example
+      reviewed_on: 2026-06-20
+      review_cadence: before-release
+    license: MIT
+    public_safe: true
+    retrieval_policy:
+      allowed_use:
+        - Compare fabricated record text to generic categories.
+        - Explain category uncertainty in public-safe language.
+      prohibited_use:
+        - Add real-world facts or private workflow rules.
+        - Treat categories as universal taxonomy buckets.
+    categories:
+      - id: notice
+        description: A fictional announcement, reminder, or display note.
+      - id: inventory_note
+        description: A fictional note about example materials or labels.
+      - id: event_summary
+        description: A fictional summary of a non-real event.
+      - id: clarification_request
+        description: A fictional request for missing generic details.
+    notes:
+      - This resource is synthetic and embedded for example shape only.
+
+  - id: public-safety-guidance
+    title: Public-Safety Guidance
+    type: repository-document
+    path_or_uri: ../../docs/public-safety.md
+    owner:
+      role: Example maintainers
+    freshness:
+      status: current
+      reviewed_on: 2026-06-20
+      review_cadence: before-release
+    license: MIT
+    public_safe: true
+    retrieval_policy:
+      allowed_use:
+        - Check whether example content is safe to publish.
+      prohibited_use:
+        - Use as permission to publish private or regulated content.
+    notes:
+      - Repository guidance applies to this example pack.
