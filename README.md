@@ -142,11 +142,11 @@ temporary network or website failures do not block local work or CI.
 
 ## Status
 
-The latest tagged release is `v0.2.0`, the taxonomy alignment release.
+The latest release is `v0.2.1`, a patch-level maintenance and connected
+example release.
 
-`v0.2.0` preserves the stable 14-bucket public model and adds expanded
-starter templates, protocol mappings, public-safe examples, and validation for
-Markdown, JSON, JSONL, YAML, and local documentation links.
+`v0.2.1` preserves the stable 14-bucket public model and includes validation
+hardening, dependency hygiene, and the connected record-triage example pack.
 
 Prepared `v0.2.1` notes summarize patch-level maintenance, validation
 hardening, dependency hygiene, and the connected record-triage example pack.
