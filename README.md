@@ -98,8 +98,8 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
 - Use [examples/README.md](examples/README.md) to browse small synthetic examples for protocol discovery, handoffs, memory, state, outputs, evals, and traces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
-- Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the prepared v0.2.1 patch maintenance and connected example release notes.
-- Use [docs/release-notes-v0.2.0.md](docs/release-notes-v0.2.0.md) for the current release notes.
+- Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the current v0.2.1 patch maintenance and connected-example release notes.
+- Use [docs/release-notes-v0.2.0.md](docs/release-notes-v0.2.0.md) for the historical taxonomy alignment release notes.
 - Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the historical public foundation release notes.
 - Use [docs/public-release-checklist.md](docs/public-release-checklist.md) as a maintenance checklist before future public updates.
 
@@ -142,14 +142,12 @@ temporary network or website failures do not block local work or CI.
 
 ## Status
 
-The latest tagged release is `v0.2.0`, the taxonomy alignment release.
+The latest release is `v0.2.1`, a patch-level maintenance and connected
+example release.
 
-`v0.2.0` preserves the stable 14-bucket public model and adds expanded
-starter templates, protocol mappings, public-safe examples, and validation for
-Markdown, JSON, JSONL, YAML, and local documentation links.
-
-Prepared `v0.2.1` notes summarize patch-level maintenance, validation
+`v0.2.1` preserves the stable 14-bucket public model and includes validation
 hardening, dependency hygiene, and the connected record-triage example pack.
-The stable 14-bucket taxonomy remains unchanged.
+
+The historical `v0.2.0` taxonomy alignment notes remain available separately.
 
 The historical `v0.1.0` foundation notes remain available separately.

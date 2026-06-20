@@ -8,7 +8,7 @@ hygiene, and the connected record-triage example pack.
 
 The stable 14-bucket public taxonomy is unchanged.
 
-These notes are prepared for a possible `v0.2.1` documentation release.
+These notes describe the `v0.2.1` documentation release.
 
 ## What Changed
 
@@ -62,7 +62,7 @@ examples.
 
 ## Validation
 
-Release preparation should be validated with:
+Release validation uses:
 
 ```bash
 npm ci

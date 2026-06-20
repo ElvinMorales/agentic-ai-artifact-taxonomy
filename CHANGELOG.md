@@ -4,9 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+No notable changes yet.
+
+## [0.2.1] - 2026-06-20
+
 ### Release Notes
 
-- Prepared possible `v0.2.1` release notes for a patch-level maintenance and
+- Finalized `v0.2.1` release notes for a patch-level maintenance and
   connected example release.
 
 ### Connected Examples
