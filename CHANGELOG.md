@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Release Notes
+
+- Prepared possible `v0.2.1` release notes for a patch-level maintenance and
+  connected example release.
+
 ### Connected Examples
 
 - Added a connected public-safe record-triage example pack that demonstrates
@@ -15,8 +20,10 @@ All notable changes to this project will be documented in this file.
 - Aligned package metadata with the documented v0.2.0 release state and marked
   the package private to avoid accidental publishing.
 - Added an npm override to keep the Markdown lint toolchain on patched
-  `markdown-it` 14.2.0 while `markdownlint-cli2` still pins 14.1.1.
+  transitive dependency versions while the upstream lint toolchain catches up.
 - Updated maintainer validation guidance to use the full local validation suite.
+- Preserved the stable 14-bucket public taxonomy without renaming, adding, or
+  removing buckets.
 
 ### Validation
 
