@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1.0-example",
+  "record_id": "synthetic-record-001",
+  "triage": {
+    "record_type": {
+      "selected": null,
+      "candidate_categories": [
+        "notice",
+        "inventory_note"
+      ],
+      "confidence_label": "low"
+    },
+    "completeness": {
+      "status": "partial",
+      "missing_fields": [
+        "clear_record_type"
+      ]
+    },
+    "routing_need": "review",
+    "review_status": "review_required"
+  },
+  "rationale": [
+    "The fabricated text mentions both a display label and a note about example materials.",
+    "The category guide does not provide a tie-break rule for this case.",
+    "A reviewer should select a category or request a clearer fabricated record."
+  ],
+  "handoff": {
+    "required": true,
+    "handoff_id": "synthetic-handoff-001",
+    "destination_role": "example-reviewer",
+    "context_fields": [
+      "record_id",
+      "short_summary",
+      "candidate_categories",
+      "requested_decision"
+    ]
+  },
+  "public_safety_check": {
+    "passed": true,
+    "fabricated_only": true,
+    "excluded_content": [
+      "real_names",
+      "real_companies",
+      "real_systems",
+      "real_urls",
+      "regulated_data",
+      "private_logs",
+      "runtime_traces"
+    ],
+    "note": "Example output shape only; not a production record."
+  },
+  "artifact_references": [
+    "./AGENT.md",
+    "./PROMPT.md",
+    "./INTERFACE.md",
+    "./SKILL.md",
+    "./GUARDRAILS.md",
+    "./HANDOFFS.md"
+  ]
+}

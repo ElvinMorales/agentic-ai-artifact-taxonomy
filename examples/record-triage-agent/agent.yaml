@@ -1,0 +1,64 @@
+id: record-triage-agent-example
+name: Record Triage Agent Example
+description: >
+  Framework-neutral educational agent package for sorting fabricated incoming
+  records by type, completeness, routing need, and review status.
+owner:
+  role: Example maintainers
+version: 0.1.0
+status: draft-example
+public_safety:
+  fabricated_only: true
+  production_workflow: false
+  prohibited_input_classes:
+    - medical_or_clinical_records
+    - legal_records
+    - financial_records
+    - customer_records
+    - workplace_or_employer_records
+    - secrets_or_private_logs
+capability_refs:
+  - id: record-triage
+    artifact_class: Capability module
+    path: ./SKILL.md
+prompt_refs:
+  - id: record-triage-task-prompt
+    artifact_class: Prompt specification
+    path: ./PROMPT.md
+interface_refs:
+  - id: record-triage-input-contract
+    artifact_class: Interface contract
+    path: ./INTERFACE.md
+tool_refs:
+  - id: synthetic-record-field-checker
+    artifact_class: Tool specification
+    path: ./tools.yaml
+resource_refs:
+  - id: synthetic-record-category-guide
+    artifact_class: Knowledge resource
+    path: ./resources.yaml
+policy_refs:
+  - id: public-safe-triage-guardrails
+    artifact_class: Guardrail policy
+    path: ./GUARDRAILS.md
+  - id: durable-memory-policy
+    artifact_class: Memory policy
+    path: ./MEMORY.md
+handoff_refs:
+  - id: review-needed-handoff
+    artifact_class: Handoff contract
+    path: ./HANDOFFS.md
+runtime_example_refs:
+  - id: resumable-run-snapshot
+    artifact_class: State example
+    path: ./state-example.json
+  - id: triage-output-example
+    artifact_class: Output example
+    path: ./output-example.json
+evaluation_refs:
+  - id: record-triage-eval-cases
+    artifact_class: Evaluation fixture
+    path: ./evals/cases.jsonl
+notes:
+  - Filenames are example carriers for generic artifact classes.
+  - This manifest does not define a framework, protocol, or production runtime.

@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1.0-example",
+  "run_id": "synthetic-run-001",
+  "session_id": "synthetic-session-001",
+  "agent_id": "record-triage-agent-example",
+  "task": {
+    "task_id": "synthetic-task-001",
+    "type": "record-triage",
+    "status": "waiting_for_review",
+    "summary": "Triage one fabricated record with an ambiguous category."
+  },
+  "current_record": {
+    "record_id": "synthetic-record-001",
+    "source_label": "demo-inbox",
+    "declared_record_type": "unknown"
+  },
+  "execution": {
+    "current_step": "prepare_minimized_handoff",
+    "completed_steps": [
+      "validate_public_safe_input",
+      "check_required_fields",
+      "compare_synthetic_categories"
+    ],
+    "pending_actions": [
+      {
+        "action_id": "synthetic-action-001",
+        "type": "await_review",
+        "handoff_id": "synthetic-handoff-001",
+        "status": "pending"
+      }
+    ]
+  },
+  "handoff_status": {
+    "destination_role": "example-reviewer",
+    "authority": "select_category_or_request_clarification",
+    "context_reference": "synthetic-handoff-001"
+  },
+  "artifact_references": [
+    "./HANDOFFS.md",
+    "./output-example.json"
+  ],
+  "updated_at": "2026-06-20T12:05:00Z",
+  "sanitization": {
+    "is_synthetic": true,
+    "excluded_fields": [
+      "record_text",
+      "raw_prompt_history",
+      "user_messages",
+      "tool_outputs",
+      "secrets",
+      "private_paths",
+      "durable_memory_entries"
+    ],
+    "note": "Runtime state example only; this is not durable memory or a live export."
+  }
+}
