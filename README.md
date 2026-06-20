@@ -98,6 +98,7 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
 - Use [examples/README.md](examples/README.md) to browse small synthetic examples for protocol discovery, handoffs, memory, state, outputs, evals, and traces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
+- Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the prepared v0.2.1 patch maintenance and connected example release notes.
 - Use [docs/release-notes-v0.2.0.md](docs/release-notes-v0.2.0.md) for the current release notes.
 - Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the historical public foundation release notes.
 - Use [docs/public-release-checklist.md](docs/public-release-checklist.md) as a maintenance checklist before future public updates.
@@ -147,6 +148,8 @@ The latest tagged release is `v0.2.0`, the taxonomy alignment release.
 starter templates, protocol mappings, public-safe examples, and validation for
 Markdown, JSON, JSONL, YAML, and local documentation links.
 
-The historical `v0.1.0` foundation notes remain available separately. Post-v0.2
-hardening work is tracked in follow-up issues and should not be read as part of
-the `v0.2.0` release.
+Prepared `v0.2.1` notes summarize patch-level maintenance, validation
+hardening, dependency hygiene, and the connected record-triage example pack.
+The stable 14-bucket taxonomy remains unchanged.
+
+The historical `v0.1.0` foundation notes remain available separately.
