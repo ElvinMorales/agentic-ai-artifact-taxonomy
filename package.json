@@ -35,6 +35,9 @@
     "yaml": "^2.9.0"
   },
   "overrides": {
-    "markdown-it": "14.2.0"
+    "markdown-it": "14.2.0",
+    "markdownlint-cli2": {
+      "js-yaml": "4.2.0"
+    }
   }
 }
