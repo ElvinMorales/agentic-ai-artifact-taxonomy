@@ -14,6 +14,7 @@ state, internal endpoints, or employer-specific material in a public repo.
 | --- | --- | --- |
 | [agent-card.json](agent-card.json) | Identity; Capability modules; Prompts and interfaces; Runtime and deployment; Guardrails and governance | A synthetic A2A-style discovery manifest and protocol adapter shape |
 | [record-triage-agent/](record-triage-agent/README.md) | Identity; Prompts and interfaces; Capability modules; Tools; Knowledge and resources; Memory; State; Planning and orchestration; Guardrails and governance; Outputs and schemas; Evaluation and observability | A connected public-safe example pack showing multiple artifact classes working together |
+| [Strategic Mirror Agent map](strategic-mirror-agent-map.md) | All 14 buckets | A public scaffold/private runtime mapping for an external public-safe implementation example |
 | [handoffs.yaml](handoffs.yaml) | Planning and orchestration; State; Guardrails and governance | A minimized handoff contract with authority and failure boundaries |
 | [memory-example.md](memory-example.md) | Memory; Guardrails and governance | Allowed and disallowed durable memory classes with synthetic entries |
 | [state-example.json](state-example.json) | State; Planning and orchestration | A sanitized run snapshot with pending work and handoff status |

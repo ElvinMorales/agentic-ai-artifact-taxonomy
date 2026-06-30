@@ -30,3 +30,7 @@ Public agent artifact repos should be useful without exposing private operations
 - Examples are generic enough to reuse safely.
 
 Treat public docs as reusable educational material, not internal operational disclosure.
+
+For connector-facing documentation, adapters, source snapshot patterns, and
+runtime-adjacent examples, also use the
+[MCP and connector safety review checklist](mcp-connector-safety-checklist.md).
