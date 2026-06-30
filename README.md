@@ -96,6 +96,9 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
 - Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
+- Use [docs/mcp-connector-safety-checklist.md](docs/mcp-connector-safety-checklist.md)
+  before publishing connector-facing docs, MCP adapter notes, source snapshot
+  patterns, or runtime-adjacent examples.
 - Use [examples/README.md](examples/README.md) to browse small synthetic examples for protocol discovery, handoffs, memory, state, outputs, evals, and traces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
 - Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the prepared v0.2.1 patch maintenance and connected example release notes.

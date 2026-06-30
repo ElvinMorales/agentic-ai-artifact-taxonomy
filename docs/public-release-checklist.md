@@ -65,6 +65,8 @@ Use this checklist before tagging or announcing a public release or update.
 - Confirm the local link check passes. External URL reachability is
   intentionally excluded to avoid network-dependent release failures.
 - Review changed files for public-safe language before opening a pull request.
+- Apply the [MCP and connector safety review checklist](mcp-connector-safety-checklist.md)
+  to connector-facing documentation, adapters, and runtime-adjacent examples.
 - Run a targeted grep for sensitive terms.
 - Confirm `package.json` is marked private unless package publishing is intentional.
 

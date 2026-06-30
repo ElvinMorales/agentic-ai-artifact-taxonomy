@@ -186,6 +186,10 @@ from the canonical model.
 
 Before publishing protocol-facing documentation or manifests:
 
+Use the framework-neutral
+[MCP and connector safety review checklist](mcp-connector-safety-checklist.md)
+for detailed authority, data, action, persistence, runtime, and release review.
+
 - [ ] Use generic descriptions and synthetic identifiers.
 - [ ] Use public official protocol URLs and synthetic service endpoints.
 - [ ] Remove secrets, credentials, tokens, private keys, and signed private
