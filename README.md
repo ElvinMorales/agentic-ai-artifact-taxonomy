@@ -108,8 +108,12 @@ protocol without changing the stable top-level taxonomy.
   patterns, or runtime-adjacent examples.
 - Use [examples/README.md](examples/README.md) to browse small synthetic examples for protocol discovery, handoffs, memory, state, outputs, evals, and traces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
-- Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the prepared v0.2.1 patch maintenance and connected example release notes.
-- Use [docs/release-notes-v0.2.0.md](docs/release-notes-v0.2.0.md) for the current release notes.
+- Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the
+  latest published release notes.
+- Use [docs/versioning-policy.md](docs/versioning-policy.md) for the repository
+  release and private workspace version policy.
+- Use [docs/release-notes-v0.2.0.md](docs/release-notes-v0.2.0.md) for the
+  historical v0.2.0 release notes.
 - Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the historical public foundation release notes.
 - Use [docs/public-release-checklist.md](docs/public-release-checklist.md) as a maintenance checklist before future public updates.
 
@@ -153,14 +157,19 @@ temporary network or website failures do not block local work or CI.
 
 ## Status
 
-The latest release is `v0.2.1`, a patch-level maintenance and connected
-example release.
+The latest published release is `v0.2.1`, a patch-level maintenance and
+connected-example release published on June 20, 2026.
 
-`v0.2.1` preserves the stable 14-bucket public model and includes validation
+The [v0.2.1 release notes](docs/release-notes-v0.2.1.md) summarize validation
 hardening, dependency hygiene, and the connected record-triage example pack.
 
-Prepared `v0.2.1` notes summarize patch-level maintenance, validation
-hardening, dependency hygiene, and the connected record-triage example pack.
+Work merged after `v0.2.1`, including UI harness artifacts and the Agent Skills
+standard mapping, remains under [Unreleased](CHANGELOG.md). Based on that
+additive scope, `v0.3.0` is the recommended next release candidate; it has not
+been tagged or published.
+
+Repository tags and GitHub Releases define the public project version. The npm
+workspace remains private and follows the
+[versioning policy](docs/versioning-policy.md).
+
 The stable 14-bucket taxonomy remains unchanged.
-
-The historical `v0.1.0` foundation notes remain available separately.

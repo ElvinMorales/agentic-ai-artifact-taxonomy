@@ -4,39 +4,41 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Release Notes
+### Release Governance
 
-- Prepared possible `v0.2.1` release notes for a patch-level maintenance and
-  connected example release.
+- Reconciled the published `v0.2.1` release across README status, changelog,
+  release notes, and private npm workspace metadata.
+- Added a versioning policy that makes Git tags and GitHub Releases the
+  canonical public release identity while keeping the npm workspace private.
+- Identified `v0.3.0` as the recommended next release candidate for the
+  post-`v0.2.1` UI harness and Agent Skills additions; no tag or release has
+  been created.
 
-### Connected Examples
-
-- Added a connected public-safe record-triage example pack that demonstrates
-  multiple taxonomy artifact classes working together while keeping memory,
-  state, design-time artifacts, runtime examples, and eval fixtures distinct.
-
-### Changed
+### Capability Modules and Framework Mapping
 
 - Mapped the open Agent Skills standard to Capability modules while preserving
-  the stable 14-bucket model and separating standard fields from OpenAI,
-  Claude Code, and other runtime extensions.
-- Updated the framework-neutral `SKILL.md` starter with optional portable
+  the stable 14-bucket model and separating standard fields from vendor
+  extensions.
+- Updated the framework-neutral `SKILL.md` starter with portable
   packaging, progressive disclosure, skill/tool, permission, and supply-chain
   guidance.
 - Added a synthetic standard-compatible record-triage package with a small
   reference and static asset, without executable or networked behavior.
+
+### UI and Interaction Harnesses
+
 - Recognized UI and interaction harnesses primarily under Prompts and
   interfaces, with component mappings across the existing taxonomy buckets
   and no change to the stable 14-bucket model.
 - Added a framework-neutral UI harness guide and reusable contract/schema
   bundle with matching synthetic examples.
-- Aligned package metadata with the documented v0.2.0 release state and marked
-  the package private to avoid accidental publishing.
-- Added an npm override to keep the Markdown lint toolchain on patched
-  transitive dependency versions while the upstream lint toolchain catches up.
-- Updated maintainer validation guidance to use the full local validation suite.
-- Preserved the stable 14-bucket public taxonomy without renaming, adding, or
-  removing buckets.
+
+### Connector Safety and Mapping
+
+- Added a public-safety checklist for connector-facing documentation, MCP
+  adapter guidance, source snapshots, and runtime-adjacent examples.
+- Added a synthetic Strategic Mirror agent map across the existing taxonomy
+  without introducing a new bucket or framework-specific contract.
 
 ### Validation
 
@@ -45,6 +47,32 @@ All notable changes to this project will be documented in this file.
   boundaries, and imported-package supply-chain review.
 - Added schema-instance validation for three UI harness examples and synthetic
   behavior cases covering state, authority, review, and export boundaries.
+
+## [0.2.1] - 2026-06-20
+
+### Release Notes
+
+- Published the [v0.2.1 release notes](docs/release-notes-v0.2.1.md) for a
+  patch-level maintenance and connected-example release.
+
+### Connected Examples
+
+- Added a connected public-safe record-triage example pack demonstrating
+  multiple taxonomy artifact classes while keeping memory, state, design-time
+  artifacts, runtime examples, and eval fixtures distinct.
+
+### Maintenance and Dependency Hygiene
+
+- Marked the npm workspace private and aligned its metadata with the existing
+  v0.2.0 state used at release preparation time.
+- Added targeted npm overrides for patched Markdown lint transitive
+  dependencies.
+- Updated maintainer guidance to use the complete local validation suite.
+- Preserved the stable 14-bucket taxonomy without renaming, adding, or removing
+  buckets.
+
+### Schema Validation
+
 - Added schema-instance validation for selected public-safe state and handoff
   examples against their reference schemas.
 
