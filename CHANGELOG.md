@@ -17,6 +17,14 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- Mapped the open Agent Skills standard to Capability modules while preserving
+  the stable 14-bucket model and separating standard fields from OpenAI,
+  Claude Code, and other runtime extensions.
+- Updated the framework-neutral `SKILL.md` starter with optional portable
+  packaging, progressive disclosure, skill/tool, permission, and supply-chain
+  guidance.
+- Added a synthetic standard-compatible record-triage package with a small
+  reference and static asset, without executable or networked behavior.
 - Recognized UI and interaction harnesses primarily under Prompts and
   interfaces, with component mappings across the existing taxonomy buckets
   and no change to the stable 14-bucket model.
@@ -32,6 +40,9 @@ All notable changes to this project will be documented in this file.
 
 ### Validation
 
+- Added repository-native Agent Skills package validation and behavior cases
+  covering skill/tool classification, experimental tool declarations, vendor
+  boundaries, and imported-package supply-chain review.
 - Added schema-instance validation for three UI harness examples and synthetic
   behavior cases covering state, authority, review, and export boundaries.
 - Added schema-instance validation for selected public-safe state and handoff

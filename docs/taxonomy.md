@@ -122,6 +122,7 @@ Purpose:
 Example artifact types:
 
 - Skill guide
+- Portable skill package or Agent Skills-compatible package
 - Procedure bundle
 - Task-specific reference pack
 - Reusable scripts and assets
@@ -139,6 +140,13 @@ Related buckets:
 - Knowledge and resources
 - Prompts and interfaces
 - Evaluation and observability
+- Guardrails and governance
+- Runtime and deployment
+- Learning and iteration
+
+An Agent Skills-compatible directory is one possible package for a capability
+module, not a replacement for this generic class or the stable taxonomy. See
+[Agent Skills Standard Mapping](agent-skills-standard-mapping.md).
 
 ## Tools
 

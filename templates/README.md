@@ -20,7 +20,7 @@ formats depending on their needs.
 | [agent.yaml](agent.yaml) | Identity | Machine-readable | Design-time |
 | [persona.md](persona.md) | Identity | Human-readable | Design-time |
 | [principles.md](principles.md) | Operating style | Human-readable | Design-time |
-| [SKILL.md](SKILL.md) | Capability modules | Human-readable bundle entrypoint | Design-time, iteration |
+| [SKILL.md](SKILL.md) | Capability modules | Generic guidance and optional Agent Skills-compatible package entrypoint | Design-time, iteration |
 | [tools.yaml](tools.yaml) | Tools | Machine-readable | Design-time, runtime |
 | [resources.yaml](resources.yaml) | Knowledge and resources | Machine-readable | Design-time, runtime |
 | [PROMPT.md](PROMPT.md) | Prompts and interfaces | Human-readable | Design-time |
@@ -59,6 +59,11 @@ educational schema shapes, not a frontend framework or runtime standard.
 Copy the relevant template into your own project and replace the example
 values with project-specific, public-safe content. Keep artifacts small enough
 to review and version independently.
+
+The flat [SKILL.md](SKILL.md) starter must be copied into a directory matching
+its frontmatter `name` before it can be validated as an Agent Skills package,
+for example `skills/record-triage/SKILL.md`. See the
+[Agent Skills mapping guide](../docs/agent-skills-standard-mapping.md).
 
 Use human-readable and structured companions together when both audiences
 matter. For example, `AGENT.md` can explain an agent contract while
