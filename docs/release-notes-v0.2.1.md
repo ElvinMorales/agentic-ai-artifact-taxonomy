@@ -8,7 +8,7 @@ hygiene, and the connected record-triage example pack.
 
 The stable 14-bucket public taxonomy is unchanged.
 
-These notes are prepared for a possible `v0.2.1` documentation release.
+This release was tagged at `c653a36` and published on June 20, 2026.
 
 ## What Changed
 
@@ -62,7 +62,8 @@ examples.
 
 ## Validation
 
-Release preparation should be validated with:
+The release contents and later documentation corrections can be revalidated
+with:
 
 ```bash
 npm ci
@@ -91,4 +92,5 @@ External URL reachability is intentionally skipped.
 - [Connected record-triage example](../examples/record-triage-agent/README.md)
 - [Public-safety guidance](public-safety.md)
 - [Public release checklist](public-release-checklist.md)
+- [Versioning policy](versioning-policy.md)
 - [Historical v0.2.0 release notes](release-notes-v0.2.0.md)

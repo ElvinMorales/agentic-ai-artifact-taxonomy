@@ -41,10 +41,17 @@ Use this checklist before tagging or announcing a public release or update.
 - `docs/taxonomy.md` contains the canonical bucket list.
 - `templates/README.md` accurately lists the templates that currently exist.
 - `docs/public-safety.md` is easy to find before publishing examples.
+- Review the [versioning policy](versioning-policy.md).
+- `CHANGELOG.md` `Unreleased` contains only changes after the latest published
+  tag.
 - `CHANGELOG.md` has a dated section for the target version.
+- The latest published release has a dated changelog section.
 - Versioned release notes describe the public release scope and are linked
   from `README.md`.
-- Historical release notes remain unchanged except for necessary typo fixes.
+- Versioned release notes use published or historical language after release.
+- Historical release notes do not absorb later features; factual corrections
+  are allowed without rewriting the tag.
+- README latest-release status matches the actual tag and GitHub Release.
 - Status text does not claim a Git tag or GitHub release exists before it is
   created.
 - Current automation and validation are described accurately.
@@ -60,7 +67,8 @@ Use this checklist before tagging or announcing a public release or update.
 - Run `npm run validate` for the complete local validation suite.
 - Run targeted checks as needed: `npm run lint:md`,
   `npm run validate:json`, `npm run validate:jsonl`,
-  `npm run validate:yaml`, `npm run validate:schemas`, and
+  `npm run validate:yaml`, `npm run validate:schemas`,
+  `npm run validate:skills`, and
   `npm run check:links`.
 - Confirm the local link check passes. External URL reachability is
   intentionally excluded to avoid network-dependent release failures.
@@ -68,13 +76,18 @@ Use this checklist before tagging or announcing a public release or update.
 - Apply the [MCP and connector safety review checklist](mcp-connector-safety-checklist.md)
   to connector-facing documentation, adapters, and runtime-adjacent examples.
 - Run a targeted grep for sensitive terms.
-- Confirm `package.json` is marked private unless package publishing is intentional.
+- Confirm `package.json` remains private.
+- Confirm `package.json` and the root `package-lock.json` versions match.
+- During normal post-release development, confirm the private npm workspace
+  version matches the latest published repository release.
 
 ## Release Coordination
 
 - Confirm repository metadata, license, and package metadata are correct.
 - Confirm examples are sanitized and framework-neutral.
 - Preserve historical release notes as historical records.
+- Confirm the proposed next release number matches the versioning policy.
 - Confirm the target release tag and GitHub release text match the release notes
   created for that version.
+- Create a tag and GitHub Release only after explicit approval.
 - Confirm any announcement copy links to the public repo, not private context.
