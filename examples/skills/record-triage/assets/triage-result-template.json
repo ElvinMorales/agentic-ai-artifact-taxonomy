@@ -1,0 +1,8 @@
+{
+  "record_id": "record_example_001",
+  "status": "needs-review",
+  "category": null,
+  "applied_rule": "synthetic-rule-ambiguous",
+  "rationale": "The fabricated record matches more than one category.",
+  "requires_human_review": true
+}

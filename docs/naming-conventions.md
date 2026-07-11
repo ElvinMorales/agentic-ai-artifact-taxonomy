@@ -25,8 +25,10 @@ generic artifact class -> possible filenames -> framework/protocol mappings -> i
 For example:
 
 ```text
-capability module -> SKILL.md or capabilities/<name>/module.md
--> framework skill-like bundle or local module -> synthetic record-triage skill
+Capability module -> skills/record-triage/SKILL.md
+-> Agent Skills-compatible package
+-> OpenAI/Claude Code/other runtime mapping
+-> synthetic record-triage example
 ```
 
 The generic artifact class should remain primary. A filename is one possible
@@ -92,6 +94,17 @@ not a synonym for every capability.
 Likewise, a possible filename listed in this repo is a suggestion. It is not a
 canonical cross-vendor name.
 
+### Capability Module and Agent Skills Package
+
+**Capability module** is the generic taxonomy concept. `SKILL.md` is one
+possible filename, and an **Agent Skills package** is one open-standard
+representation. OpenAI Skills and Claude Code skills are implementation
+mappings that can add product-specific fields, permissions, installation, or
+execution behavior without redefining the generic concept.
+
+A structurally valid package is not automatically safe, trusted, or authorized.
+Review provenance, contents, permissions, side effects, and the target runtime.
+
 ### Stable Bucket and Local Project Convention
 
 Local files such as `SOUL.md`, `HEARTBEAT.md`, and `BOOTSTRAP.md` are project
@@ -123,9 +136,10 @@ of creating a new bucket from the filename.
 
 ```text
 Capability module
--> SKILL.md
--> framework skill-like bundle or local module
--> synthetic record-triage procedure
+-> skills/record-triage/SKILL.md
+-> Agent Skills-compatible package
+-> OpenAI/Claude Code/other runtime mapping
+-> synthetic record-triage example
 ```
 
 Another project may use `module.md` or hosted instructions for the same
@@ -176,6 +190,7 @@ before publication.
 
 - [Taxonomy](taxonomy.md)
 - [Framework mapping](framework-mapping.md)
+- [Agent Skills Standard Mapping](agent-skills-standard-mapping.md)
 - [Protocol mapping](protocol-mapping.md)
 - [Artifact lifecycle](artifact-lifecycle.md)
 - [Public-safety guidance](public-safety.md)

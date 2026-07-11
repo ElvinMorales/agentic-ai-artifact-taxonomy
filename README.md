@@ -98,6 +98,9 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/ui-harness-artifacts.md](docs/ui-harness-artifacts.md) to classify
   UI and interaction harness contracts, state, approvals, exports, and runtime
   boundaries without adding a taxonomy bucket.
+- Use [docs/agent-skills-standard-mapping.md](docs/agent-skills-standard-mapping.md)
+  to map portable Agent Skills packages to Capability modules while preserving
+  skill, tool, vendor-extension, permission, and supply-chain boundaries.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
 - Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
 - Use [docs/mcp-connector-safety-checklist.md](docs/mcp-connector-safety-checklist.md)
@@ -140,6 +143,7 @@ npm run validate:json
 npm run validate:jsonl
 npm run validate:yaml
 npm run validate:schemas
+npm run validate:skills
 npm run check:links
 ```
 

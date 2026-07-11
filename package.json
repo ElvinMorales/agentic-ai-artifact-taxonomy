@@ -13,8 +13,9 @@
     "validate:jsonl": "node scripts/validate-jsonl.mjs",
     "validate:yaml": "node scripts/validate-yaml.mjs",
     "validate:schemas": "node scripts/validate-examples-against-schemas.mjs",
+    "validate:skills": "node scripts/validate-agent-skills.mjs",
     "check:links": "node scripts/check-local-links.mjs",
-    "validate": "npm run lint:md && npm run validate:json && npm run validate:jsonl && npm run validate:yaml && npm run validate:schemas && npm run check:links"
+    "validate": "npm run lint:md && npm run validate:json && npm run validate:jsonl && npm run validate:yaml && npm run validate:schemas && npm run validate:skills && npm run check:links"
   },
   "repository": {
     "type": "git",
