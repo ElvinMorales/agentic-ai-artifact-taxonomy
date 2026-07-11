@@ -21,6 +21,21 @@ const validations = [
     exampleFile: "examples/handoffs.yaml",
     readExample: readYaml,
   },
+  {
+    schemaFile: "templates/ui-harness/session.schema.json",
+    exampleFile: "examples/ui-harness/session-example.json",
+    readExample: readJson,
+  },
+  {
+    schemaFile: "templates/ui-harness/workflow.schema.json",
+    exampleFile: "examples/ui-harness/workflow-example.json",
+    readExample: readJson,
+  },
+  {
+    schemaFile: "templates/ui-harness/artifact.schema.json",
+    exampleFile: "examples/ui-harness/artifact-example.json",
+    readExample: readJson,
+  },
 ];
 
 // observability/trace-schema.json is reference-only until a future public-safe

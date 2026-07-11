@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1.0-example",
+  "artifact_id": "artifact_example_047",
+  "title": "Synthetic Community Garden Planning Brief",
+  "artifact_type": "markdown_brief",
+  "source_session_reference": "session_example_047",
+  "media_type": "text/markdown",
+  "review_status": "pending",
+  "export_status": "not_ready",
+  "preview_available": true,
+  "suggested_filename": "synthetic-community-garden-brief.md",
+  "human_review_required": true,
+  "sanitization": {
+    "is_synthetic": true,
+    "filename_checked": true,
+    "private_content_included": false,
+    "note": "Metadata only; the draft body, runtime details, and private content are intentionally omitted."
+  }
+}

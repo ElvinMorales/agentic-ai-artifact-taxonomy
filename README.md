@@ -25,8 +25,9 @@ it keeps durable memory distinct from resumable execution state.
 The repo currently includes:
 
 - The canonical 14-bucket taxonomy and supporting concept guides.
-- A framework-neutral starter template pack covering 19 artifact types across
-  all 14 taxonomy buckets.
+- A framework-neutral starter template pack covering 23 artifact types across
+  all 14 taxonomy buckets: the existing 19 plus a UI harness contract and
+  three structured harness schemas.
 - A public-safe example pack and sanitized example repository tree.
 - Framework and protocol mapping guidance.
 - Public-safety and release-review guidance.
@@ -94,6 +95,9 @@ protocol without changing the stable top-level taxonomy.
 - Use [templates/README.md](templates/README.md) for reusable starter templates mapped to the taxonomy buckets.
 - Use [docs/artifact-lifecycle.md](docs/artifact-lifecycle.md) to distinguish design-time, runtime, and iteration artifacts.
 - Use [docs/memory-vs-state.md](docs/memory-vs-state.md) before designing persistence or continuation behavior.
+- Use [docs/ui-harness-artifacts.md](docs/ui-harness-artifacts.md) to classify
+  UI and interaction harness contracts, state, approvals, exports, and runtime
+  boundaries without adding a taxonomy bucket.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
 - Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
 - Use [docs/mcp-connector-safety-checklist.md](docs/mcp-connector-safety-checklist.md)

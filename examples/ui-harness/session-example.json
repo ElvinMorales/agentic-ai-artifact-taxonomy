@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1.0-example",
+  "session_id": "session_example_047",
+  "selected_workflow": "workflow_example_synthetic_brief_builder",
+  "status": "waiting_for_review",
+  "intake": {
+    "summary": "Public-safe topic: community garden planning basics.",
+    "references": [
+      "synthetic://intake/topic-example-047"
+    ]
+  },
+  "current_step": "step_example_review",
+  "pending_approvals": [
+    {
+      "approval_id": "approval_example_047",
+      "action": "approve_export",
+      "status": "pending"
+    }
+  ],
+  "artifact_references": [
+    "artifact_example_047"
+  ],
+  "updated_at": "2026-07-11T12:00:00Z",
+  "persistence_scope": "ignored_local_session",
+  "durable_memory": false,
+  "sanitization": {
+    "is_synthetic": true,
+    "content_scope": "metadata_and_sanitized_summaries_only",
+    "excluded_fields": [
+      "raw_prompt_history",
+      "user_message_bodies",
+      "secrets",
+      "tool_payloads",
+      "private_paths",
+      "durable_memory_contents",
+      "raw_logs",
+      "full_traces",
+      "private_artifact_contents"
+    ]
+  }
+}

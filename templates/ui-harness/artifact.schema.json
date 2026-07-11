@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/ui-harness-artifact.schema.json",
+  "title": "Educational UI Harness Artifact Metadata",
+  "description": "Educational starter shape for artifact metadata, preview, review, and export behavior. It is not a universal runtime standard and excludes artifact contents.",
+  "$comment": "Public-safety: record metadata only; omit raw prompts, messages, secrets, tool payloads, private paths, durable memory contents, raw logs, full traces, and private artifact bodies.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_id", "title", "artifact_type", "source_session_reference", "media_type", "review_status", "export_status", "preview_available", "suggested_filename", "human_review_required", "sanitization"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "0.1.0-example", "description": "Version of this educational shape."},
+    "artifact_id": {"type": "string", "pattern": "^artifact_example_[0-9]+$", "description": "Synthetic artifact identifier."},
+    "title": {"type": "string", "minLength": 1, "maxLength": 100},
+    "artifact_type": {"type": "string", "enum": ["markdown_brief", "structured_metadata"]},
+    "source_session_reference": {"type": "string", "pattern": "^session_example_[0-9]+$"},
+    "media_type": {"type": "string", "pattern": "^[a-z]+/[a-z0-9.+-]+$"},
+    "review_status": {"type": "string", "enum": ["not_required", "pending", "approved", "rejected"]},
+    "export_status": {"type": "string", "enum": ["not_ready", "ready", "exported", "blocked"]},
+    "preview_available": {"type": "boolean"},
+    "suggested_filename": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+$", "description": "Public-safe basename only; no directory components."},
+    "human_review_required": {"type": "boolean"},
+    "sanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["is_synthetic", "filename_checked", "private_content_included", "note"],
+      "properties": {
+        "is_synthetic": {"type": "boolean", "const": true},
+        "filename_checked": {"type": "boolean", "const": true},
+        "private_content_included": {"type": "boolean", "const": false},
+        "note": {"type": "string", "minLength": 1, "maxLength": 240}
+      }
+    }
+  }
+}

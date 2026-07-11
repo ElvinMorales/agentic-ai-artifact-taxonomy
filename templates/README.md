@@ -3,7 +3,7 @@
 This directory contains starter templates for common agentic AI artifacts.
 They are framework-neutral and use synthetic, public-safe examples.
 
-The current pack contains 19 starter templates. Together they cover all stable
+The current pack contains 23 starter templates. Together they cover all stable
 14 taxonomy buckets in [docs/taxonomy.md](../docs/taxonomy.md), with separate
 templates for important sub-surfaces such as prompts, interfaces, plans, and
 handoffs.
@@ -35,6 +35,10 @@ formats depending on their needs.
 | [eval-rubric.md](eval-rubric.md) | Evaluation and observability | Human-readable | Design-time, iteration |
 | [RUNTIME.md](RUNTIME.md) | Runtime and deployment | Human-readable | Design-time, runtime |
 | [ITERATION.md](ITERATION.md) | Learning and iteration | Human-readable | Iteration |
+| [ui-harness/harness-contract.md](ui-harness/harness-contract.md) | Prompts and interfaces; connected governance, state, output, evaluation, and runtime buckets | Human-readable | Design-time |
+| [ui-harness/session.schema.json](ui-harness/session.schema.json) | State | Machine-readable | Design-time, runtime |
+| [ui-harness/workflow.schema.json](ui-harness/workflow.schema.json) | Planning and orchestration; Prompts and interfaces | Machine-readable | Design-time |
+| [ui-harness/artifact.schema.json](ui-harness/artifact.schema.json) | Outputs and schemas | Machine-readable | Design-time, runtime |
 
 ## Coverage
 
@@ -45,6 +49,10 @@ cross-vendor names.
 
 Protocol-specific examples, including MCP or A2A adapters, should map back to
 the generic taxonomy rather than define a competing template model.
+
+The [UI harness bundle](ui-harness/README.md) intentionally spans buckets while
+each component retains a primary purpose. It defines reusable contracts and
+educational schema shapes, not a frontend framework or runtime standard.
 
 ## How to Use
 

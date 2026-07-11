@@ -17,6 +17,11 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- Recognized UI and interaction harnesses primarily under Prompts and
+  interfaces, with component mappings across the existing taxonomy buckets
+  and no change to the stable 14-bucket model.
+- Added a framework-neutral UI harness guide and reusable contract/schema
+  bundle with matching synthetic examples.
 - Aligned package metadata with the documented v0.2.0 release state and marked
   the package private to avoid accidental publishing.
 - Added an npm override to keep the Markdown lint toolchain on patched
@@ -27,6 +32,8 @@ All notable changes to this project will be documented in this file.
 
 ### Validation
 
+- Added schema-instance validation for three UI harness examples and synthetic
+  behavior cases covering state, authority, review, and export boundaries.
 - Added schema-instance validation for selected public-safe state and handoff
   examples against their reference schemas.
 
