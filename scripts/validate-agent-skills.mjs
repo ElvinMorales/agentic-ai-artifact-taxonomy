@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { parseDocument } from "yaml";
 
@@ -9,15 +9,24 @@ const files = execFileSync(
   ["ls-files", "--cached", "--others", "--exclude-standard", "-z", "--", "examples/skills"],
   { encoding: "utf8" },
 ).split("\0").filter(Boolean).map((file) => file.replaceAll("\\", "/"));
-const skillFiles = files.filter((file) => /^examples\/skills\/[^/]+\/SKILL\.md$/.test(file)).sort();
+const packageNames = new Set();
+
+for (const file of files) {
+  if (!existsSync(path.resolve(repoRoot, file))) continue;
+  const match = file.match(/^examples\/skills\/([^/]+)\/.+$/);
+  if (match) packageNames.add(match[1]);
+}
+
+const skillRoots = [...packageNames]
+  .sort()
+  .map((packageName) => `examples/skills/${packageName}`);
 const errors = [];
 
-if (skillFiles.length === 0) {
+if (skillRoots.length === 0) {
   errors.push("examples/skills: at least one example package with root SKILL.md is required");
 }
 
-for (const file of skillFiles) {
-  const skillRoot = path.dirname(file);
+for (const skillRoot of skillRoots) {
   const directoryName = path.basename(skillRoot);
   const rootEntries = readdirSync(path.resolve(repoRoot, skillRoot), { withFileTypes: true });
   const caseInsensitiveSkillFiles = rootEntries.filter(
@@ -25,10 +34,11 @@ for (const file of skillFiles) {
   );
 
   if (caseInsensitiveSkillFiles.length !== 1 || caseInsensitiveSkillFiles[0].name !== "SKILL.md") {
-    errors.push(`${file}: package root must contain exactly one exact-case SKILL.md`);
+    errors.push(`${skillRoot}: package root must contain exactly one exact-case SKILL.md`);
     continue;
   }
 
+  const file = `${skillRoot}/SKILL.md`;
   const content = readFileSync(path.resolve(repoRoot, file), "utf8");
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) {
@@ -73,5 +83,5 @@ if (errors.length > 0) {
   for (const error of errors) console.error(`- ${error}`);
   process.exitCode = 1;
 } else {
-  console.log(`Validated ${skillFiles.length} Agent Skills example package(s). Structural validation does not establish safety or authorization.`);
+  console.log(`Validated ${skillRoots.length} Agent Skills example package(s). Structural validation does not establish safety or authorization.`);
 }
