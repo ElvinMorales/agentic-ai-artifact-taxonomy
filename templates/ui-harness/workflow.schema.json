@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/ui-harness-workflow.schema.json",
+  "title": "Educational UI Harness Workflow",
+  "description": "Framework-neutral educational starter shape for an interaction workflow, not a workflow-engine format or universal runtime standard.",
+  "$comment": "Public-safety: describe steps and boundaries without raw prompts, user messages, secrets, tool payloads, private paths, durable memory, raw logs, or full traces.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "workflow_id", "title", "purpose", "entry_point_type", "steps", "accepted_runtime", "completion_export_target", "public_safety_notes"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "0.1.0-example", "description": "Version of this educational shape."},
+    "workflow_id": {"type": "string", "pattern": "^workflow_example_[a-z0-9_]+$", "description": "Synthetic workflow identifier."},
+    "title": {"type": "string", "minLength": 1, "maxLength": 100},
+    "purpose": {"type": "string", "minLength": 1, "maxLength": 240},
+    "entry_point_type": {"type": "string", "enum": ["static_bridge", "local_form", "chat", "api_surface", "workflow_step"]},
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["order", "step_id", "title", "step_type", "human_review_required"],
+        "properties": {
+          "order": {"type": "integer", "minimum": 1},
+          "step_id": {"type": "string", "pattern": "^step_example_[a-z0-9_]+$"},
+          "title": {"type": "string", "minLength": 1, "maxLength": 100},
+          "step_type": {"type": "string", "enum": ["collect_intake", "assemble_request", "execute", "show_progress", "review", "export"]},
+          "human_review_required": {"type": "boolean"}
+        }
+      }
+    },
+    "accepted_runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modes", "adapter_boundary"],
+      "properties": {
+        "modes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "enum": ["manual", "mock", "deterministic", "provider_backed", "tool_backed"]}},
+        "adapter_boundary": {"type": "string", "minLength": 1, "maxLength": 240, "description": "Framework-neutral boundary statement; listed modes do not grant authority."}
+      }
+    },
+    "completion_export_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_type", "media_type", "review_before_export"],
+      "properties": {
+        "artifact_type": {"type": "string", "minLength": 1},
+        "media_type": {"type": "string", "pattern": "^[a-z]+/[a-z0-9.+-]+$"},
+        "review_before_export": {"type": "boolean"}
+      }
+    },
+    "public_safety_notes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1, "maxLength": 240}}
+  }
+}

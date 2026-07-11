@@ -39,7 +39,7 @@ private logs, unsanitized workspace snapshots, or unsanitized runtime state.
 | Capability modules | Reusable task procedures, examples, references, scripts, and assets | Design-time, iteration |
 | Tools | Callable functions, APIs, connectors, commands, and permissions | Design-time, runtime |
 | Knowledge and resources | Documents, datasets, indexes, references, and retrieval sources | Design-time, runtime |
-| Prompts and interfaces | Prompt specs, task templates, interface schemas, elicitation flows, and input contracts | Design-time |
+| Prompts and interfaces | Prompt specs, task templates, interface schemas, elicitation flows, input contracts, and UI or interaction harness contracts | Design-time |
 | Memory | Durable knowledge intended for future reuse | Runtime, iteration |
 | State | Execution snapshots for a thread, workflow, run, or session | Runtime |
 | Planning and orchestration | Planning policies, plans, routers, workflow graphs, delegation, handoffs, resumability, and continuation logic | Design-time, runtime |
@@ -220,6 +220,10 @@ Example artifact types:
 - Interface schema
 - Elicitation flow
 - Input contract
+- UI harness contract or interaction harness
+- Context-intake, chat, or form flow
+- Prompt or request assembly surface
+- Approval, review, artifact preview, or export surface
 
 Possible filenames:
 
@@ -228,6 +232,7 @@ Possible filenames:
 - `interfaces/input.schema.json`
 - `interfaces/elicitation-flow.md`
 - `interfaces/chat-flow.md`
+- `ui-harness/harness-contract.md`
 
 Related buckets:
 
@@ -235,6 +240,12 @@ Related buckets:
 - Operating style
 - Outputs and schemas
 - Evaluation and observability
+
+A UI harness is often an artifact bundle rather than only frontend code. Place
+the overall harness primarily here, then classify its workflow, temporary
+state, approvals, output contracts, behavior checks, and runtime boundaries by
+their purpose in the connected buckets. See
+[UI and interaction harness artifacts](ui-harness-artifacts.md).
 
 ## Memory
 
@@ -282,6 +293,8 @@ Example artifact types:
 - Workflow state
 - Task queue state
 - Approval state
+- Temporary harness session state
+- Harness session schema
 
 Possible filenames:
 
@@ -350,6 +363,7 @@ Example artifact types:
 - Approval matrix
 - Data handling rules
 - Audit checklist
+- Approval or review surface contract
 
 Possible filenames:
 
@@ -381,6 +395,8 @@ Example artifact types:
 - Report template
 - Document format
 - Generated artifact manifest
+- Artifact preview contract
+- Export contract
 
 Possible filenames:
 
@@ -411,6 +427,9 @@ Example artifact types:
 - Rubric
 - Trace schema
 - Metrics report
+- UI behavior cases
+- Event and status visibility contract
+- Harness smoke tests
 
 Possible filenames:
 
@@ -428,7 +447,10 @@ Related buckets:
 
 ## Runtime and Deployment
 
-Runtime and deployment artifacts define how the agent is packaged, configured, hosted, released, and operated.
+Runtime and deployment artifacts define how the agent is packaged, configured,
+hosted, released, and operated. An interface shell, its execution adapter, and
+a deployed application are distinct artifacts; an interface does not grant
+runtime authority.
 
 Purpose:
 
@@ -442,6 +464,9 @@ Example artifact types:
 - Environment example
 - Deployment manifest
 - Release checklist
+- Runtime adapter boundary
+- Local interface shell configuration
+- Deployed application configuration
 
 Possible filenames:
 

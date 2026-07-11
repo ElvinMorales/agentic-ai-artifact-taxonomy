@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1.0-example",
+  "workflow_id": "workflow_example_synthetic_brief_builder",
+  "title": "Synthetic Brief Builder",
+  "purpose": "Create reviewed Markdown brief metadata from a short public-safe topic using deterministic mock execution.",
+  "entry_point_type": "local_form",
+  "steps": [
+    {"order": 1, "step_id": "step_example_collect", "title": "Collect a public-safe topic", "step_type": "collect_intake", "human_review_required": false},
+    {"order": 2, "step_id": "step_example_assemble", "title": "Assemble a sanitized request", "step_type": "assemble_request", "human_review_required": false},
+    {"order": 3, "step_id": "step_example_execute", "title": "Run the deterministic mock", "step_type": "execute", "human_review_required": false},
+    {"order": 4, "step_id": "step_example_progress", "title": "Show progress", "step_type": "show_progress", "human_review_required": false},
+    {"order": 5, "step_id": "step_example_review", "title": "Review the draft", "step_type": "review", "human_review_required": true},
+    {"order": 6, "step_id": "step_example_export", "title": "Export the Markdown brief", "step_type": "export", "human_review_required": true}
+  ],
+  "accepted_runtime": {
+    "modes": ["deterministic", "mock"],
+    "adapter_boundary": "Only the documented local mock adapter may execute; provider and tool modes require separate permission and review."
+  },
+  "completion_export_target": {
+    "artifact_type": "markdown_brief",
+    "media_type": "text/markdown",
+    "review_before_export": true
+  },
+  "public_safety_notes": [
+    "Use fabricated topics and identifiers only.",
+    "Store metadata and sanitized summaries rather than raw messages or generated content."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/ui-harness-session.schema.json",
+  "title": "Educational UI Harness Session State",
+  "description": "Educational starter shape for temporary, sanitized harness State. It is not a universal runtime standard and does not represent durable Memory.",
+  "$comment": "Public-safety: omit raw prompt history, user message bodies, secrets, tool payloads, private paths, durable memory contents, raw logs, full traces, and private artifact contents.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "session_id", "selected_workflow", "status", "intake", "current_step", "pending_approvals", "artifact_references", "updated_at", "persistence_scope", "durable_memory", "sanitization"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "0.1.0-example", "description": "Version of this educational example shape."},
+    "session_id": {"type": "string", "pattern": "^session_example_[0-9]+$", "description": "Clearly synthetic session identifier."},
+    "selected_workflow": {"type": "string", "pattern": "^workflow_example_[a-z0-9_]+$", "description": "Reference to the selected synthetic workflow."},
+    "status": {"type": "string", "enum": ["collecting_intake", "ready", "running", "waiting_for_review", "completed", "cancelled", "failed"], "description": "Current temporary session status."},
+    "intake": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "references"],
+      "properties": {
+        "summary": {"type": "string", "minLength": 1, "maxLength": 240, "description": "Sanitized summary, never a raw prompt or message body."},
+        "references": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^synthetic://", "description": "Synthetic reference rather than embedded private content."}}
+      }
+    },
+    "current_step": {"type": "string", "pattern": "^step_example_[a-z0-9_]+$", "description": "Current workflow-step reference."},
+    "pending_approvals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["approval_id", "action", "status"],
+        "properties": {
+          "approval_id": {"type": "string", "pattern": "^approval_example_[0-9]+$"},
+          "action": {"type": "string", "enum": ["review_artifact", "approve_export"]},
+          "status": {"type": "string", "enum": ["pending", "approved", "rejected"]}
+        }
+      }
+    },
+    "artifact_references": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^artifact_example_[0-9]+$"}, "description": "Metadata references, not artifact contents."},
+    "updated_at": {"type": "string", "format": "date-time", "description": "Last synthetic state update."},
+    "persistence_scope": {"type": "string", "enum": ["in_memory_session", "ignored_local_session"], "description": "Temporary State storage boundary. `in_memory_session` means volatile session or process memory, not the taxonomy's durable Memory bucket; neither value authorizes durable memory."},
+    "durable_memory": {"type": "boolean", "const": false, "description": "Explicitly confirms that this session shape creates no durable Memory."},
+    "sanitization": {"$ref": "#/$defs/sanitization"}
+  },
+  "$defs": {
+    "sanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["is_synthetic", "content_scope", "excluded_fields"],
+      "properties": {
+        "is_synthetic": {"type": "boolean", "const": true},
+        "content_scope": {"type": "string", "const": "metadata_and_sanitized_summaries_only"},
+        "excluded_fields": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "enum": ["raw_prompt_history", "user_message_bodies", "secrets", "tool_payloads", "private_paths", "durable_memory_contents", "raw_logs", "full_traces", "private_artifact_contents"]}}
+      }
+    }
+  }
+}
