@@ -37,7 +37,7 @@
     },
     "artifact_references": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^artifact_example_[0-9]+$"}, "description": "Metadata references, not artifact contents."},
     "updated_at": {"type": "string", "format": "date-time", "description": "Last synthetic state update."},
-    "persistence_scope": {"type": "string", "enum": ["memory_only", "ignored_local_session"], "description": "Temporary storage boundary; neither value authorizes durable memory."},
+    "persistence_scope": {"type": "string", "enum": ["in_memory_session", "ignored_local_session"], "description": "Temporary State storage boundary. `in_memory_session` means volatile session or process memory, not the taxonomy's durable Memory bucket; neither value authorizes durable memory."},
     "durable_memory": {"type": "boolean", "const": false, "description": "Explicitly confirms that this session shape creates no durable Memory."},
     "sanitization": {"$ref": "#/$defs/sanitization"}
   },
