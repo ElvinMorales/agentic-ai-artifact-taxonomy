@@ -66,9 +66,5 @@ checks during development.
 
 ## Branch and PR preference
 
-Use short documentation branches and focused pull requests. For v0.2.0
-source-alignment work, prefer:
-
-```bash
-docs/v0.2-source-alignment
-```
+Use short, focused documentation branches. Keep one concern per pull request,
+and run the validation suite before requesting review.

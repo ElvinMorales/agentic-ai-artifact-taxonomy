@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Maintainer Guidance
+
+- Added a `CLAUDE.md` pointer file that defers to `AGENTS.md` for repository,
+  public-safety, and editing rules without duplicating them.
+- Replaced the `AGENTS.md` branch and PR guidance, which referenced completed
+  `v0.2.0` source-alignment work, with durable, version-independent guidance.
+
 ### Release Governance
 
 - Reconciled the published `v0.2.1` release across README status, changelog,
