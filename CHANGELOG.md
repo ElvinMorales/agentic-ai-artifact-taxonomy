@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### CI Metadata
+
+- Renamed the CI workflow from "Markdown lint" to "Validation suite" to match
+  its actual scope, which runs the full `npm run validate` suite. Left the
+  `markdown-lint` job name unchanged because required-status-check
+  configuration on `main` could not be verified from this environment.
+
 ### Release Governance
 
 - Reconciled the published `v0.2.1` release across README status, changelog,
