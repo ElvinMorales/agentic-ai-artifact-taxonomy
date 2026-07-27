@@ -36,6 +36,23 @@ npm run validate:skills
 npm run check:links
 ```
 
+## Lockfile regeneration
+
+`npm ci` is the safe install path: it installs from the committed lockfile
+and does not rewrite `package-lock.json`.
+
+Commands that regenerate the lockfile (`npm install`, `npm update`, `npm audit
+fix`, and similar) resolve packages through whatever registry the local
+environment is configured to use. In an environment that proxies npm through a
+private registry mirror, this can rewrite `resolved` URLs to a non-public
+host, which introduces environment-specific detail into a public repository.
+
+Before committing a lockfile change, confirm every `resolved` URL points at
+the public npm registry and that each integrity hash matches the public
+registry's copy of the package. CI is the authoritative check, since it
+installs from the public registry. Prefer regenerating the lockfile from an
+environment with direct public registry access when one is available.
+
 ## Version-change surfaces
 
 A version change moves these together: `CHANGELOG.md`, the matching release
