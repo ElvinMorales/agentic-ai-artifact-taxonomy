@@ -17,9 +17,10 @@ All notable changes to this project will be documented in this file.
   public-safety, and editing rules without duplicating them.
 - Replaced the `AGENTS.md` branch and PR guidance, which referenced completed
   `v0.2.0` source-alignment work, with durable, version-independent guidance.
-- Added a `CLAUDE.md` guardrail on lockfile regeneration, describing the
-  risk of a locally proxied npm registry rewriting `resolved` URLs to a
-  non-public host, and the checks to run before committing a lockfile change.
+- Added a lockfile regeneration guardrail to `AGENTS.md`'s validation guidance,
+  describing the risk of a locally proxied npm registry rewriting `resolved`
+  URLs to a non-public host, and the checks to run before committing a
+  lockfile change, with a `CLAUDE.md` pointer to it.
 
 ### Release Governance
 
