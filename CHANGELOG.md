@@ -11,6 +11,17 @@ All notable changes to this project will be documented in this file.
   (GHSA-52cp-r559-cp3m), following the existing `overrides` precedent for
   Markdown lint's transitive dependencies.
 
+### Maintainer Guidance
+
+- Added a `CLAUDE.md` pointer file that defers to `AGENTS.md` for repository,
+  public-safety, and editing rules without duplicating them.
+- Replaced the `AGENTS.md` branch and PR guidance, which referenced completed
+  `v0.2.0` source-alignment work, with durable, version-independent guidance.
+- Added a lockfile regeneration guardrail to `AGENTS.md`'s validation guidance,
+  describing the risk of a locally proxied npm registry rewriting `resolved`
+  URLs to a non-public host, and the checks to run before committing a
+  lockfile change, with a `CLAUDE.md` pointer to it.
+
 ### Release Governance
 
 - Reconciled the published `v0.2.1` release across README status, changelog,
