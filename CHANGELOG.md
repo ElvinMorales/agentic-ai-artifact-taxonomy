@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Dependency Hygiene
+
+- Bumped the `js-yaml` transitive override from `4.2.0` to `4.3.0`, the
+  patched version for a high-severity quadratic-CPU-consumption advisory
+  (GHSA-52cp-r559-cp3m), following the existing `overrides` precedent for
+  Markdown lint's transitive dependencies.
+
 ### Maintainer Guidance
 
 - Added a `CLAUDE.md` pointer file that defers to `AGENTS.md` for repository,
