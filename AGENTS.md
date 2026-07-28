@@ -64,11 +64,24 @@ Targeted scripts such as `npm run lint:md`, `npm run validate:json`,
 `npm run validate:schemas`, and `npm run check:links` are optional narrower
 checks during development.
 
+### Lockfile regeneration
+
+`npm ci` is the safe install path: it installs from the committed lockfile
+and does not rewrite `package-lock.json`.
+
+Commands that regenerate the lockfile (`npm install`, `npm update`, `npm audit
+fix`, and similar) resolve packages through whatever registry the local
+environment is configured to use. In an environment that proxies npm through a
+private registry mirror, this can rewrite `resolved` URLs to a non-public
+host, which introduces environment-specific detail into a public repository.
+
+Before committing a lockfile change, confirm every `resolved` URL points at
+the public npm registry and that each integrity hash matches the public
+registry's copy of the package. CI is the authoritative check, since it
+installs from the public registry. Prefer regenerating the lockfile from an
+environment with direct public registry access when one is available.
+
 ## Branch and PR preference
 
-Use short documentation branches and focused pull requests. For v0.2.0
-source-alignment work, prefer:
-
-```bash
-docs/v0.2-source-alignment
-```
+Use short, focused documentation branches. Keep one concern per pull request,
+and run the validation suite before requesting review.
