@@ -6,10 +6,13 @@ All notable changes to this project will be documented in this file.
 
 ### CI Metadata
 
-- Renamed the CI workflow from "Markdown lint" to "Validation suite" to match
-  its actual scope, which runs the full `npm run validate` suite. Left the
-  `markdown-lint` job name unchanged because required-status-check
-  configuration on `main` could not be verified from this environment.
+- Renamed the CI workflow's display name from "Markdown lint" to "Validation
+  suite" to match its actual scope, which runs the full `npm run validate`
+  suite. The workflow file and the `markdown-lint` job name are unchanged:
+  branch protection on `main` lists `Markdown lint` as a required status
+  check, derived from the job name, so the job name is intentionally left
+  unchanged and any rename must be coordinated with the protection rule
+  first.
 
 ### Dependency Hygiene
 
