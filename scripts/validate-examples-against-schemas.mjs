@@ -37,6 +37,11 @@ const validations = [
     readExample: readJson,
   },
   {
+    schemaFile: "templates/output.schema.json",
+    exampleFile: "examples/output-example.json",
+    readExample: readJson,
+  },
+  {
     schemaFile: "schemas/approval.schema.json",
     exampleFile: "examples/approval-state-example.json",
     readExample: readJson,
