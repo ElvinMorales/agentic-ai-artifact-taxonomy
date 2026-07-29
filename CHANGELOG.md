@@ -79,6 +79,11 @@ All notable changes to this project will be documented in this file.
   own data.
 - Added a second synthetic approval example demonstrating the expire path,
   with an empty decision history and no continuation reference.
+- Added an approval and consent mapping document that defines five generic
+  artifact classes (approval policy, pending approval record, continuation
+  token, approval decision record, and approval surface), maps them across
+  MCP, LangGraph, Agent Skills, OpenAI Codex, GitHub Copilot cloud agent, and
+  Claude Code, and analyzes where the pending item lives in each framework.
 - Documented, in `AGENTS.md`, that the local link checker resolves targets
   from Git's tracked-file list, so a newly added file must be staged before
   link validation will see it.

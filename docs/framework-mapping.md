@@ -63,6 +63,11 @@ buckets and for distinct sub-surfaces within combined buckets.
 | Runtime and deployment | [`templates/RUNTIME.md`](../templates/RUNTIME.md) | Hosted agent settings, model/runtime configuration, environment variables, deployment manifests, or SDK app configuration. | Claude Code settings, API runtime configuration, tool permission settings, or deployment environment docs. | MCP server configuration, transports, client settings, and deployment manifests. | LangGraph deployment configuration, checkpointer setup, runtime stores, and LangSmith project configuration. | Keep environment assumptions separate from behavior instructions. Commit examples only when they are generic and secret-free. |
 | Learning and iteration | [`templates/ITERATION.md`](../templates/ITERATION.md) | Release notes, eval updates, prompt revisions, monitoring follow-ups, or agent improvement notes. | Skill revisions, project instruction updates, evaluation notes, and sanitized field observations. | MCP server changelogs, tool/resource version notes, and compatibility notes. | LangSmith experiment comparisons, dataset revisions, evaluator changes, and regression notes. | Capture lessons without exposing private runtime data, customer content, or unsanitized traces. |
 
+See [Approval and consent mapping](approval-and-consent-mapping.md) for how
+approval policies, pending records, continuation tokens, and decision records
+map across frameworks as Guardrails and governance, State, and Prompts and
+interfaces artifacts.
+
 ## Mapping Guidance
 
 Use framework mappings to explain where a generic artifact may live in a

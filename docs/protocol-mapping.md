@@ -73,6 +73,10 @@ model, evaluation system, or deployment standard.
 | Error reporting and logging | Evaluation and observability; State; Runtime and deployment | Map error shapes and logging configuration to observability and runtime operations. Logs and error payloads from real runs are runtime records, not design-time definitions. |
 | Authorization, security, consent, and data privacy | Guardrails and governance; Runtime and deployment | Document authorization design, user consent, data boundaries, tool safety, and sampling controls. Publish configuration shapes or policies only when sanitized; never publish live tokens, credentials, or private authorization details. |
 
+See [Approval and consent mapping](approval-and-consent-mapping.md) for a
+detailed breakdown of how MCP sampling, elicitation, and the draft
+multi-round-trip pattern relate to the approval and consent lifecycle.
+
 ### MCP Coverage Boundaries
 
 MCP surfaces may carry identity or operating guidance through prompt, resource,
