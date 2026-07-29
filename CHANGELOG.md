@@ -68,6 +68,13 @@ All notable changes to this project will be documented in this file.
 - Added a synthetic Strategic Mirror agent map across the existing taxonomy
   without introducing a new bucket or framework-specific contract.
 
+### Approval and Consent Artifacts
+
+- Added a dedicated approval-artifact schema and a synthetic example covering
+  the full approval lifecycle named in issue #56 (approve, edit, reject,
+  cancel, expire, resume, and failed execution), separate from the existing
+  state schema and its `pending_actions` status enum.
+
 ### Validation
 
 - Added repository-native Agent Skills package validation and behavior cases
@@ -75,6 +82,8 @@ All notable changes to this project will be documented in this file.
   boundaries, and imported-package supply-chain review.
 - Added schema-instance validation for three UI harness examples and synthetic
   behavior cases covering state, authority, review, and export boundaries.
+- Added schema-instance validation for the new synthetic approval-lifecycle
+  example against the new approval schema.
 
 ## [0.2.1] - 2026-06-20
 

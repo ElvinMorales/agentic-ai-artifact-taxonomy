@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/approval.schema.json",
+  "title": "Public-Safe Approval Artifact",
+  "description": "Optional educational schema for a sanitized approval-and-consent lifecycle record covering a pending approval request, its decision history, and a continuation reference. It is not a production approval workflow engine.",
+  "$comment": "An approval record separates a pending request, its decision history, and any continuation reference from durable memory and full execution state. Public examples must omit raw prompts, messages, tool payloads, secrets, credentials, private paths, and real identities; decision-makers are represented only by synthetic roles or pseudonymous references.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "approval_id",
+    "policy_reference",
+    "request",
+    "decisions",
+    "updated_at",
+    "sanitization"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0-example",
+      "description": "Version of this synthetic example shape, not a runtime protocol version."
+    },
+    "approval_id": {
+      "type": "string",
+      "pattern": "^approval_example_[0-9]+$"
+    },
+    "policy_reference": {
+      "type": "string",
+      "pattern": "^synthetic://",
+      "description": "Reference to the governing approval policy, not the policy content itself."
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_action",
+        "requested_by",
+        "status"
+      ],
+      "properties": {
+        "requested_action": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "description": "Sanitized summary of what is being requested, not raw input or message content."
+        },
+        "requested_by": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "role"
+          ],
+          "properties": {
+            "role": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Synthetic role of the requesting agent or run, never a real identity."
+            },
+            "run_reference": {
+              "type": "string",
+              "pattern": "^run_example_[0-9]+$"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved",
+            "edited",
+            "rejected",
+            "cancelled",
+            "expired",
+            "resumed",
+            "execution_failed"
+          ],
+          "description": "Current lifecycle status of the approval record."
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "decision_id",
+          "decision",
+          "decided_by",
+          "decided_at"
+        ],
+        "properties": {
+          "decision_id": {
+            "type": "string",
+            "pattern": "^decision_example_[0-9]+$"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "approve",
+              "edit",
+              "reject",
+              "cancel",
+              "resume"
+            ]
+          },
+          "decided_by": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "role"
+            ],
+            "properties": {
+              "role": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Synthetic role of the decider, never a real name or email."
+              },
+              "pseudonymous_reference": {
+                "type": "string",
+                "pattern": "^reviewer_example_[0-9]+$"
+              }
+            }
+          },
+          "decided_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "description": "Optional sanitized rationale for the decision, not raw message content."
+          }
+        }
+      }
+    },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "continuation_reference"
+      ],
+      "properties": {
+        "continuation_reference": {
+          "type": "string",
+          "pattern": "^synthetic://",
+          "description": "Opaque reference used to resume execution; a reference, not payload data."
+        }
+      }
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "is_synthetic",
+        "excluded_fields",
+        "note"
+      ],
+      "properties": {
+        "is_synthetic": {
+          "type": "boolean",
+          "const": true
+        },
+        "excluded_fields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "raw_prompt_history",
+              "user_messages",
+              "tool_outputs",
+              "secrets",
+              "private_paths",
+              "memory_contents",
+              "final_outputs",
+              "full_traces",
+              "raw_logs"
+            ]
+          }
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    }
+  }
+}

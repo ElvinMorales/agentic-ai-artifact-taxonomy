@@ -36,6 +36,11 @@ const validations = [
     exampleFile: "examples/ui-harness/artifact-example.json",
     readExample: readJson,
   },
+  {
+    schemaFile: "schemas/approval.schema.json",
+    exampleFile: "examples/approval-state-example.json",
+    readExample: readJson,
+  },
 ];
 
 // observability/trace-schema.json is reference-only until a future public-safe
