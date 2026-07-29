@@ -64,6 +64,14 @@ Targeted scripts such as `npm run lint:md`, `npm run validate:json`,
 `npm run validate:schemas`, and `npm run check:links` are optional narrower
 checks during development.
 
+### Local link checking and new files
+
+The local link checker resolves valid targets from Git's tracked-file list, not
+from the filesystem. Stage a newly added file before running
+`npm run check:links` or the full `npm run validate` suite, or a link that
+points at it will fail as a missing target even though the file exists on
+disk.
+
 ### Lockfile regeneration
 
 `npm ci` is the safe install path: it installs from the committed lockfile

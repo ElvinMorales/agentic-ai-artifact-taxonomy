@@ -74,6 +74,14 @@ All notable changes to this project will be documented in this file.
   the full approval lifecycle named in issue #56 (approve, edit, reject,
   cancel, expire, resume, and failed execution), separate from the existing
   state schema and its `pending_actions` status enum.
+- Added required `requested_at` and optional `expires_at` request time fields
+  to the approval schema, so an expired approval record is auditable from its
+  own data.
+- Added a second synthetic approval example demonstrating the expire path,
+  with an empty decision history and no continuation reference.
+- Documented, in `AGENTS.md`, that the local link checker resolves targets
+  from Git's tracked-file list, so a newly added file must be staged before
+  link validation will see it.
 
 ### Validation
 
@@ -84,6 +92,8 @@ All notable changes to this project will be documented in this file.
   behavior cases covering state, authority, review, and export boundaries.
 - Added schema-instance validation for the new synthetic approval-lifecycle
   example against the new approval schema.
+- Added schema-instance validation for a second synthetic approval example
+  covering the expired-request path.
 
 ## [0.2.1] - 2026-06-20
 

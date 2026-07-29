@@ -36,7 +36,8 @@
       "required": [
         "requested_action",
         "requested_by",
-        "status"
+        "status",
+        "requested_at"
       ],
       "properties": {
         "requested_action": {
@@ -44,6 +45,16 @@
           "minLength": 1,
           "maxLength": 240,
           "description": "Sanitized summary of what is being requested, not raw input or message content."
+        },
+        "requested_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the approval request was raised."
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the pending request ceases to be actionable, if it expires."
         },
         "requested_by": {
           "type": "object",
