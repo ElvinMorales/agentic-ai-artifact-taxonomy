@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1.0-example",
+  "approval_id": "approval_example_002",
+  "policy_reference": "synthetic://policies/policy_example_002",
+  "request": {
+    "requested_action": "Archive a synthetic batch of low-priority triage records after a quiet period.",
+    "requested_by": {
+      "role": "record-triage-agent",
+      "run_reference": "run_example_002"
+    },
+    "status": "expired",
+    "requested_at": "2026-06-12T09:00:00Z",
+    "expires_at": "2026-06-13T09:00:00Z"
+  },
+  "decisions": [],
+  "updated_at": "2026-06-13T09:05:00Z",
+  "sanitization": {
+    "is_synthetic": true,
+    "excluded_fields": [
+      "raw_prompt_history",
+      "user_messages",
+      "tool_outputs",
+      "secrets",
+      "private_paths"
+    ],
+    "note": "Sanitized example shape only; this is not a live approval workflow export."
+  }
+}

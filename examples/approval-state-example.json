@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1.0-example",
+  "approval_id": "approval_example_001",
+  "policy_reference": "synthetic://policies/policy_example_001",
+  "request": {
+    "requested_action": "Send a synthetic follow-up notice to a record-triage queue after edited routing criteria.",
+    "requested_by": {
+      "role": "record-triage-agent",
+      "run_reference": "run_example_001"
+    },
+    "status": "pending",
+    "requested_at": "2026-06-10T13:30:00Z",
+    "expires_at": "2026-06-11T13:30:00Z"
+  },
+  "decisions": [
+    {
+      "decision_id": "decision_example_001",
+      "decision": "edit",
+      "decided_by": {
+        "role": "queue-reviewer",
+        "pseudonymous_reference": "reviewer_example_001"
+      },
+      "decided_at": "2026-06-10T14:00:00Z",
+      "rationale": "Narrowed the routing criteria before re-submitting for approval."
+    }
+  ],
+  "continuation": {
+    "continuation_reference": "synthetic://continuations/continuation_example_001"
+  },
+  "updated_at": "2026-06-10T14:05:00Z",
+  "sanitization": {
+    "is_synthetic": true,
+    "excluded_fields": [
+      "raw_prompt_history",
+      "user_messages",
+      "tool_outputs",
+      "secrets",
+      "private_paths"
+    ],
+    "note": "Sanitized example shape only; this is not a live approval workflow export."
+  }
+}

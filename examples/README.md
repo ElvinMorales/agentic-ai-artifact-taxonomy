@@ -20,6 +20,8 @@ state, internal endpoints, or employer-specific material in a public repo.
 | [handoffs.yaml](handoffs.yaml) | Planning and orchestration; State; Guardrails and governance | A minimized handoff contract with authority and failure boundaries |
 | [memory-example.md](memory-example.md) | Memory; Guardrails and governance | Allowed and disallowed durable memory classes with synthetic entries |
 | [state-example.json](state-example.json) | State; Planning and orchestration | A sanitized run snapshot with pending work and handoff status |
+| [approval-state-example.json](approval-state-example.json) | Guardrails and governance; State | A sanitized approval lifecycle record with a pending request, a decision, and a continuation reference |
+| [approval-expired-example.json](approval-expired-example.json) | Guardrails and governance; State | A sanitized approval lifecycle record showing an expired request with no decisions and no continuation |
 | [output-example.json](output-example.json) | Outputs and schemas | A small structured result compatible with the output schema template |
 | [../evals/cases.jsonl](../evals/cases.jsonl) | Evaluation and observability | Four synthetic behavior checks for key taxonomy boundaries |
 | [../observability/trace-schema.json](../observability/trace-schema.json) | Evaluation and observability; State | A schema for sanitized trace-like events, not a production trace |

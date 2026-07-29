@@ -36,6 +36,16 @@ const validations = [
     exampleFile: "examples/ui-harness/artifact-example.json",
     readExample: readJson,
   },
+  {
+    schemaFile: "schemas/approval.schema.json",
+    exampleFile: "examples/approval-state-example.json",
+    readExample: readJson,
+  },
+  {
+    schemaFile: "schemas/approval.schema.json",
+    exampleFile: "examples/approval-expired-example.json",
+    readExample: readJson,
+  },
 ];
 
 // observability/trace-schema.json is reference-only until a future public-safe
@@ -43,14 +53,17 @@ const validations = [
 
 const errors = [];
 let validatedCount = 0;
+const compiledValidators = new Map();
 
 for (const validation of validations) {
   const { schemaFile, exampleFile, readExample } = validation;
 
   try {
-    const schema = readJson(schemaFile);
     const example = readExample(exampleFile);
-    const validate = ajv.compile(schema);
+    if (!compiledValidators.has(schemaFile)) {
+      compiledValidators.set(schemaFile, ajv.compile(readJson(schemaFile)));
+    }
+    const validate = compiledValidators.get(schemaFile);
 
     if (!validate(example)) {
       errors.push(...formatErrors(exampleFile, schemaFile, validate.errors ?? []));
