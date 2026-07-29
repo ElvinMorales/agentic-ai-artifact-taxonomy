@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-29
+
 ### CI Metadata
 
 - Renamed the CI workflow's display name from "Markdown lint" to "Validation

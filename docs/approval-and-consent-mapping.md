@@ -391,6 +391,7 @@ This document does not cover:
 ## Related Taxonomy Guides
 
 - [Canonical taxonomy](taxonomy.md)
+- [Agent Skills standard mapping](agent-skills-standard-mapping.md)
 - [Protocol mapping](protocol-mapping.md)
 - [Framework mapping](framework-mapping.md)
 - [Memory vs State](memory-vs-state.md)

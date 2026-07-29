@@ -186,6 +186,7 @@ safety finding or permission grant.
 ## Related Taxonomy Guides
 
 - [Canonical taxonomy](taxonomy.md)
+- [Approval and consent mapping](approval-and-consent-mapping.md)
 - [Framework mapping](framework-mapping.md)
 - [Naming conventions](naming-conventions.md)
 - [Artifact lifecycle](artifact-lifecycle.md)

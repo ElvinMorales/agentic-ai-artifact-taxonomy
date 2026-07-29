@@ -75,9 +75,7 @@ metadata changes.
 
 ## Current Application
 
-The latest published release is `v0.2.1`. The additive UI harness and Agent
-Skills scope merged afterward supports `v0.3.0` as the recommended next
-release candidate. `v0.3.0` has not been tagged or published.
+The latest published release is `v0.3.0`.
 
 This section may be updated during future approved release work.
 
@@ -91,5 +89,6 @@ unsanitized runtime data.
 
 - [Changelog](../CHANGELOG.md)
 - [Public release checklist](public-release-checklist.md)
+- [v0.3.0 release notes](release-notes-v0.3.0.md)
 - [v0.2.1 release notes](release-notes-v0.2.1.md)
 - [Public-safety guidance](public-safety.md)

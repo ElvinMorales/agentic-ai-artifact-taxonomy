@@ -101,6 +101,9 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/agent-skills-standard-mapping.md](docs/agent-skills-standard-mapping.md)
   to map portable Agent Skills packages to Capability modules while preserving
   skill, tool, vendor-extension, permission, and supply-chain boundaries.
+- Use [docs/approval-and-consent-mapping.md](docs/approval-and-consent-mapping.md)
+  to map approval, consent, interruption, and continuation artifacts across
+  frameworks without changing the stable taxonomy.
 - Use [docs/framework-mapping.md](docs/framework-mapping.md) to translate generic artifact classes into framework-specific surfaces.
 - Use [docs/protocol-mapping.md](docs/protocol-mapping.md) to map MCP and A2A interoperability surfaces to the taxonomy.
 - Use [docs/mcp-connector-safety-checklist.md](docs/mcp-connector-safety-checklist.md)
@@ -108,10 +111,12 @@ protocol without changing the stable top-level taxonomy.
   patterns, or runtime-adjacent examples.
 - Use [examples/README.md](examples/README.md) to browse small synthetic examples for protocol discovery, handoffs, memory, state, outputs, evals, and traces.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
-- Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the
+- Use [docs/release-notes-v0.3.0.md](docs/release-notes-v0.3.0.md) for the
   latest published release notes.
 - Use [docs/versioning-policy.md](docs/versioning-policy.md) for the repository
   release and private workspace version policy.
+- Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the
+  historical v0.2.1 release notes.
 - Use [docs/release-notes-v0.2.0.md](docs/release-notes-v0.2.0.md) for the
   historical v0.2.0 release notes.
 - Use [docs/release-notes-v0.1.0.md](docs/release-notes-v0.1.0.md) for the historical public foundation release notes.
@@ -157,19 +162,14 @@ temporary network or website failures do not block local work or CI.
 
 ## Status
 
-The latest published release is `v0.2.1`, a patch-level maintenance and
-connected-example release published on June 20, 2026.
+The latest published release is `v0.3.0`, a minor release adding UI harness
+artifacts, Agent Skills standard mapping, approval and consent artifacts, and
+connector safety guidance, published on July 29, 2026.
 
-The [v0.2.1 release notes](docs/release-notes-v0.2.1.md) summarize validation
-hardening, dependency hygiene, and the connected record-triage example pack.
-
-Work merged after `v0.2.1`, including UI harness artifacts and the Agent Skills
-standard mapping, remains under [Unreleased](CHANGELOG.md). Based on that
-additive scope, `v0.3.0` is the recommended next release candidate; it has not
-been tagged or published.
+The [v0.3.0 release notes](docs/release-notes-v0.3.0.md) summarize what
+changed. The stable 14-bucket taxonomy remains unchanged — no buckets were
+added, removed, or renamed.
 
 Repository tags and GitHub Releases define the public project version. The npm
 workspace remains private and follows the
 [versioning policy](docs/versioning-policy.md).
-
-The stable 14-bucket taxonomy remains unchanged.
