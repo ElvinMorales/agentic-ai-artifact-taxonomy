@@ -10,6 +10,11 @@ All notable changes to this project will be documented in this file.
   as a schema-instance validation pair, closing a coverage gap where this
   schema/example pair was the only one not checked by
   `npm run validate:schemas`.
+- Added an advisory, network-dependent `npm run check:external-links` command
+  that reports unreachable, redirected, and inconclusive external URLs in
+  tracked Markdown files. It always exits `0` and is intentionally not part
+  of `npm run validate`. Added a corresponding review step to
+  `docs/public-release-checklist.md`.
 
 ### Contributor Guidance
 

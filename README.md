@@ -160,6 +160,17 @@ The link check validates relative links to tracked repository files and simple
 Markdown heading anchors. It intentionally skips external URL reachability so
 temporary network or website failures do not block local work or CI.
 
+An optional, advisory, network-dependent command reports external URL health
+separately and is not part of `npm run validate`:
+
+```bash
+npm run check:external-links
+```
+
+It reports unreachable, redirected, and inconclusive (403/429) external URLs
+in tracked Markdown files, always exits `0`, and requires human review of its
+findings rather than automatic action.
+
 ## Status
 
 The latest published release is `v0.3.0`, a minor release adding UI harness
