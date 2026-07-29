@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Validation Coverage
+
+- Registered `templates/output.schema.json` and `examples/output-example.json`
+  as a schema-instance validation pair, closing a coverage gap where this
+  schema/example pair was the only one not checked by
+  `npm run validate:schemas`.
+
 ## [0.3.0] - 2026-07-29
 
 ### CI Metadata
