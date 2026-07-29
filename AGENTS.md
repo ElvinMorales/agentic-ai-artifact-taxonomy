@@ -47,6 +47,10 @@ employer, client, or platform endorsement.
 - Prefer plain language over hype.
 - Use Markdown tables only when they make comparison easier.
 - Keep examples generic and public-safe.
+- `MD024` (no-duplicate-heading) is active and file-wide: no two headings in
+  the same file may share text regardless of nesting depth. This constrains
+  changelog section names and documents whose subsections mirror their parent
+  headings.
 
 ## Validation
 
@@ -89,7 +93,22 @@ registry's copy of the package. CI is the authoritative check, since it
 installs from the public registry. Prefer regenerating the lockfile from an
 environment with direct public registry access when one is available.
 
+### CI job name
+
+The required status check on `main` derives its name from the `name:` field of
+the job in `.github/workflows/markdown-lint.yml`. Renaming the job or the
+workflow file blocks every pull request until the branch-protection rule is
+updated to match. Do not rename either without coordinating the protection-rule
+change first.
+
 ## Branch and PR preference
 
 Use short, focused documentation branches. Keep one concern per pull request,
 and run the validation suite before requesting review.
+
+When multiple branches edit `CHANGELOG.md`, entries inserted under
+`## [Unreleased]` will conflict on merge. Resolve by keeping every entry from
+both sides; never drop a changelog line to eliminate a conflict. Because branch
+protection requires the merging branch to be up-to-date with `main`, rebase or
+merge from `main` inside the branch rather than deferring resolution to merge
+time.

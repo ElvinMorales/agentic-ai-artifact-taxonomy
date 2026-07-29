@@ -11,6 +11,18 @@ All notable changes to this project will be documented in this file.
   schema/example pair was the only one not checked by
   `npm run validate:schemas`.
 
+### Contributor Guidance
+
+- Documented that the CI job name is a required status check pinned by branch
+  protection and must not be renamed without a coordinated rule update
+  (`AGENTS.md`).
+- Documented the `MD024` file-wide constraint on duplicate headings
+  (`AGENTS.md`).
+- Documented that concurrent changelog entries conflict on merge and must be
+  resolved by keeping all entries (`AGENTS.md`).
+- Documented branch-protection requirements (pull request, up-to-date branch)
+  and the GitHub CLI fallback (`CONTRIBUTING.md`).
+
 ## [0.3.0] - 2026-07-29
 
 ### CI Metadata
