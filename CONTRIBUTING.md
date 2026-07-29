@@ -33,3 +33,10 @@ Use synthetic examples whenever possible.
 ## Pull requests
 
 Keep pull requests focused. Include a short summary, the taxonomy buckets affected, and the validation performed. Pull requests should pass Markdown lint before review.
+
+Branch protection on `main` requires a passing status check, a pull request
+(direct pushes are rejected), and the branch to be up-to-date with `main`
+before merging. Update your branch from `main` if it falls behind.
+
+If the GitHub CLI (`gh`) is unavailable in your environment, push the branch
+with `git push` and open the pull request from the repository's compare URL.
