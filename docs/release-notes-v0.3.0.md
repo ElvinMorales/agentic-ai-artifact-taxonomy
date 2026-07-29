@@ -9,7 +9,7 @@ guidance — while preserving the stable 14-bucket taxonomy model.
 
 No taxonomy buckets were added, removed, renamed, or reorganized.
 
-This release was tagged at `<commit>` and published on July 29, 2026.
+These notes describe the tagged `v0.3.0` documentation release, published on July 29, 2026.
 
 ## What Changed
 
