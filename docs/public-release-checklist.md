@@ -72,6 +72,9 @@ Use this checklist before tagging or announcing a public release or update.
   `npm run check:links`.
 - Confirm the local link check passes. External URL reachability is
   intentionally excluded to avoid network-dependent release failures.
+- Run `npm run check:external-links` and review its findings before tagging a
+  release. This check is advisory: it always exits `0`, and an inconclusive
+  (403/429) result is not a release blocker on its own.
 - Review changed files for public-safe language before opening a pull request.
 - Apply the [MCP and connector safety review checklist](mcp-connector-safety-checklist.md)
   to connector-facing documentation, adapters, and runtime-adjacent examples.
