@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### MCP Citation Migration
+
+- Migrated all MCP citations from draft and `2025-06-18` revision paths to the
+  published `2026-07-28` specification. The `2026-07-28` revision is now
+  normative for this repository's protocol mappings.
+- Pinned the `protocol-mapping.md` MCP reference from the `/specification/latest`
+  moving pointer to the versioned `/specification/2026-07-28` path.
+- Replaced the Coverage Boundaries statement describing MRTR material as
+  pre-finalization with the finalized-state equivalent.
+- Replaced the Coverage Boundaries statement omitting the
+  Roots/Sampling/Logging deprecation as unconfirmed with a statement noting
+  the deprecation is primary-sourced and that lifecycle marking lands in a
+  separate change (issue #68).
+
 ### Validation Coverage
 
 - Registered `templates/output.schema.json` and `examples/output-example.json`

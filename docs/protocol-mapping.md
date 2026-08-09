@@ -213,6 +213,6 @@ for detailed authority, data, action, persistence, runtime, and release review.
 
 ## Official References
 
-- [MCP specification, latest release](https://modelcontextprotocol.io/specification/latest)
+- [MCP specification (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28)
 - [A2A specification, latest release](https://a2a-protocol.org/latest/specification/)
 - [A2A specification source](https://github.com/a2aproject/A2A/blob/main/docs/specification.md)
