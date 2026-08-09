@@ -25,8 +25,8 @@ Connector-facing artifacts include:
 - Resource catalogs, source snapshot definitions, and retrieval policies.
 - Prompt definitions, input contracts, and elicitation flows.
 - Tool and action schemas, permission rules, and approval policies.
-- Runtime roots, transports, sessions, and deployment configuration.
-- Sampling or other nested model-call policies.
+- Runtime roots (deprecated), transports, sessions, and deployment configuration.
+- Sampling (deprecated) or other nested model-call policies.
 - Authorization, consent, credential, logging, trace, and error policies.
 
 Protocol-specific objects map to the stable taxonomy. They do not create new
@@ -39,8 +39,8 @@ top-level buckets or replace framework-neutral artifact classes.
 | Resources and source snapshots | Knowledge and resources; Guardrails and governance | Provenance, freshness, access, allowed content, and snapshot sanitization |
 | Prompts and elicitation flows | Prompts and interfaces; Planning and orchestration; Guardrails and governance | Input purpose, validation, sensitive fields, consent, and pause or refusal behavior |
 | Tools and actions | Tools; Outputs and schemas; Guardrails and governance | Authority, inputs, outputs, side effects, approvals, failure handling, and idempotency |
-| Roots and runtime boundaries | Runtime and deployment; Guardrails and governance | Allowed locations, isolation, least privilege, and private path disclosure |
-| Sampling and nested model calls | Planning and orchestration; Runtime and deployment; Guardrails and governance | User control, prompt and result visibility, model constraints, cost, and approval |
+| Roots and runtime boundaries (deprecated) | Runtime and deployment; Guardrails and governance | Allowed locations, isolation, least privilege, and private path disclosure. Roots express declared scope; enforcement relies on client-side permissions, path validation, allowlists, and sandboxing. |
+| Sampling and nested model calls (deprecated) | Planning and orchestration; Runtime and deployment; Guardrails and governance | User control, prompt and result visibility, model constraints, cost, and approval |
 | Logs, traces, and errors | Evaluation and observability; State; Runtime and deployment | Redaction, audience, retention, correlation, and safe failure details |
 | Authorization, consent, and credentials | Guardrails and governance; Runtime and deployment | Identity, scopes, consent, storage, rotation, revocation, and secret handling |
 
@@ -117,7 +117,10 @@ State snapshots, raw traces, private logs, or other private runtime data.
 
 - [ ] Separate public configuration shapes from private runtime values.
 - [ ] Keep credentials in an approved secret store and out of source control.
-- [ ] Constrain roots, transports, network access, and environment privileges.
+- [ ] Constrain file and network access through filesystem permissions,
+      allowlists, path validation, sandboxing, and transport-level controls.
+      Declared roots express intended scope but are not an enforcement mechanism;
+      actual confinement relies on the preceding controls.
 - [ ] Document compatibility, timeouts, cancellation, health, and shutdown.
 - [ ] Define credential rotation, revocation, and connector disable procedures.
 
@@ -160,6 +163,8 @@ fixtures.
 ## Related Docs
 
 - [Protocol mapping](protocol-mapping.md)
+- [SEP-2577: Deprecate Roots, Sampling, and Logging](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging)
+- [MCP feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle)
 - [Artifact lifecycle](artifact-lifecycle.md)
 - [Memory vs State](memory-vs-state.md)
 - [Public safety](public-safety.md)

@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### MCP Lifecycle and Enforcement Corrections
+
+- Corrected the Roots row in `protocol-mapping.md`: removed the
+  "access-control boundary" framing and reframed roots as declared scope
+  guidance that servers are expected to honor but that the protocol does not
+  enforce, with actual enforcement attributed to client-side permissions, path
+  validation, allowlists, and sandboxing.
+- Marked Roots, Sampling, and protocol-level Logging as deprecated
+  (SEP-2577, `2026-07-28` revision) in `protocol-mapping.md`,
+  `mcp-connector-safety-checklist.md`, and `approval-and-consent-mapping.md`,
+  with a consistent pattern distinguishing lifecycle status, backward
+  compatibility, removal eligibility, and forward guidance.
+- Reworded the connector checklist's runtime-and-deployment constraint item to
+  name filesystem permissions, allowlists, path validation, sandboxing, and
+  transport controls as the enforcement mechanisms, with declared roots as
+  scope context rather than a control.
+- Updated the `approval-and-consent-mapping.md` Coverage Boundaries entry from
+  "tracked in issue #68 and lands in a separate change" to reflect the change
+  as landed.
+- Added SEP-2577, the feature lifecycle policy, and the deprecated-features
+  registry to the Official References of affected documents.
+
 ### MCP Citation Migration
 
 - Migrated all MCP citations from draft and `2025-06-18` revision paths to the
