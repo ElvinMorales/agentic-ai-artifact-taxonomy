@@ -138,24 +138,24 @@ classes. The **Where the pending item lives** column is this document's
 primary analytical contribution: it determines whether the mechanism produces a
 durable artifact that can be enumerated, audited, and governed after the fact.
 
-### MCP (2025-06-18 normative revision)
+### MCP (2026-07-28 normative revision)
 
 | Mechanism | Where the pending item lives | Primary bucket | Implementation note |
 | --- | --- | --- | --- |
-| [Sampling](https://modelcontextprotocol.io/specification/2025-06-18/client/sampling) human-in-the-loop review | Transport message (request/response pair between server and client) | Planning and orchestration; Guardrails and governance | The server sends a `sampling/createMessage` request; the client may prompt the user before forwarding to the model. The pending state exists only in the transport session. No durable approval record is produced unless the client persists one. |
+| [Sampling](https://modelcontextprotocol.io/specification/2026-07-28/client/sampling) human-in-the-loop review | Transport message (request/response pair between server and client) | Planning and orchestration; Guardrails and governance | The server includes a `sampling/createMessage` request inside an `InputRequiredResult` delivered via the [MRTR pattern](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr); the client may prompt the user before forwarding to the model. The pending state exists only in the transport session. No durable approval record is produced unless the client persists one. |
 | Client-side tool-call approval | Runtime session (client implementation-specific) | Guardrails and governance | MCP specifies that clients "should" confirm tool calls with the user. The mechanism is entirely client-side; neither the protocol nor the server retains the decision. |
-| [Security best practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) | Design-time guidance (no runtime record) | Guardrails and governance | Describes confused-deputy, SSRF, and state-handle risks. The best practices document is itself an approval policy artifact. |
+| [Security best practices](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices) | Design-time guidance (no runtime record) | Guardrails and governance | Describes confused-deputy, SSRF, and state-handle risks. The best practices document is itself an approval policy artifact. |
 
-#### MCP draft revision (Multi-Round-Trip Requests)
+#### MCP Multi-Round-Trip Requests (MRTR)
 
-The [MRTR pattern](https://modelcontextprotocol.io/specification/draft/basic/patterns/mrtr)
+The [MRTR pattern](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr)
 ([SEP-2322](https://modelcontextprotocol.io/seps/2322-MRTR)) introduces a
 stateless multi-round-trip mechanism: a server returns `InputRequiredResult`
 with a `requestState` handle; the client echoes it back on retry. The server
 need not hold session state between rounds.
 
-[Elicitation](https://modelcontextprotocol.io/specification/draft/client/elicitation)
-under the draft revision uses this pattern for structured input (form mode with
+[Elicitation](https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation)
+under the 2026-07-28 revision uses this pattern for structured input (form mode with
 JSON Schema) and out-of-band navigation (URL mode for sensitive interactions
 like OAuth). The pending state lives in the `requestState` opaque handle passed
 through the client. A [Python SDK handler](https://github.com/modelcontextprotocol/python-sdk/blob/main/docs/handlers/multi-round-trip.md)
@@ -163,7 +163,7 @@ documents the implementation shape.
 
 **Durability:** The `requestState` handle is a transport-level continuation
 token. It produces no durable approval artifact unless the server or client
-explicitly persists it. The draft revision may change before finalization.
+explicitly persists it.
 
 ### LangGraph and LangChain
 
@@ -332,9 +332,9 @@ This document does not cover:
   Codex sources used for this mapping.
 - **Vendor-specific approval-queue products** — platform-managed approval
   queues (ServiceNow, PagerDuty, Slack workflows, etc.) are not mapped.
-- **MCP MRTR material describes a draft revision** that may change before
-  finalization. Draft specification URLs move at finalization; do not build a
-  durable mapping on them.
+- **MCP Roots/Sampling/Logging deprecation** is primary-sourced in the
+  2026-07-28 specification (SEP-2577). Lifecycle marking across the mapping
+  tables is tracked in issue #68 and lands in a separate change.
 - **The deprecated `openai/skills` repository** is referenced only for
   completeness; the repository is deprecated and its approval behavior is not
   mapped.
@@ -347,11 +347,11 @@ This document does not cover:
 
 ### MCP Sources
 
-- [Sampling (2025-06-18, normative)](https://modelcontextprotocol.io/specification/2025-06-18/client/sampling)
-- [Elicitation (draft)](https://modelcontextprotocol.io/specification/draft/client/elicitation)
-- [Multi-Round-Trip Requests (draft)](https://modelcontextprotocol.io/specification/draft/basic/patterns/mrtr)
+- [Sampling (2026-07-28, deprecated)](https://modelcontextprotocol.io/specification/2026-07-28/client/sampling)
+- [Elicitation (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation)
+- [Multi-Round-Trip Requests (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr)
 - [SEP-2322: MRTR](https://modelcontextprotocol.io/seps/2322-MRTR)
-- [Security best practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices)
+- [Security best practices (2026-07-28)](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices)
 - [Python SDK MRTR handler](https://github.com/modelcontextprotocol/python-sdk/blob/main/docs/handlers/multi-round-trip.md)
 
 ### LangGraph and LangChain Sources
