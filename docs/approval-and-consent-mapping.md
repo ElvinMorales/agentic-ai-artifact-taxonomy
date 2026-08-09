@@ -142,7 +142,7 @@ durable artifact that can be enumerated, audited, and governed after the fact.
 
 | Mechanism | Where the pending item lives | Primary bucket | Implementation note |
 | --- | --- | --- | --- |
-| [Sampling](https://modelcontextprotocol.io/specification/2026-07-28/client/sampling) human-in-the-loop review | Transport message (request/response pair between server and client) | Planning and orchestration; Guardrails and governance | The server includes a `sampling/createMessage` request inside an `InputRequiredResult` delivered via the [MRTR pattern](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr); the client may prompt the user before forwarding to the model. The pending state exists only in the transport session. No durable approval record is produced unless the client persists one. |
+| [Sampling](https://modelcontextprotocol.io/specification/2026-07-28/client/sampling) human-in-the-loop review | Transport message (request/response pair between server and client) | Planning and orchestration; Guardrails and governance | The server includes a `sampling/createMessage` request inside an `InputRequiredResult` delivered via the [MRTR pattern](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr); the client may prompt the user before forwarding to the model. The pending state exists only in the transport session. No durable approval record is produced unless the client persists one. **Deprecated ([SEP-2577](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging), `2026-07-28` revision).** Still fully functional under the [feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle); eligible for removal no earlier than the first specification revision released on or after 2027-07-28. New implementations should not adopt it; migrate to direct integration with LLM provider APIs. |
 | Client-side tool-call approval | Runtime session (client implementation-specific) | Guardrails and governance | MCP specifies that clients "should" confirm tool calls with the user. The mechanism is entirely client-side; neither the protocol nor the server retains the decision. |
 | [Security best practices](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices) | Design-time guidance (no runtime record) | Guardrails and governance | Describes confused-deputy, SSRF, and state-handle risks. The best practices document is itself an approval policy artifact. |
 
@@ -333,8 +333,9 @@ This document does not cover:
 - **Vendor-specific approval-queue products** — platform-managed approval
   queues (ServiceNow, PagerDuty, Slack workflows, etc.) are not mapped.
 - **MCP Roots/Sampling/Logging deprecation** is primary-sourced in the
-  2026-07-28 specification (SEP-2577). Lifecycle marking across the mapping
-  tables is tracked in issue #68 and lands in a separate change.
+  2026-07-28 specification ([SEP-2577](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging)).
+  Lifecycle marking across the mapping tables is applied in the change that
+  closes issue #68.
 - **The deprecated `openai/skills` repository** is referenced only for
   completeness; the repository is deprecated and its approval behavior is not
   mapped.
@@ -347,6 +348,8 @@ This document does not cover:
 
 ### MCP Sources
 
+- [SEP-2577: Deprecate Roots, Sampling, and Logging](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging)
+- [MCP feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle)
 - [Sampling (2026-07-28, deprecated)](https://modelcontextprotocol.io/specification/2026-07-28/client/sampling)
 - [Elicitation (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation)
 - [Multi-Round-Trip Requests (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr)

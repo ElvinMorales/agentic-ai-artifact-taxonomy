@@ -53,9 +53,9 @@ protocol naming collisions.
 
 MCP standardizes communication between hosts, clients, and servers. Its core
 server features include resources, prompts, and tools. Client features include
-roots, sampling, and elicitation. The protocol also defines transport,
-configuration, progress, cancellation, error, logging, authorization, and
-consent-related surfaces.
+roots (deprecated), sampling (deprecated), and elicitation. The protocol also
+defines transport, configuration, progress, cancellation, error, logging
+(deprecated), authorization, and consent-related surfaces.
 
 MCP is an interoperability protocol, not a complete agent package, memory
 model, evaluation system, or deployment standard.
@@ -65,12 +65,12 @@ model, evaluation system, or deployment standard.
 | Resources and resource templates | Knowledge and resources | Map approved documents, data, and context sources here. Record provenance, freshness, access boundaries, and audience outside live resource contents when needed. An MCP resource is not automatically durable memory or runtime state. |
 | Prompts | Prompts and interfaces | Map reusable prompt definitions, arguments, and user-selectable workflows here. Keep model instructions, interface contracts, and capability procedures distinct when the implementation separates them. |
 | Tools | Tools; Guardrails and governance; Outputs and schemas | Map callable functions and their input or output schemas to Tools and Outputs and schemas. Document permissions, side effects, approvals, and failure behavior under Guardrails and governance. A tool is not a capability module or skill. |
-| Roots | Runtime and deployment; Guardrails and governance | Treat declared URI or filesystem boundaries as runtime configuration and an access-control boundary. A root does not grant permission by itself and should not expose private workspace paths in public documentation. |
+| Roots | Runtime and deployment; Guardrails and governance | Treat declared URI or filesystem boundaries as runtime scope guidance. Servers are expected to honor declared roots, but the protocol does not enforce confinement; actual enforcement lives in client-side permissions, path validation, allowlists, and sandboxing. A root does not grant permission by itself and should not expose private workspace paths in public documentation. **Deprecated ([SEP-2577](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging), `2026-07-28` revision).** Still fully functional under the [feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle); eligible for removal no earlier than the first specification revision released on or after 2027-07-28. New implementations should not adopt it; migrate to tool parameters, resource URIs, or server configuration. |
 | Elicitation | Prompts and interfaces; Planning and orchestration; Guardrails and governance | Map input requests and validation contracts to Prompts and interfaces. Map the decision to pause and request information to Planning and orchestration. Document consent, sensitive-field handling, and prohibited collection under Guardrails and governance. |
-| Sampling | Planning and orchestration; Runtime and deployment; Guardrails and governance | Map server-initiated model requests and nested flows to orchestration and runtime behavior. Document user control, prompt visibility, model constraints, result visibility, and approval expectations. |
+| Sampling | Planning and orchestration; Runtime and deployment; Guardrails and governance | Map server-initiated model requests and nested flows to orchestration and runtime behavior. Document user control, prompt visibility, model constraints, result visibility, and approval expectations. **Deprecated ([SEP-2577](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging), `2026-07-28` revision).** Still fully functional under the [feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle); eligible for removal no earlier than the first specification revision released on or after 2027-07-28. New implementations should not adopt it; migrate to direct integration with LLM provider APIs. |
 | Transports, lifecycle, capability negotiation, and configuration | Runtime and deployment; Guardrails and governance | Map connection modes, server or client settings, supported capabilities, timeouts, and compatibility requirements to runtime documentation. Keep credentials and private endpoints out of committed examples. |
 | Progress tracking and cancellation | Evaluation and observability; State; Runtime and deployment | Treat progress notifications and cancellation status as runtime observability and execution state. Document retry, cleanup, timeout, and continuation behavior in runtime guidance. |
-| Error reporting and logging | Evaluation and observability; State; Runtime and deployment | Map error shapes and logging configuration to observability and runtime operations. Logs and error payloads from real runs are runtime records, not design-time definitions. |
+| Error reporting and logging | Evaluation and observability; State; Runtime and deployment | Map error shapes and logging configuration to observability and runtime operations. Logs and error payloads from real runs are runtime records, not design-time definitions. **Protocol-level logging is deprecated ([SEP-2577](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging), `2026-07-28` revision).** The logging surface remains fully functional under the [feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle); eligible for removal no earlier than the first specification revision released on or after 2027-07-28. New implementations should not adopt protocol-level logging; migrate to `stderr` for stdio transports or OpenTelemetry for structured observability. Error reporting is not deprecated. |
 | Authorization, security, consent, and data privacy | Guardrails and governance; Runtime and deployment | Document authorization design, user consent, data boundaries, tool safety, and sampling controls. Publish configuration shapes or policies only when sanitized; never publish live tokens, credentials, or private authorization details. |
 
 See [Approval and consent mapping](approval-and-consent-mapping.md) for a
@@ -214,5 +214,8 @@ for detailed authority, data, action, persistence, runtime, and release review.
 ## Official References
 
 - [MCP specification (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28)
+- [SEP-2577: Deprecate Roots, Sampling, and Logging](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging)
+- [MCP feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle)
+- [MCP deprecated features registry (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/deprecated)
 - [A2A specification, latest release](https://a2a-protocol.org/latest/specification/)
 - [A2A specification source](https://github.com/a2aproject/A2A/blob/main/docs/specification.md)
