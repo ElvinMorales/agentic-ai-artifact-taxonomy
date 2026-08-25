@@ -86,6 +86,7 @@ State snapshots, raw traces, private logs, or other private runtime data.
 - [ ] Apply least-privilege read and write scopes.
 - [ ] Document provenance, freshness, licensing, and audience constraints.
 - [ ] Prevent connector content from crossing an unintended trust boundary.
+- [ ] Treat a cacheable result's `cacheScope: "public"` as cross-caller shareability for performance only, never as permission to publish the content, persist it durably, or treat it as free of sensitive data.
 - [ ] Define redaction, deletion, retention, and incident-review procedures.
 
 ### 4. Tool and Action Safety
@@ -164,6 +165,7 @@ fixtures.
 
 - [Protocol mapping](protocol-mapping.md)
 - [SEP-2577: Deprecate Roots, Sampling, and Logging](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging)
+- [SEP-2549: TTL for List Results](https://modelcontextprotocol.io/seps/2549-TTL-for-list-results)
 - [MCP feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle)
 - [Artifact lifecycle](artifact-lifecycle.md)
 - [Memory vs State](memory-vs-state.md)
