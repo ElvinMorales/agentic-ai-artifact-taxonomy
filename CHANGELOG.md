@@ -25,6 +25,14 @@ All notable changes to this project will be documented in this file.
   as landed.
 - Added SEP-2577, the feature lifecycle policy, and the deprecated-features
   registry to the Official References of affected documents.
+- Corrected the Transports row in `protocol-mapping.md`: replaced the
+  connection-scoped lifecycle and capability-negotiation framing with
+  per-request capability declaration via `_meta`, reflecting that the
+  `2026-07-28` revision removed the `initialize`/`initialized` handshake and
+  protocol-level sessions (SEP-2575, SEP-2567). Added a Cross-Protocol
+  Guidance subsection distinguishing MCP's stateless transport from stateful
+  application state and classifying explicit handles such as `requestState`
+  as State artifacts rather than Memory or authorization tokens.
 
 ### MCP Citation Migration
 
