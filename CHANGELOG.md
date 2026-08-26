@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ### MCP Additional Surface Mapping
 
+- Updated the GitHub agentic audit log citation in
+  `approval-and-consent-mapping.md` to its current path after GitHub moved the
+  page under `enterprise-administrators`. Found by
+  `npm run check:external-links`; the old URL still resolved via redirect, so
+  local link checking would not have caught it.
 - Added four rows to the `protocol-mapping.md` MCP mapping table: `server/discover`
   (SEP-2575; required for servers, optional for clients, with a secondary
   Identity mapping via the self-reported, protocol-unverified `serverInfo`
