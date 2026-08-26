@@ -6,11 +6,19 @@ import { readFileSync } from "node:fs";
 // part of `npm run validate` because third-party sites go down, redirect,
 // and rate-limit independently of anything in this repository.
 //
-// Node's built-in fetch does not honor HTTP_PROXY/HTTPS_PROXY by default, so
-// on a network that requires a proxy every outbound request fails at the
-// transport level regardless of whether this repository's links are fine.
-// Node 24.5.0+ can opt in with `--use-env-proxy` (or `NODE_USE_ENV_PROXY=1`):
-// re-run as `node --use-env-proxy scripts/check-external-links.mjs`.
+// Two environment conditions make every request fail at the transport level
+// regardless of whether this repository's links are healthy. Both surface as
+// undici's generic "fetch failed", so the distinction matters:
+//
+// 1. TLS interception. A network that inspects TLS presents certificates from
+//    a private CA. That CA is usually trusted by the operating system, so curl
+//    and npm work, but Node's bundled CA store does not include it and fetch
+//    fails with UNABLE_TO_GET_ISSUER_CERT_LOCALLY. The npm script runs this
+//    file with `--use-system-ca` (Node 23.8.0+), which reads the OS trust store
+//    and resolves it.
+// 2. A required proxy. Node's fetch does not honor HTTP_PROXY/HTTPS_PROXY by
+//    default. Node 24.5.0+ can opt in with `--use-env-proxy`, equivalently
+//    `NODE_USE_ENV_PROXY=1`.
 
 const REQUEST_TIMEOUT_MS = 10_000;
 const CONCURRENCY = 5;
@@ -18,8 +26,8 @@ const USER_AGENT = "agentic-ai-artifact-taxonomy-link-checker";
 
 // Stable, purpose-built connectivity-check endpoints on three unrelated
 // providers, none of which this repository cites elsewhere. Used only to
-// tell "the network is blocking or proxying us" apart from "a cited site
-// happens to be down right now."
+// tell "this environment cannot reach the internet the way this script needs"
+// apart from "a cited site happens to be down right now."
 const CONTROL_URLS = [
   "https://www.google.com/generate_204",
   "https://www.cloudflare.com/cdn-cgi/trace",
@@ -177,10 +185,11 @@ if (reachableControls.length === 0) {
       "external links from this environment. Skipping the run.",
   );
   console.log(
-    "Node's built-in fetch does not honor HTTP_PROXY/HTTPS_PROXY by default. " +
-      "If this network requires a proxy, Node 24.5.0+ can opt in with " +
-      "`--use-env-proxy` (or `NODE_USE_ENV_PROXY=1`): re-run as " +
-      "`node --use-env-proxy scripts/check-external-links.mjs`.",
+    "This usually means TLS interception (a private CA the operating system " +
+      "trusts but Node's bundled CA store does not) or a required proxy. " +
+      "The npm script already passes `--use-system-ca`; if you invoked this " +
+      "file directly, re-run it via `npm run check:external-links`. For a " +
+      "proxied network, Node 24.5.0+ also supports `--use-env-proxy`.",
   );
 } else {
   console.log(

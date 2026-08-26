@@ -95,23 +95,21 @@ All notable changes to this project will be documented in this file.
   tracked Markdown files. It always exits `0` and is intentionally not part
   of `npm run validate`. Added a corresponding review step to
   `docs/public-release-checklist.md`.
-- Added a preflight control probe to `check-external-links.mjs`: before
-  checking any repository URL, it probes three independent, stable
-  connectivity-check endpoints (none cited by this repository) and, if all
-  fail at the transport level, reports that outbound access is blocked or
-  proxied in a way the script cannot use, draws no conclusion about the
-  repository's links, and skips the run — still exiting `0`. Split the prior
-  single unreachable category into `Unreachable` (an HTTP error status; a
-  possible dead link) and `Could not check` (a transport-level failure such
-  as DNS, TLS, or a timeout, which implies nothing about link health),
-  reported under separate headings, and the summary now lists the distinct
-  domains that passed instead of only a count. Documented Node 24.5.0's
-  `--use-env-proxy` flag (equivalently `NODE_USE_ENV_PROXY=1`) for networks
-  that require a proxy, since Node's built-in `fetch` does not honor
-  `HTTP_PROXY`/`HTTPS_PROXY` by default. Extended the corresponding
-  `docs/public-release-checklist.md` review step to cover an inconclusive or
-  unable-to-run check.
-
+- Corrected `check-external-links.mjs`, which reported transport-level failures
+  as unreachable links. On a network that inspects TLS, every request failed and
+  every cited URL was reported dead. Split the single unreachable category into
+  `Unreachable` (an HTTP error status; a possible dead link) and `Could not
+  check` (a transport failure such as DNS, TLS, or a timeout, which implies
+  nothing about link health), added a preflight control probe against three
+  independent connectivity endpoints that skips the run rather than emitting
+  findings when none is reachable, and listed the domains that passed instead of
+  only a count. The npm script now passes `--use-system-ca` (Node 23.8.0+) so the
+  checker trusts the operating system's certificate store; `--use-env-proxy`
+  (Node 24.5.0+) remains the separate remedy for networks that require a proxy.
+  Extended the release-checklist review step to cover inconclusive runs and to
+  treat redirects as findings. The check still always exits `0` and remains
+  outside `npm run validate`.
+  
 ### Contributor Guidance
 
 - Documented that the CI job name is a required status check pinned by branch
