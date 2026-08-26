@@ -24,6 +24,21 @@ All notable changes to this project will be documented in this file.
 - Added SEP-2243, SEP-2549, and the specification's Subscriptions pattern
   page to the Official References of `protocol-mapping.md`, and SEP-2549 to
   the Related Docs of `mcp-connector-safety-checklist.md`.
+- Added two rows to the `protocol-mapping.md` MCP mapping table: the
+  Extensions framework (SEP-2133; opt-in negotiation mechanism whose surfaces
+  map to existing taxonomy buckets without creating a new one) and the Tasks
+  extension (SEP-2663; `io.modelcontextprotocol/tasks`, Extensions Track,
+  Final — maps task IDs and lifecycle to State, asynchronous execution and
+  mid-flight input to Planning and orchestration, and extension negotiation to
+  Runtime and deployment), addressing remaining coverage gaps identified in
+  issue #71.
+- Added a brief cross-reference to `approval-and-consent-mapping.md`
+  distinguishing task-scoped continuation from request-scoped `requestState`.
+- Added a reviewer-facing checklist bullet to
+  `mcp-connector-safety-checklist.md`'s Scope and Intent section on reviewing
+  enabled extensions before opt-in.
+- Added SEP-2133 and SEP-2663 to the Official References of
+  `protocol-mapping.md`.
 
 ### MCP Lifecycle and Enforcement Corrections
 
