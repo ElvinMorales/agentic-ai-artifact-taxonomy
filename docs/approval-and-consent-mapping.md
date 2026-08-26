@@ -222,7 +222,7 @@ user-accessible approval record by default.
 | --- | --- | --- | --- |
 | [Agent settings](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/configuring-agent-settings) (validation tools, workflow approval) | Platform-managed configuration | Guardrails and governance; Runtime and deployment | Organization and repository settings control which built-in quality/security tools run and whether GitHub Actions workflows require manual approval. |
 | [Agent firewall](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-the-firewall) | Platform-managed allowlist | Guardrails and governance; Runtime and deployment | Domain-level network restrictions at the organization and repository level. The allowlist is itself a design-time governance artifact. |
-| [Audit log events](https://docs.github.com/en/copilot/reference/agentic-audit-log-events) | External platform record (GitHub audit log) | Evaluation and observability; Guardrails and governance | Agent sessions, tool uses, and decisions are recorded in the organization's audit log. These are durable approval decision records accessible via the audit-log API. |
+| [Audit log events](https://docs.github.com/en/copilot/reference/enterprise-administrators/agentic-audit-log-events) | External platform record (GitHub audit log) | Evaluation and observability; Guardrails and governance | Agent sessions, tool uses, and decisions are recorded in the organization's audit log. These are durable approval decision records accessible via the audit-log API. |
 | Pull request review requirement | External platform record (GitHub PR) | Guardrails and governance; Prompts and interfaces | The cloud agent opens a pull request; merging requires the same review approval as human-authored code. The PR is a [code-review](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review) artifact in the GitHub platform. |
 
 **Durability:** The cloud agent's pending work and decisions are stored in
@@ -396,7 +396,7 @@ This document does not cover:
 - [About cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent)
 - [Agent settings](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/configuring-agent-settings)
 - [Agent firewall](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-the-firewall)
-- [Audit log events](https://docs.github.com/en/copilot/reference/agentic-audit-log-events)
+- [Audit log events](https://docs.github.com/en/copilot/reference/enterprise-administrators/agentic-audit-log-events)
 - [Code review](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review)
 
 ### Claude Code Sources
