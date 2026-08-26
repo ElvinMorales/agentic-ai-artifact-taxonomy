@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### MCP Additional Surface Mapping
+
+- Added four rows to the `protocol-mapping.md` MCP mapping table: `server/discover`
+  (SEP-2575; required for servers, optional for clients, with a secondary
+  Identity mapping via the self-reported, protocol-unverified `serverInfo`
+  field), routing headers (SEP-2243; header-body consistency validation
+  documented under Guardrails and governance as a spoofing-prevention
+  control, not authorization), cacheable results (SEP-2549; `cacheScope:
+  "public"` defined as cross-caller shareability for performance, not
+  publication or durable-storage safety), and `subscriptions/listen`
+  (specification page; replaces the removed HTTP GET endpoint and
+  `resources/subscribe`/`resources/unsubscribe`), addressing coverage gaps
+  identified in issue #71.
+- Added a reviewer-facing checklist bullet to
+  `mcp-connector-safety-checklist.md`'s Data Boundaries section clarifying
+  that a `"public"` `cacheScope` is not publication-safe or
+  durable-storage-safe.
+- Added SEP-2243, SEP-2549, and the specification's Subscriptions pattern
+  page to the Official References of `protocol-mapping.md`, and SEP-2549 to
+  the Related Docs of `mcp-connector-safety-checklist.md`.
+
 ### MCP Lifecycle and Enforcement Corrections
 
 - Corrected the Roots row in `protocol-mapping.md`: removed the
