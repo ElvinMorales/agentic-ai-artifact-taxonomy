@@ -55,7 +55,7 @@ MCP standardizes communication between hosts, clients, and servers. Its core
 server features include resources, prompts, and tools. Client features include
 roots (deprecated), sampling (deprecated), and elicitation. The protocol also
 defines transport, configuration, progress, cancellation, error, logging
-(deprecated), authorization, and consent-related surfaces.
+(deprecated), authorization, extensions, and consent-related surfaces.
 
 MCP is an interoperability protocol, not a complete agent package, memory
 model, evaluation system, or deployment standard.
@@ -76,6 +76,8 @@ model, evaluation system, or deployment standard.
 | Progress tracking and cancellation | Evaluation and observability; State; Runtime and deployment | Treat progress notifications and cancellation status as runtime observability and execution state. Document retry, cleanup, timeout, and continuation behavior in runtime guidance. |
 | Error reporting and logging | Evaluation and observability; State; Runtime and deployment | Map error shapes and logging configuration to observability and runtime operations. Logs and error payloads from real runs are runtime records, not design-time definitions. **Protocol-level logging is deprecated ([SEP-2577](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging), `2026-07-28` revision).** The logging surface remains fully functional under the [feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle); eligible for removal no earlier than the first specification revision released on or after 2027-07-28. New implementations should not adopt protocol-level logging; migrate to `stderr` for stdio transports or OpenTelemetry for structured observability. Error reporting is not deprecated. |
 | Authorization, security, consent, and data privacy | Guardrails and governance; Runtime and deployment | Document authorization design, user consent, data boundaries, tool safety, and sampling controls. Publish configuration shapes or policies only when sanitized; never publish live tokens, credentials, or private authorization details. |
+| Extensions (`extensions` in capabilities) | Runtime and deployment; Guardrails and governance | Map extension negotiation, vendor-prefixed identifiers, and opt-in declarations to runtime and deployment documentation. An extension's own surfaces map to existing taxonomy buckets depending on what the extension provides; the extension mechanism itself does not create a new bucket. Review enabled extensions for scope, authority, and data implications under Guardrails and governance. Extensions are disabled by default and require explicit opt-in; breaking changes require a new identifier ([SEP-2133](https://modelcontextprotocol.io/seps/2133-extensions), `2026-07-28` revision). |
+| Tasks extension (`io.modelcontextprotocol/tasks`) | State; Planning and orchestration; Runtime and deployment | Map task IDs and lifecycle status to State as durable, server-held handles. Map asynchronous execution decisions and mid-flight input (`inputRequests`/`inputResponses`) to Planning and orchestration. Map extension negotiation to Runtime and deployment. Methods: `tasks/get`, `tasks/update`, `tasks/cancel`; there is no `tasks/list`, so a client that loses a task ID cannot recover it by enumeration. Tasks shipped as an experimental core feature in the `2025-11-25` revision and moved to an extension in `2026-07-28`. The task lifecycle is application-level state under a stateless transport (see [Protocol Statelessness Versus Application State](#protocol-statelessness-versus-application-state)); mid-flight input uses the same shape as MRTR but within a task lifecycle rather than a single request cycle (see [Approval and consent mapping](approval-and-consent-mapping.md) for the distinction) ([SEP-2663](https://modelcontextprotocol.io/seps/2663-tasks-extension), Extensions Track, Final). |
 
 See [Approval and consent mapping](approval-and-consent-mapping.md) for a
 detailed breakdown of how MCP sampling, elicitation, and the draft
@@ -243,5 +245,7 @@ for detailed authority, data, action, persistence, runtime, and release review.
 - [MCP feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle)
 - [MCP deprecated features registry (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/deprecated)
 - [MCP specification: Subscriptions pattern (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/subscriptions)
+- [SEP-2133: Extensions](https://modelcontextprotocol.io/seps/2133-extensions)
+- [SEP-2663: Tasks Extension](https://modelcontextprotocol.io/seps/2663-tasks-extension)
 - [A2A specification, latest release](https://a2a-protocol.org/latest/specification/)
 - [A2A specification source](https://github.com/a2aproject/A2A/blob/main/docs/specification.md)

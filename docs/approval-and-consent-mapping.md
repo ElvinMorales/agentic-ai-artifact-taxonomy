@@ -165,6 +165,19 @@ documents the implementation shape.
 token. It produces no durable approval artifact unless the server or client
 explicitly persists it.
 
+**Task-scoped continuation:** The Tasks extension
+([SEP-2663](https://modelcontextprotocol.io/seps/2663-tasks-extension))
+introduces a server-held task ID with its own lifecycle spanning multiple calls.
+Unlike `requestState`, which is scoped to a single request-retry cycle and
+produces no durable artifact, a task ID is a durable handle that the server
+retains independently of any individual request. Mid-flight input within a task
+uses the same `inputRequests`/`inputResponses` shape but within the task
+lifecycle rather than the MRTR request lifecycle. Because there is no
+`tasks/list`, a client that loses a task ID cannot recover it by enumeration —
+see [Protocol Statelessness Versus Application
+State](protocol-mapping.md#protocol-statelessness-versus-application-state) for
+classification of task handles as explicit State artifacts.
+
 ### LangGraph and LangChain
 
 | Mechanism | Where the pending item lives | Primary bucket | Implementation note |

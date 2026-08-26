@@ -70,6 +70,10 @@ State snapshots, raw traces, private logs, or other private runtime data.
 - [ ] Identify the users, systems, and data classes within scope.
 - [ ] Map each connector surface to the existing taxonomy buckets.
 - [ ] Keep protocol and framework objects as mappings or adapters.
+- [ ] Review each enabled extension's scope, authority, data access, and side
+      effects before opt-in. Extensions are disabled by default; enabling one
+      may introduce methods, data flows, or behavioral changes not covered by a
+      review of core protocol surfaces alone.
 - [ ] Define ownership, change control, and a disable or removal path.
 
 ### 2. User Consent and Authority
