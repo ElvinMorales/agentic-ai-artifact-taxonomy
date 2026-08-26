@@ -95,6 +95,22 @@ All notable changes to this project will be documented in this file.
   tracked Markdown files. It always exits `0` and is intentionally not part
   of `npm run validate`. Added a corresponding review step to
   `docs/public-release-checklist.md`.
+- Added a preflight control probe to `check-external-links.mjs`: before
+  checking any repository URL, it probes three independent, stable
+  connectivity-check endpoints (none cited by this repository) and, if all
+  fail at the transport level, reports that outbound access is blocked or
+  proxied in a way the script cannot use, draws no conclusion about the
+  repository's links, and skips the run — still exiting `0`. Split the prior
+  single unreachable category into `Unreachable` (an HTTP error status; a
+  possible dead link) and `Could not check` (a transport-level failure such
+  as DNS, TLS, or a timeout, which implies nothing about link health),
+  reported under separate headings, and the summary now lists the distinct
+  domains that passed instead of only a count. Documented Node 24.5.0's
+  `--use-env-proxy` flag (equivalently `NODE_USE_ENV_PROXY=1`) for networks
+  that require a proxy, since Node's built-in `fetch` does not honor
+  `HTTP_PROXY`/`HTTPS_PROXY` by default. Extended the corresponding
+  `docs/public-release-checklist.md` review step to cover an inconclusive or
+  unable-to-run check.
 
 ### Contributor Guidance
 

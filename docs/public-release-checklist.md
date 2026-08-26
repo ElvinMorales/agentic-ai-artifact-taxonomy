@@ -74,7 +74,10 @@ Use this checklist before tagging or announcing a public release or update.
   intentionally excluded to avoid network-dependent release failures.
 - Run `npm run check:external-links` and review its findings before tagging a
   release. This check is advisory: it always exits `0`, and an inconclusive
-  (403/429) result is not a release blocker on its own.
+  (403/429) result is not a release blocker on its own. On a restricted or
+  proxied network, the preflight control probe may determine the check
+  cannot run at all; an inconclusive run is likewise not a release blocker —
+  verify the cited URLs manually instead.
 - Review changed files for public-safe language before opening a pull request.
 - Apply the [MCP and connector safety review checklist](mcp-connector-safety-checklist.md)
   to connector-facing documentation, adapters, and runtime-adjacent examples.
