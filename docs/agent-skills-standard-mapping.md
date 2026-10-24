@@ -164,6 +164,14 @@ Capability module -> SKILL.md package -> MCP discovery and resource transport
 | Resource manifest and verification evidence | Guardrails and governance; Evaluation and observability | Check content consistency and approval scope, not authorship or trust. |
 | Skill revisions and change notes | Learning and iteration | Track package changes and review consequences without merging them into execution State. |
 
+`skills/list` can return an empty or partial catalog; absence from a listing
+does not establish that the server has no such skill. Given a `SKILL.md` URI,
+`skills/get` returns its entry even when it was not listed. Listing supports
+pagination, and both list and get responses require `ttlMs` and `cacheScope`.
+These describe cache freshness and sharing scope, not content integrity,
+trust or permission to activate a skill. Verification and host approval still
+apply when an entry comes from cache or direct URI lookup.
+
 The package is a design-time capability definition. Discovery entries describe
 distribution; host approval policy governs activation and permissions. A
 pending load, continuation or in-flight approval is **State**, not durable

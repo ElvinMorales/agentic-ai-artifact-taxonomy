@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 No additional changes beyond the v0.4.0 candidate below.
 
-## [0.4.0] - 2026-10-24
+## [0.4.0] - Release candidate (prepared 2026-10-24)
 
 Release candidate prepared on this date; not yet tagged or published. Confirm
 the publication date and finalize these notes when the release is approved.
@@ -31,6 +31,9 @@ the publication date and finalize these notes when the release is approved.
   ([#81](https://github.com/ElvinMorales/agentic-ai-artifact-taxonomy/issues/81)).
   Added an inert synthetic package and matching manifest, aligned the protocol
   guide and connector checklist, and scoped the source-check date to MCP Skills.
+- Clarified that an empty or partial skill listing does not rule out direct
+  retrieval by URI, and that listing/get cache metadata is separate from
+  integrity and authorization.
 - Clarified that MCP file retrieval happens as needed rather than requiring
   bulk download before activation. Removed the stale MRTR draft qualifier from
   the protocol guide to match its existing normative revision and approval guide.
