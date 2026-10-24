@@ -79,18 +79,43 @@ model, evaluation system, or deployment standard.
 | Extensions (`extensions` in capabilities) | Runtime and deployment; Guardrails and governance | Map extension negotiation, vendor-prefixed identifiers, and opt-in declarations to runtime and deployment documentation. An extension's own surfaces map to existing taxonomy buckets depending on what the extension provides; the extension mechanism itself does not create a new bucket. Review enabled extensions for scope, authority, and data implications under Guardrails and governance. Extensions are disabled by default and require explicit opt-in; breaking changes require a new identifier ([SEP-2133](https://modelcontextprotocol.io/seps/2133-extensions), `2026-07-28` revision). |
 | Tasks extension (`io.modelcontextprotocol/tasks`) | State; Planning and orchestration; Runtime and deployment | Map task IDs and lifecycle status to State as durable, server-held handles. Map asynchronous execution decisions and mid-flight input (`inputRequests`/`inputResponses`) to Planning and orchestration. Map extension negotiation to Runtime and deployment. Methods: `tasks/get`, `tasks/update`, `tasks/cancel`; there is no `tasks/list`, so a client that loses a task ID cannot recover it by enumeration. The task lifecycle is application-level state under a stateless transport (see [Protocol Statelessness Versus Application State](#protocol-statelessness-versus-application-state)); mid-flight input uses the same shape as MRTR but within a task lifecycle rather than a single request cycle (see [Approval and consent mapping](approval-and-consent-mapping.md) for the distinction) ([SEP-2663](https://modelcontextprotocol.io/seps/2663-tasks-extension), Extensions Track, Final). |
 
+### MCP Skills Extension
+
+The optional `io.modelcontextprotocol/skills` extension maps Agent Skills
+distribution to existing buckets. The following mapping was checked on
+**2026-10-24** against the
+[stable Skills specification](https://skills.extensions.modelcontextprotocol.io/specification/stable/skills)
+(base MCP `2026-07-28` or later). [SEP-2640](https://modelcontextprotocol.io/seps/2640-skills-extension)
+is Final, Extensions Track; it records the accepted design rather than
+replacing the current requirements source.
+
+| Skills surface | Taxonomy bucket or buckets | Implementation note |
+| --- | --- | --- |
+| `skills/list`, `skills/get`; `io.modelcontextprotocol/skills` | Capability modules; Prompts and interfaces; Runtime and deployment | Discover skill entries and retrieve their metadata, not file bytes. Observe extension support and the required `resources` capability first. The extension transports the Agent Skills package format; it does not turn Skills into Tools. |
+| Skill file URIs and `resources/read` | Knowledge and resources; Capability modules | Files are individual resources. Reading `SKILL.md` does not activate it or grant host permissions. |
+| Optional `resources/directory/read` | Knowledge and resources; Runtime and deployment | Lists direct children only when `directoryRead: true` is declared. Directory results do not expand the manifest held for an active skill. |
+| Origin, manifests, verification and approval | Guardrails and governance; Evaluation and observability; Runtime and deployment | Keep server identity plus URI, check per-file integrity and frontmatter, and enforce host permissions. Persisted approval binds to the resource set; `"dynamic"` content cannot be content-bound. Digests establish consistency, not trust. |
+
+See the [full Skills distribution mapping and synthetic example](agent-skills-standard-mapping.md#mcp-skills-distribution)
+for origin collisions, lazy retrieval, nested activation, cross-origin reads,
+cache isolation, changed content and dynamic-content limits. Package revisions
+belong to Learning and iteration; a pending activation or approval belongs to
+State rather than Memory.
+
 See [Approval and consent mapping](approval-and-consent-mapping.md) for a
-detailed breakdown of how MCP sampling, elicitation, and the draft
+detailed breakdown of how MCP sampling, elicitation, and the
 multi-round-trip pattern relate to the approval and consent lifecycle.
 
 ### MCP Coverage Boundaries
 
 MCP surfaces may carry identity or operating guidance through prompt, resource,
-or configuration content, but MCP does not define universal models for
+or configuration content, but core MCP does not define universal models for
 **Identity**, **Operating style**, **Capability modules**, **Memory**,
 **Evaluation and observability**, or **Learning and iteration**. Keep those
 artifacts in their canonical taxonomy buckets and reference the MCP adapter
-only where the implementation exposes them.
+only where the implementation exposes them. The optional Skills extension
+adds package discovery and transport, while the Agent Skills standard defines
+its package format and the host governs activation and permissions.
 
 ## A2A Mapping
 
@@ -161,6 +186,7 @@ Keep these design-time artifacts separate from live protocol data:
 | Design-time artifact | Runtime record |
 | --- | --- |
 | MCP tool, resource, or prompt definition | Tool call, returned content, elicitation response, log, or error |
+| Skill package, distribution manifest and host approval policy | Retrieved content, pending activation or approval, and execution-specific continuation |
 | MCP transport and authorization policy | Connection session, token, progress event, or cancellation record |
 | A2A Agent Card or interface contract | Task, status, message, part, task artifact, or push payload |
 | State, output, trace, or retention schema | Live state snapshot, generated output, trace, or notification configuration |
@@ -247,5 +273,7 @@ for detailed authority, data, action, persistence, runtime, and release review.
 - [MCP specification: Subscriptions pattern (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/subscriptions)
 - [SEP-2133: Extensions](https://modelcontextprotocol.io/seps/2133-extensions)
 - [SEP-2663: Tasks Extension](https://modelcontextprotocol.io/seps/2663-tasks-extension)
+- [MCP Skills stable specification](https://skills.extensions.modelcontextprotocol.io/specification/stable/skills)
+- [SEP-2640: Skills Extension](https://modelcontextprotocol.io/seps/2640-skills-extension)
 - [A2A specification, latest release](https://a2a-protocol.org/latest/specification/)
 - [A2A specification source](https://github.com/a2aproject/A2A/blob/main/docs/specification.md)
