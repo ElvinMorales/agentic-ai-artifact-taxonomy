@@ -100,7 +100,8 @@ protocol without changing the stable top-level taxonomy.
   boundaries without adding a taxonomy bucket.
 - Use [docs/agent-skills-standard-mapping.md](docs/agent-skills-standard-mapping.md)
   to map portable Agent Skills packages to Capability modules while preserving
-  skill, tool, vendor-extension, permission, and supply-chain boundaries.
+  skill, tool, vendor-extension, permission, and supply-chain boundaries,
+  including optional MCP distribution and host-governed activation.
 - Use [docs/approval-and-consent-mapping.md](docs/approval-and-consent-mapping.md)
   to map approval, consent, interruption, and continuation artifacts across
   frameworks without changing the stable taxonomy.
@@ -113,6 +114,8 @@ protocol without changing the stable top-level taxonomy.
 - Use [docs/public-safety.md](docs/public-safety.md) before publishing examples or operational material.
 - Use [docs/release-notes-v0.3.0.md](docs/release-notes-v0.3.0.md) for the
   latest published release notes.
+- Use [docs/release-notes-v0.4.0.md](docs/release-notes-v0.4.0.md) for the
+  next release candidate's scope; it is not a published release.
 - Use [docs/versioning-policy.md](docs/versioning-policy.md) for the repository
   release and private workspace version policy.
 - Use [docs/release-notes-v0.2.1.md](docs/release-notes-v0.2.1.md) for the
@@ -180,6 +183,12 @@ connector safety guidance, published on July 29, 2026.
 The [v0.3.0 release notes](docs/release-notes-v0.3.0.md) summarize what
 changed. The stable 14-bucket taxonomy remains unchanged — no buckets were
 added, removed, or renamed.
+
+`v0.4.0` is the next release candidate, covering the accumulated MCP mappings,
+validation and maintenance changes described in the
+[candidate notes](docs/release-notes-v0.4.0.md). It has not been tagged or
+published. The private npm workspace version is `0.4.0` for release preparation;
+this metadata does not establish a public release.
 
 Repository tags and GitHub Releases define the public project version. The npm
 workspace remains private and follows the
