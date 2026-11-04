@@ -4,6 +4,46 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+No additional changes beyond the v0.4.0 candidate below.
+
+## [0.4.0] - Release candidate (prepared 2026-10-24)
+
+Release candidate prepared on this date; not yet tagged or published. Confirm
+the publication date and finalize these notes when the release is approved.
+
+### v0.4.0 Candidate Coordination
+
+- Prepared the full accumulated changes since `v0.3.0` as a minor-release
+  candidate, including new MCP mappings and advisory validation capability.
+  Updated private workspace metadata to `0.4.0` and added
+  [candidate release notes](docs/release-notes-v0.4.0.md). README and versioning
+  guidance continue to identify `v0.3.0` as the latest published release.
+
+### MCP Skills Distribution Mapping
+
+- Qualified the MCP Skills claims in the Agent Skills and framework mapping
+  guides to distinguish core primitives from the optional SEP-2640 extension.
+  Resource reads do not imply skill activation or host permission grants, and
+  Skills remain distinct from Tools.
+- Mapped discovery entries, resource reads and optional directory reads to
+  existing buckets, with origin, verification, nested activation, cache and
+  content-bound approval boundaries, including the dynamic-content exception
+  ([#81](https://github.com/ElvinMorales/agentic-ai-artifact-taxonomy/issues/81)).
+  Added an inert synthetic package and matching manifest, aligned the protocol
+  guide and connector checklist, and scoped the source-check date to MCP Skills.
+- Clarified that an empty or partial skill listing does not rule out direct
+  retrieval by URI, and that listing/get cache metadata is separate from
+  integrity and authorization.
+- Clarified that MCP file retrieval happens as needed rather than requiring
+  bulk download before activation. Removed the stale MRTR draft qualifier from
+  the protocol guide to match its existing normative revision and approval guide.
+
+### Dependency Maintenance
+
+- Recorded the completed post-v0.3.0 dependency updates: `fast-uri` from
+  `3.1.4` to `3.1.7`, and the `js-yaml` override from `4.3.0` to `4.3.1`.
+  This entry reconciles the release inventory; it introduces no dependency change.
+
 ### MCP Additional Surface Mapping
 
 - Updated the GitHub agentic audit log citation in
@@ -163,9 +203,8 @@ All notable changes to this project will be documented in this file.
   release notes, and private npm workspace metadata.
 - Added a versioning policy that makes Git tags and GitHub Releases the
   canonical public release identity while keeping the npm workspace private.
-- Identified `v0.3.0` as the recommended next release candidate for the
-  post-`v0.2.1` UI harness and Agent Skills additions; no tag or release has
-  been created.
+- Prepared `v0.3.0` for the post-`v0.2.1` UI harness and Agent Skills additions;
+  the tag and GitHub Release were subsequently published on 2026-07-29.
 
 ### Capability Modules and Framework Mapping
 
