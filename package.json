@@ -33,7 +33,7 @@
   "devDependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
-    "markdownlint-cli2": "^0.22.1",
+    "markdownlint-cli2": "^0.24.0",
     "yaml": "^2.9.0"
   },
   "overrides": {
