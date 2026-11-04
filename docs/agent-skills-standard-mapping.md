@@ -7,7 +7,7 @@ taxonomy. **Capability modules** remains the generic source concept. An Agent
 Skills-compatible directory is one possible package for that concept; its
 filenames and format do not replace the taxonomy.
 
-Official claims were last checked on **2026-07-11**.
+Unless noted otherwise, official claims were last checked on **2026-07-11**.
 
 ## Canonical Taxonomy Mapping
 
@@ -68,8 +68,11 @@ The standard describes three layers:
 2. The complete `SKILL.md` body loads when the skill is activated.
 3. Scripts, references, assets, and other resources load only as needed.
 
-This packaging reduces unnecessary context, but it does not remove the need to
-review every packaged file before installation or activation.
+This packaging reduces unnecessary context, but it does not remove supply-chain
+review. For a local installation, inspect the package before installing it.
+MCP distribution instead uses manifest review and verification as files are
+needed; it does not require downloading every file before activation. See
+[MCP Skills Distribution](#mcp-skills-distribution).
 
 ## Component-to-Bucket Mapping
 
@@ -125,10 +128,166 @@ context injection, frontmatter, and permission behavior. In Claude Code,
 subject to workspace trust and other settings. That behavior is not a universal
 meaning of the standard field.
 
-Other runtimes can package capability modules differently. MCP has no direct
-skill primitive, although a skill can use MCP tools and resources. Frameworks
-such as LangGraph can represent a capability module as a reusable subgraph,
-runnable package, or documented task procedure.
+### Other Runtimes
+
+Frameworks such as LangGraph can represent a capability module as a reusable
+subgraph, runnable package, or documented task procedure.
+
+## MCP Skills Distribution
+
+Core MCP does not define a skill primitive. The optional
+[MCP Skills extension](https://skills.extensions.modelcontextprotocol.io/)
+(`io.modelcontextprotocol/skills`) transports Agent Skills packages using MCP
+Resources. It leaves the package format with the Agent Skills standard and
+keeps Skills in **Capability modules**, distinct from callable **Tools**.
+
+This section was checked on **2026-10-24** against the
+[stable extension specification](https://skills.extensions.modelcontextprotocol.io/specification/stable/skills),
+which targets MCP `2026-07-28` or later. The
+[Final, Extensions Track SEP-2640](https://modelcontextprotocol.io/seps/2640-skills-extension)
+records the accepted design; the stable specification governs current
+requirements. Other vendor claims retain the review date above.
+
+```text
+Capability module -> SKILL.md package -> MCP discovery and resource transport
+-> host verification and approval -> runtime-authorized tool use
+```
+
+### Distribution Surfaces and Lifecycle
+
+| Surface | Taxonomy mapping | Boundary |
+| --- | --- | --- |
+| `server/discover` extension declaration | Runtime and deployment; Guardrails and governance | Observe extension support and the required `resources` capability before using `skills/list` or `skills/get`. Discovery grants no host authority. |
+| `skills/list`, `skills/get` | Capability modules; Prompts and interfaces; Runtime and deployment | Return discovery entries containing the `SKILL.md` URI, frontmatter and `resources`; `skills/get` identifies one skill by URI. Neither returns the skill file bytes. |
+| `resources/read` | Knowledge and resources | Reads individual skill files. An ordinary read does not activate a skill; the host's skill-loading path performs verification and required approvals. |
+| Optional `resources/directory/read` | Knowledge and resources; Runtime and deployment | Lists direct children, with pagination. Use only when `directoryRead: true` is declared; a live directory listing cannot extend an approved manifest. |
+| Resource manifest and verification evidence | Guardrails and governance; Evaluation and observability | Check content consistency and approval scope, not authorship or trust. |
+| Skill revisions and change notes | Learning and iteration | Track package changes and review consequences without merging them into execution State. |
+
+`skills/list` can return an empty or partial catalog; absence from a listing
+does not establish that the server has no such skill. Given a `SKILL.md` URI,
+`skills/get` returns its entry even when it was not listed. Listing supports
+pagination, and both list and get responses require `ttlMs` and `cacheScope`.
+These describe cache freshness and sharing scope, not content integrity,
+trust or permission to activate a skill. Verification and host approval still
+apply when an entry comes from cache or direct URI lookup.
+
+The package is a design-time capability definition. Discovery entries describe
+distribution; host approval policy governs activation and permissions. A
+pending load, continuation or in-flight approval is **State**, not durable
+**Memory**. See [approval and consent mapping](approval-and-consent-mapping.md)
+for generic policy, surface and decision-record distinctions; this extension
+does not prescribe a universal approval-record schema.
+
+### Origin, Verification, and Permission Boundaries
+
+- **Origin and collisions:** Identify a skill by the host's identity for its
+  server plus its full `SKILL.md` URI. Names and URIs alone are insufficient
+  across servers. Use host-assigned labels, disambiguate collisions, and keep
+  origin visible in model context. A remote skill must not silently replace
+  another server's or a local skill. The `skill://` authority is not a DNS
+  destination or evidence of trusted authorship.
+- **Manifest and reads:** An array-valued `resources` enumerates every file,
+  including `SKILL.md` and nested supporting files, with URI, SHA-256 digest
+  and byte size. Fetch `SKILL.md` at load and supporting files only as needed.
+  Verify each read's bytes against its digest and size, and compare `SKILL.md`'s
+  parsed frontmatter field by field with the discovery entry. Reject mismatches
+  and, while acting on the skill, files outside the held manifest. Refreshing the
+  entry can require renewed approval; directory results cannot bypass this.
+- **Consistency and trust:** Digests come from the same server as the files
+  and are unsigned. Matching bytes and metadata establish consistency, not
+  safety, authenticity or authority. A server or intermediary can change both.
+- **Host authority:** Remote skill text remains untrusted input. Host-side
+  code execution requires explicit per-skill user approval, including commands
+  requested by the body or declarative hooks. Ignore `allowed-tools` for an
+  MCP-origin skill unless the user explicitly approves that grant for that
+  skill. A permitted load or resource read does not grant unrestricted tools
+  or filesystem access; runtime policy still applies.
+- **Nested and cross-origin use:** Reading a nested `SKILL.md` as supporting
+  Markdown gives its frontmatter no effect. Activating it separately requires
+  fresh, explicit consent. Bind skill-driven resource reads to the originating
+  server; a cross-origin read requires per-call approval naming both servers.
+- **Persisted approval:** Bind any persisted per-skill approval to every
+  `{uri, digest}` pair in the observed resource set. A later entry that adds,
+  removes or changes a file revokes that approval; re-prompt before loading or
+  executing. The host need not poll, but changed bytes fail verification when
+  read. When `resources` is `"dynamic"`, stable digests are unavailable: hosts
+  may decline the skill and cannot treat persisted approval as covering
+  whatever content is now served. Frontmatter comparison still applies.
+- **Cache isolation:** Preserve server identity and URI in cached paths and
+  approvals. Keep cached files outside local skill discovery. Protect cached
+  bytes from modification or rehash them on access; a stored digest label is
+  insufficient. Cached remote content retains its MCP origin and execution
+  approval requirements after restart or server disconnection.
+
+These are mapping and review boundaries, not a host implementation guide.
+Apply the [connector safety checklist](mcp-connector-safety-checklist.md) to
+the actual host, permissions and data movement.
+
+### Synthetic Remote Skill Example
+
+The fictional server, labeled `fictional-docs` by the host, serves one inert
+documentation-review package. These are educational file contents, each UTF-8
+with a final newline; there are no scripts, tool grants, live endpoints or
+actual approval records.
+
+`document-review/SKILL.md`:
+
+```markdown
+---
+name: document-review
+description: Suggest clearer headings in synthetic documentation.
+---
+Compare headings using references/style.md. Return suggestions only.
+```
+
+`document-review/references/style.md`:
+
+```markdown
+# Style
+Prefer short, descriptive headings.
+```
+
+The corresponding `Skill` entry is shown below, not a complete JSON-RPC
+response or server configuration. Its sizes and digests describe exactly the
+two file contents above.
+
+```json
+{
+  "uri": "skill://document-review/SKILL.md",
+  "frontmatter": {
+    "name": "document-review",
+    "description": "Suggest clearer headings in synthetic documentation."
+  },
+  "resources": [
+    {
+      "uri": "skill://document-review/SKILL.md",
+      "digest": "sha256:cc35c4c4ea7dea4e1fff298a3565aba3d7375a1706dbf7d0d80177859b5dd3a6",
+      "size": 165
+    },
+    {
+      "uri": "skill://document-review/references/style.md",
+      "digest": "sha256:2200094c2cebf468273a3980d8fd7f511e9ff8f42f5c973a209b9bd5c020a09f",
+      "size": 44
+    }
+  ]
+}
+```
+
+1. After observing the extension declaration, `skills/list` discovers this
+   entry; `skills/get` can retrieve or refresh it by its `SKILL.md` URI. The
+   host records identity as (`fictional-docs`, URI), without fetching files.
+2. If `directoryRead: true` is declared, `resources/directory/read` on
+   `skill://document-review/references` lists `style.md`. This adds no grant
+   or file to the held manifest.
+3. For activation, the host applies its loading policy and required approvals,
+   reads `SKILL.md` through `resources/read`, and checks size, digest and
+   frontmatter before loading it with origin visible. The reference is fetched
+   and verified only when needed. A generic preview read remains ordinary data.
+4. If `style.md` changes, reading it against the held entry fails verification.
+   A refreshed entry with its new digest invalidates any persisted approval of
+   the old set.
+   With `resources: "dynamic"` instead, no fixed-content approval is possible.
 
 ## Security, Governance, and Supply-Chain Review
 
@@ -182,12 +341,17 @@ safety finding or permission grant.
 - [Open Agent Skills specification](https://agentskills.io/specification)
 - [OpenAI Skills documentation](https://developers.openai.com/api/docs/guides/tools-skills)
 - [Claude Code skills documentation](https://code.claude.com/docs/en/skills)
+- [MCP Skills extension overview](https://skills.extensions.modelcontextprotocol.io/)
+- [MCP Skills stable specification](https://skills.extensions.modelcontextprotocol.io/specification/stable/skills)
+- [SEP-2640: Skills Extension](https://modelcontextprotocol.io/seps/2640-skills-extension)
 
 ## Related Taxonomy Guides
 
 - [Canonical taxonomy](taxonomy.md)
 - [Approval and consent mapping](approval-and-consent-mapping.md)
 - [Framework mapping](framework-mapping.md)
+- [Protocol mapping](protocol-mapping.md)
+- [MCP and connector safety review checklist](mcp-connector-safety-checklist.md)
 - [Naming conventions](naming-conventions.md)
 - [Artifact lifecycle](artifact-lifecycle.md)
 - [Public-safety guidance](public-safety.md)

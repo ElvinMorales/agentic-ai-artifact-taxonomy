@@ -90,6 +90,10 @@ Use this checklist before tagging or announcing a public release or update.
 - Confirm `package.json` and the root `package-lock.json` versions match.
 - During normal post-release development, confirm the private npm workspace
   version matches the latest published repository release.
+- During approved release preparation, confirm the private workspace and both
+  root lockfile version fields match the selected candidate. Keep README's
+  latest-published status on the existing release until publication occurs;
+  label candidate notes and preparation dates explicitly.
 
 ## Release Coordination
 

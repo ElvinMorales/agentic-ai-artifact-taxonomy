@@ -25,6 +25,7 @@ Connector-facing artifacts include:
 - Resource catalogs, source snapshot definitions, and retrieval policies.
 - Prompt definitions, input contracts, and elicitation flows.
 - Tool and action schemas, permission rules, and approval policies.
+- Remotely distributed capability packages and their resource manifests.
 - Runtime roots (deprecated), transports, sessions, and deployment configuration.
 - Sampling (deprecated) or other nested model-call policies.
 - Authorization, consent, credential, logging, trace, and error policies.
@@ -37,6 +38,7 @@ top-level buckets or replace framework-neutral artifact classes.
 | Connector surface | Primary taxonomy mapping | Review focus |
 | --- | --- | --- |
 | Resources and source snapshots | Knowledge and resources; Guardrails and governance | Provenance, freshness, access, allowed content, and snapshot sanitization |
+| Remote skill distribution | Capability modules; Knowledge and resources; Guardrails and governance; Runtime and deployment | Separate discovery, file transport, host activation and tool authority; preserve origin and content-bound approval. |
 | Prompts and elicitation flows | Prompts and interfaces; Planning and orchestration; Guardrails and governance | Input purpose, validation, sensitive fields, consent, and pause or refusal behavior |
 | Tools and actions | Tools; Outputs and schemas; Guardrails and governance | Authority, inputs, outputs, side effects, approvals, failure handling, and idempotency |
 | Roots and runtime boundaries (deprecated) | Runtime and deployment; Guardrails and governance | Allowed locations, isolation, least privilege, and private path disclosure. Roots express declared scope; enforcement relies on client-side permissions, path validation, allowlists, and sandboxing. |
@@ -146,6 +148,40 @@ State snapshots, raw traces, private logs, or other private runtime data.
 - [ ] Confirm the stable 14-bucket taxonomy is unchanged.
 - [ ] Record the checks run and any intentionally deferred risks.
 
+### 10. Remote Skill Distribution
+
+For the optional MCP Skills extension, review the following boundaries against
+the [stable specification](https://skills.extensions.modelcontextprotocol.io/specification/stable/skills).
+These items were checked on **2026-10-24**; they do not recertify unrelated
+protocol or vendor claims. See the [Skills distribution mapping](agent-skills-standard-mapping.md#mcp-skills-distribution)
+for the generic classes, protocol methods and synthetic example.
+
+- [ ] Observe `io.modelcontextprotocol/skills` and the `resources` capability
+      before using `skills/list` or `skills/get`; use directory reads only
+      when `directoryRead: true` is declared.
+- [ ] Treat skill content as untrusted input. Preserve host-assigned server
+      identity plus URI in discovery, model context, approvals and caches;
+      disambiguate names without silently replacing local or other-origin skills.
+- [ ] Keep a preview/resource read separate from host activation. Require
+      explicit per-skill approval for host-side code execution; ignore remote
+      `allowed-tools` unless the user explicitly approves that skill's grant.
+- [ ] For manifest-backed content, fetch only as needed and verify each file's
+      digest, byte size and membership in the held manifest. Do not use
+      mismatches or unlisted files; a directory listing cannot extend an approved set.
+- [ ] Compare `SKILL.md`'s parsed frontmatter against its entry before loading,
+      including when `resources` is `"dynamic"` and digests are unavailable.
+- [ ] Bind persisted approval to every URI/digest pair. Revoke and re-prompt
+      when a refreshed set changes. Treat `resources: "dynamic"` as lacking
+      content integrity and content-bound approval; never reuse a persisted
+      grant as approval for arbitrary current content.
+- [ ] Require fresh consent for nested skill activation, and explicit per-call
+      approval naming both servers for any cross-origin resource read.
+- [ ] Isolate caches from local skill discovery, preserve remote origin after
+      restart or disconnection, and protect cached bytes or rehash on access.
+      A digest match proves consistency, not trust or permission.
+- [ ] Keep private skill inventories, live manifests, permission lists and
+      actual approval records out of public examples; use inert synthetic data.
+
 ## Public-Safe Example Language
 
 Prefer language such as:
@@ -168,6 +204,8 @@ fixtures.
 ## Related Docs
 
 - [Protocol mapping](protocol-mapping.md)
+- [Agent Skills standard mapping](agent-skills-standard-mapping.md)
+- [MCP Skills stable specification](https://skills.extensions.modelcontextprotocol.io/specification/stable/skills)
 - [SEP-2577: Deprecate Roots, Sampling, and Logging](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging)
 - [SEP-2549: TTL for List Results](https://modelcontextprotocol.io/seps/2549-TTL-for-list-results)
 - [MCP feature lifecycle policy](https://modelcontextprotocol.io/community/feature-lifecycle)

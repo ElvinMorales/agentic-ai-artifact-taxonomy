@@ -75,9 +75,14 @@ metadata changes.
 
 ## Current Application
 
-The latest published release is `v0.3.0`.
+The latest published release is `v0.3.0`. The approved next candidate is
+`v0.4.0`, a minor release including accumulated MCP mappings and new validation
+capability. Its [provisional release notes](release-notes-v0.4.0.md) and dated
+changelog describe preparation, not publication.
 
-This section may be updated during future approved release work.
+The private npm workspace is `0.4.0` during this approved preparation. README
+continues to identify `v0.3.0` as published until a separate tag and GitHub
+Release establish the next public version.
 
 ## Public Safety
 
